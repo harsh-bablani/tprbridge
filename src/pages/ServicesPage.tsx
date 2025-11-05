@@ -16,7 +16,6 @@ import {
   Search,
   DollarSign,
   Clock,
-  Users,
   Star,
 } from 'lucide-react';
 
