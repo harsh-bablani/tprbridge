@@ -53,23 +53,24 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="relative group"
-              >
-                <span
-                  className={`text-lg font-medium transition-colors duration-300 ${
-                    isActive(link.to)
-                      ? 'text-indigo-600'
-                      : isScrolled
-                      ? 'text-slate-700 hover:text-indigo-600'
-                      : 'text-white hover:text-yellow-400'
-                  }`}
-                >
-                  {link.label}
-                </span>
+              {navLinks.map((link) => {
+                const getLinkClassName = () => {
+                  if (isActive(link.to)) return 'text-indigo-600';
+                  if (isScrolled) return 'text-slate-700 hover:text-indigo-600';
+                  return 'text-white hover:text-yellow-400';
+                };
+
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="relative group"
+                  >
+                    <span
+                      className={`text-lg font-medium transition-colors duration-300 ${getLinkClassName()}`}
+                    >
+                      {link.label}
+                    </span>
                 {isActive(link.to) && (
                   <motion.div
                     layoutId="activeTab"
@@ -77,14 +78,15 @@ export default function Navigation() {
                     initial={false}
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   />
-                )}
+                  )}
                 {!isActive(link.to) && (
                   <motion.div
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
                   />
                 )}
-              </Link>
-            ))}
+                  </Link>
+                );
+              })}
             <Link
               to="/contact"
               className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"

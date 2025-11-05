@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -200,6 +201,11 @@ export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const filteredServices = services.filter((service) => {
     const matchesSearch =
@@ -267,7 +273,7 @@ export default function ServicesPage() {
                     : 'bg-white/10 text-white hover:bg-white/20'
                 }`}
               >
-                {service.title}
+                  {service.title}
               </button>
             ))}
           </div>
@@ -369,24 +375,58 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Detail Modal */}
-      <AnimatePresence>
-        {selectedService && (
-          <>
+      {/* Service Detail Modal - Rendered via Portal */}
+      {mounted && createPortal(
+        <AnimatePresence mode="wait">
+          {selectedService && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedService(null)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 50 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 50 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[90vw] md:max-w-5xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl z-50"
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '1rem',
+              }}
             >
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedService(null)}
+                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                }}
+              />
+              {/* Modal Content */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl"
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  maxWidth: '80rem',
+                  maxHeight: '90vh',
+                  margin: '0 auto',
+                }}
+              >
               <div className="relative">
                 {/* Header Image */}
                 <div className="relative h-64 overflow-hidden">
@@ -478,9 +518,11 @@ export default function ServicesPage() {
                 </div>
               </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
 
       <Footer />
     </div>
