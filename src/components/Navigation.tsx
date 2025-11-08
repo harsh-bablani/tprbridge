@@ -32,7 +32,7 @@ export default function Navigation() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-[#04070d]/60 backdrop-blur'
+          : 'bg-white/70 backdrop-blur'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -47,9 +47,7 @@ export default function Navigation() {
               transition={{ duration: 0.2 }}
             />
             <span
-              className={`text-2xl md:text-3xl font-bold tracking-tight ${
-                isScrolled ? 'text-[#0b1f33]' : 'text-white'
-              }`}
+              className={`text-2xl md:text-3xl font-bold tracking-tight text-[#0b1f33]`}
             >
               Tipping Bridge
             </span>
@@ -62,7 +60,7 @@ export default function Navigation() {
                 if (isActive(link.to)) return 'text-[#c53030]';
                 if (isScrolled)
                   return 'text-slate-800 hover:text-[#c53030]';
-                return 'text-white hover:text-red-300';
+                return 'text-[#0b1f33] hover:text-[#c53030]';
               };
 
               return (
@@ -98,7 +96,7 @@ export default function Navigation() {
             })}
             <Link
               to="/contact"
-              className="px-6 py-2.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="px-6 py-2.5 bg-gradient-to-r from-[#c53030] to-[#e04a4a] text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
               Get Started
             </Link>
@@ -107,7 +105,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 ${isScrolled ? 'text-slate-800' : 'text-white'}`}
+            className={`md:hidden p-2 ${isScrolled ? 'text-slate-800' : 'text-[#0b1f33]'}`}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

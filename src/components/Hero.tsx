@@ -38,7 +38,7 @@ function Hero() {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${image})` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1f0b0b]/90 via-[#321012]/85 to-[#071018]/92"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#fff6f6]/85 via-[#fef2f2]/80 to-[#f5f7fb]/85"></div>
             </div>
           </motion.div>
         ))}
@@ -49,7 +49,7 @@ function Hero() {
         {Array.from({ length: 20 }, (_, i) => (
           <motion.div
             key={`particle-${i}`}
-            className="absolute w-2 h-2 bg-white/15 rounded-full"
+            className="absolute w-2 h-2 bg-[#f87171]/25 rounded-full"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
@@ -89,7 +89,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight"
+          className="text-6xl md:text-8xl font-bold text-[#0b1f33] mb-6 leading-tight"
         >
           Welcome to{' '}
           <span className="bg-gradient-to-r from-[#f87171] via-[#fca5a5] to-[#f87171] bg-clip-text text-transparent animate-pulse">
@@ -101,7 +101,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-2xl md:text-3xl text-white/95 mb-12 font-light"
+          className="text-2xl md:text-3xl text-[#1f2d3f] mb-12 font-light"
         >
           Your Trusted Partner for NRI Services in India
         </motion.p>
@@ -110,7 +110,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-[#34445a] mb-12 max-w-3xl mx-auto leading-relaxed"
         >
           Connecting families across continents with expert care, seamless service, and unwavering trust.
           Experience peace of mind with India's most trusted NRI concierge service.
@@ -140,7 +140,7 @@ function Hero() {
 
           <Link
             to="/contact"
-            className="group px-8 py-4 bg-transparent border-2 border-[#fca5a5] text-white rounded-full font-bold text-lg hover:bg-[#fca5a5]/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="group px-8 py-4 bg-transparent border-2 border-[#c53030] text-[#0b1f33] rounded-full font-bold text-lg hover:bg-[#c53030]/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             Get in Touch
             <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />

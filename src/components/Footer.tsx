@@ -13,11 +13,11 @@ function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-br from-[#03060a] via-[#0b1f33] to-[#1f0b0b] text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-[#f8fafc] via-[#fef7f7] to-[#f3f6fb] text-[#0b1f33] overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#c53030]/15 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0b1f33]/20 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#fcd6d6]/50 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#dbe9ff]/50 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
@@ -31,9 +31,9 @@ function Footer() {
           >
             <div className="flex items-center gap-3 mb-4">
               <img src="/tpbridge-logo.jpg" alt="Tipping Bridge" className="h-10 w-10 rounded-md shadow-lg" />
-              <h3 className="text-2xl font-bold tracking-tight text-white">Tipping Bridge</h3>
+              <h3 className="text-2xl font-bold tracking-tight text-[#0b1f33]">Tipping Bridge</h3>
             </div>
-            <p className="text-gray-300 leading-relaxed mb-6">
+            <p className="text-[#516074] leading-relaxed mb-6">
               Your trusted partner for NRI services in India. Connecting families across continents with expert care and seamless service.
             </p>
             <div className="flex gap-4">
@@ -46,7 +46,7 @@ function Footer() {
                     aria-label={social.label}
                     whileHover={{ scale: 1.15, y: -2 }}
                     whileTap={{ scale: 0.92 }}
-                    className="p-2 bg-white/10 hover:bg-[#c53030]/70 rounded-lg transition-colors duration-300"
+                    className="p-2 bg-white shadow-sm hover:bg-[#fbe4e4] rounded-lg transition-colors duration-300"
                   >
                     <Icon size={20} />
                   </motion.a>
@@ -62,7 +62,7 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-white">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-6 text-[#0b1f33]">Quick Links</h4>
             <ul className="space-y-3">
               {[
                 { to: '/', label: 'Home' },
@@ -72,9 +72,9 @@ function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.to}
-                    className="text-gray-300 hover:text-[#f87171] transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-[#516074] hover:text-[#c53030] transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-[#f87171] transition-all duration-300"></span>
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-[#c53030] transition-all duration-300"></span>
                     {link.label}
                   </Link>
                 </li>
@@ -89,7 +89,7 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-white">Services</h4>
+            <h4 className="text-lg font-semibold mb-6 text-[#0b1f33]">Services</h4>
             <ul className="space-y-3">
               {[
                 'Property Management',
@@ -100,9 +100,9 @@ function Footer() {
                 <li key={service}>
                   <a
                     href="/services"
-                    className="text-gray-300 hover:text-[#f87171] transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-[#516074] hover:text-[#c53030] transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-[#f87171] transition-all duration-300"></span>
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-[#c53030] transition-all duration-300"></span>
                     {service}
                   </a>
                 </li>
@@ -117,29 +117,29 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-white">Contact Us</h4>
+            <h4 className="text-lg font-semibold mb-6 text-[#0b1f33]">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail size={20} className="text-[#f87171] flex-shrink-0 mt-1" />
+                <Mail size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
                 <a
                   href="mailto:info@tippingbridge.com"
-                  className="text-gray-300 hover:text-[#f87171] transition-colors duration-300"
+                  className="text-[#516074] hover:text-[#c53030] transition-colors duration-300"
                 >
                   info@tippingbridge.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={20} className="text-[#f87171] flex-shrink-0 mt-1" />
+                <Phone size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
                 <a
                   href="tel:+15551234567"
-                  className="text-gray-300 hover:text-[#f87171] transition-colors duration-300"
+                  className="text-[#516074] hover:text-[#c53030] transition-colors duration-300"
                 >
                   +1 (555) 123-4567
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={20} className="text-[#f87171] flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Mumbai, India</span>
+                <MapPin size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
+                <span className="text-[#516074]">Mumbai, India</span>
               </li>
             </ul>
           </motion.div>
@@ -151,17 +151,17 @@ function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="border-t border-white/10 pt-8"
+          className="border-t border-[#e7dede] pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
+            <p className="text-[#516074] text-sm">
               &copy; {currentYear} Tipping Bridge. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-gray-300 hover:text-[#f87171] transition-colors duration-300">
+              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-300 hover:text-[#f87171] transition-colors duration-300">
+              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
                 Terms of Service
               </a>
             </div>

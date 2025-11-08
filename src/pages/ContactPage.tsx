@@ -140,10 +140,10 @@ export default function ContactPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-[#0b1f33] via-[#1f0b0b] to-[#03060a] overflow-hidden">
+      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-[#fff7f7] via-[#fef2f2] to-[#f3f6fb] overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#c53030]/25 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0b1f33]/25 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#fcd6d6]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#dbe9ff]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
 
         <motion.div
@@ -152,10 +152,10 @@ export default function ContactPage() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-center relative z-10"
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-            Get in <span className="text-[#f87171]">Touch</span>
+          <h1 className="text-6xl md:text-7xl font-bold text-[#0b1f33] mb-6">
+            Get in <span className="text-[#c53030]">Touch</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-[#34445a] max-w-2xl mx-auto">
             Ready to experience premium NRI services? Let's start a conversation about how we can help you.
           </p>
         </motion.div>
@@ -409,11 +409,11 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-[#03060a] to-[#0b1f33] rounded-2xl p-8 text-white">
+              <div className="bg-gradient-to-br from-[#fef2f2] to-[#f3f6fb] rounded-2xl p-8 text-[#0b1f33]">
                 <h3 className="text-2xl font-bold mb-4">
                   Need Immediate Assistance?
                 </h3>
-                <p className="text-white/80 mb-6">
+                <p className="text-[#34445a] mb-6">
                   For urgent matters, call us directly or use our emergency contact line.
                 </p>
                 <a

@@ -219,10 +219,10 @@ export default function ServicesPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-[#0b1f33] via-[#1f0b0b] to-[#03060a] overflow-hidden">
+      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-[#fff7f7] via-[#fef2f2] to-[#f3f6fb] overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#c53030]/25 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0b1f33]/25 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#fcd6d6]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#dbe9ff]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
 
         <motion.div
@@ -231,22 +231,22 @@ export default function ServicesPage() {
           transition={{ duration: 0.8 }}
           className="max-w-7xl mx-auto text-center relative z-10"
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-            Premium <span className="text-[#f87171]">Services</span>
+          <h1 className="text-6xl md:text-7xl font-bold text-[#0b1f33] mb-6">
+            Premium <span className="text-[#c53030]">Services</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12">
+          <p className="text-xl md:text-2xl text-[#34445a] max-w-3xl mx-auto mb-12">
             Comprehensive solutions tailored for NRI families with unmatched expertise and care
           </p>
 
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={24} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c53030]" size={24} />
             <input
               type="text"
               placeholder="Search services..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#f87171] focus:border-transparent"
+              className="w-full pl-12 pr-4 py-4 rounded-full bg-white/80 backdrop-blur-md border border-[#f2dcdc] text-[#0b1f33] placeholder-[#9aa4b5] focus:outline-none focus:ring-2 focus:ring-[#f87171] focus:border-transparent"
             />
           </div>
 
@@ -257,7 +257,7 @@ export default function ServicesPage() {
               className={`px-6 py-2 rounded-full font-medium transition-all ${
                 !selectedCategory
                   ? 'bg-[#f87171] text-white shadow-lg shadow-[#f8717140]'
-                  : 'bg-white/10 text-white hover:bg-white/20'
+                  : 'bg-white text-[#0b1f33] border border-[#f2dcdc] hover:bg-[#fef2f2]'
               }`}
             >
               All Services
@@ -269,7 +269,7 @@ export default function ServicesPage() {
                 className={`px-6 py-2 rounded-full font-medium transition-all ${
                   selectedCategory === service.id
                     ? 'bg-[#f87171] text-white shadow-lg shadow-[#f8717140]'
-                    : 'bg-white/10 text-white hover:bg-white/20'
+                    : 'bg-white text-[#0b1f33] border border-[#f2dcdc] hover:bg-[#fef2f2]'
                 }`}
               >
                   {service.title}
