@@ -75,7 +75,7 @@ const familyImages = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#fef7f7] to-white overflow-hidden">
+    <section className="relative py-24 sm:py-32 bg-gradient-to-b from-[#fef7f7] to-white overflow-hidden px-4 sm:px-6">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#fde2e2] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
@@ -108,7 +108,7 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-20 h-[500px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+          className="mb-16 sm:mb-20 h-[360px] sm:h-[500px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
         >
           <ImageCarousel images={familyImages} autoPlay={true} interval={5000} />
         </motion.div>

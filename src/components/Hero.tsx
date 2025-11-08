@@ -10,6 +10,21 @@ const heroImages = [
   'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80',
 ]
 
+const highlightMetrics = [
+  {
+    value: '15+ Years',
+    description: 'Expert concierge support for NRIs worldwide',
+  },
+  {
+    value: '5k+ Families',
+    description: 'Trusted relationships diligently nurtured',
+  },
+  {
+    value: '99.8% Satisfaction',
+    description: 'Personalised solutions with measurable joy',
+  },
+]
+
 function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -21,7 +36,7 @@ function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden pt-28 pb-20 px-4 sm:px-6">
       {/* Background Image Carousel */}
       <div className="absolute inset-0 z-0">
         {heroImages.map((image, index) => (
@@ -46,6 +61,9 @@ function Hero() {
 
       {/* Animated background particles */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-16 w-72 h-72 bg-[#fde4e4]/80 rounded-full blur-3xl" />
+        <div className="absolute top-40 -left-28 w-80 h-80 bg-[#dbe9ff]/80 rounded-full blur-3xl" />
+        <div className="absolute inset-y-0 left-1/2 w-[480px] -translate-x-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-70" />
         {Array.from({ length: 20 }, (_, i) => (
           <motion.div
             key={`particle-${i}`}
@@ -89,7 +107,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-6xl md:text-8xl font-bold text-[#0b1f33] mb-6 leading-tight"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold text-[#0b1f33] mb-6 leading-tight"
         >
           Welcome to{' '}
           <span className="bg-gradient-to-r from-[#f87171] via-[#fca5a5] to-[#f87171] bg-clip-text text-transparent animate-pulse">
@@ -101,7 +119,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-2xl md:text-3xl text-[#1f2d3f] mb-12 font-light"
+          className="text-lg sm:text-xl md:text-2xl text-[#1f2d3f] mb-10 font-light"
         >
           Your Trusted Partner for NRI Services in India
         </motion.p>
@@ -110,7 +128,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl text-[#34445a] mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-[#34445a] mb-10 max-w-3xl mx-auto leading-relaxed"
         >
           Connecting families across continents with expert care, seamless service, and unwavering trust.
           Experience peace of mind with India's most trusted NRI concierge service.
@@ -120,11 +138,11 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
         >
           <Link
             to="/services"
-            className="group relative px-8 py-4 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-full font-bold text-lg overflow-hidden shadow-2xl hover:shadow-[#c53030]/40 transition-all duration-300 hover:scale-105"
+            className="group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-full font-bold text-lg overflow-hidden shadow-2xl hover:shadow-[#c53030]/40 transition-all duration-300 hover:scale-105"
           >
             <span className="relative z-10 flex items-center gap-2">
               Our Services
@@ -140,16 +158,38 @@ function Hero() {
 
           <Link
             to="/contact"
-            className="group px-8 py-4 bg-transparent border-2 border-[#c53030] text-[#0b1f33] rounded-full font-bold text-lg hover:bg-[#c53030]/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="group w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-[#c53030] text-[#0b1f33] rounded-full font-bold text-lg hover:bg-[#c53030]/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             Get in Touch
             <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
           </Link>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.75 }}
+          className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto"
+        >
+          {highlightMetrics.map((metric) => (
+            <div
+              key={metric.value}
+              className="relative overflow-hidden rounded-3xl border border-[#f2dcdc] bg-white/80 shadow-md backdrop-blur-sm p-6 text-left"
+            >
+              <span className="block text-xl font-semibold text-[#c53030] mb-2">
+                {metric.value}
+              </span>
+              <p className="text-sm text-[#37475c] leading-relaxed">
+                {metric.description}
+              </p>
+              <span className="absolute -bottom-6 -right-4 h-20 w-20 rounded-full bg-[#fde4e4]/60 blur-2xl" />
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Image indicators */}
-      <div className="absolute bottom-8 right-8 z-10 flex gap-2">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
         {heroImages.map((_, index) => (
           <button
             key={index}

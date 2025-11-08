@@ -57,7 +57,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-white via-[#f5f2f2] to-[#f9f3f3] overflow-hidden">
+    <section className="relative py-20 sm:py-32 bg-gradient-to-b from-white via-[#f5f2f2] to-[#f9f3f3] overflow-hidden px-4 sm:px-6">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#fbd5d5] rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
@@ -71,12 +71,12 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
         >
           <div className="inline-block mb-6">
             <div className="h-1 w-16 bg-[#c53030] mx-auto"></div>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-[#0b1f33] mb-6 tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0b1f33] mb-6 tracking-tight">
             Our <span className="text-[#c53030]">Premium Services</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -85,7 +85,7 @@ export default function Services() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -96,44 +96,46 @@ export default function Services() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -12, transition: { duration: 0.3 } }}
-                className="group relative"
+                className="group relative h-full"
               >
-                <div className="relative h-full bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f1e5e5]">
-                  {/* Image Background */}
-                  <div className="relative h-48 overflow-hidden">
-                    <motion.img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
-                        <Icon size={48} className="text-white" strokeWidth={1.5} />
+                <div className="relative h-full rounded-3xl p-[1px] bg-gradient-to-br from-[#fde4e4] via-white to-[#dbe9ff] transition-all duration-300 group-hover:shadow-[0_20px_45px_-28px_rgba(197,48,48,0.65)]">
+                  <div className="relative h-full bg-white/90 rounded-[calc(1.5rem-1px)] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f1e5e5]">
+                    {/* Image Background */}
+                    <div className="relative h-48 overflow-hidden">
+                      <motion.img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="p-4 bg-white/25 backdrop-blur-sm rounded-2xl border border-white/40">
+                          <Icon size={48} className="text-white" strokeWidth={1.5} />
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-[#0b1f33] mb-3 group-hover:text-[#c53030] transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 leading-relaxed mb-4">
-                      {service.description}
-                    </p>
-                    <div className="flex items-center text-[#c53030] font-semibold group-hover:gap-2 transition-all">
-                      <span>Learn more</span>
-                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    {/* Content */}
+                    <div className="p-6 sm:p-7">
+                      <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-slate-600 leading-relaxed mb-4 text-base sm:text-lg">
+                        {service.description}
+                      </p>
+                      <div className="flex items-center text-[#c53030] font-semibold group-hover:gap-2 transition-all">
+                        <span>Learn more</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Hover effect gradient */}
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}
-                  />
+                    {/* Hover effect gradient */}
+                    <motion.div
+                      className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}
+                    />
+                  </div>
                 </div>
               </motion.div>
             );
