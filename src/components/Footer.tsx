@@ -30,7 +30,7 @@ function Footer() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-4">
-              <img src="/tpbridge-logo.jpg" alt="Tipping Bridge" className="h-10 w-10 rounded-md shadow-lg" />
+              <img src="/tpbridge-logo.png" alt="Tipping Bridge" className="h-10 w-10 rounded-md shadow-lg" />
               <h3 className="text-2xl font-bold tracking-tight text-[#0b1f33]">Tipping Bridge</h3>
             </div>
             <p className="text-[#516074] leading-relaxed mb-6">

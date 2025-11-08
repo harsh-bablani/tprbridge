@@ -40,7 +40,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <motion.img
-              src="/tpbridge-logo.jpg"
+              src="/tpbridge-logo.png"
               alt="Tipping Bridge"
               className="h-10 w-10 md:h-12 md:w-12 rounded-md shadow-lg"
               whileHover={{ scale: 1.05 }}

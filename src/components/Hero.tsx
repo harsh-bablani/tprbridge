@@ -95,7 +95,7 @@ function Hero() {
           className="mb-8 flex justify-center"
         >
           <motion.img
-            src="/tpbridge-logo.jpg"
+            src="/tpbridge-logo.png"
             alt="Tipping Bridge logo"
             className="w-28 h-28 rounded-2xl shadow-2xl"
             whileHover={{ scale: 1.05 }}
