@@ -77,7 +77,7 @@ function Hero() {
           className="inline-block font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#b71c1c]/70 via-[#e63946]/65 to-[#102a43]/60 tracking-[-0.01em] whitespace-nowrap text-xl sm:text-5xl lg:text-6xl leading-[1.45] sm:leading-[1.3] lg:leading-[1.15] drop-shadow-[0_6px_18px_rgba(16,42,67,0.2)]"
           style={{ fontFamily: 'Sora, Manrope, sans-serif' }}
         >
-          Bridging Distances, Building Trust
+          Bridging Distance, Building Trust
         </motion.h1>
 
         {/* <motion.p
@@ -97,9 +97,9 @@ function Hero() {
         >
           <Link
             to="/about"
-            className="group relative inline-flex items-center justify-center px-8 py-3.5 sm:py-4 bg-transparent backdrop-blur-md border-2 border-[#c53030]/70 text-[#c53030]/80 rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl hover:shadow-[#c53030]/20 transition-all duration-300 hover:scale-105 hover:border-[#c53030] hover:text-[#c53030] overflow-hidden"
+            className="group relative inline-flex items-center justify-center px-8 py-3.5 sm:py-4 bg-transparent backdrop-blur-md border-2 border-[#c53030]/70 text-[#c53030]/80 rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl hover:shadow-[#c53030]/20 transition-all duration-300 hover:scale-105 hover:border-[#c53030] overflow-hidden"
           >
-            <span className="relative z-10 flex items-center gap-2">
+            <span className="relative z-10 flex items-center gap-2 group-hover:opacity-0 transition-opacity duration-300">
               <span>Discover Us</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ function Hero() {
               </svg>
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-[#c53030]/90 to-[#7a0b0b]/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
-            <span className="absolute inset-0 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 font-semibold">
+            <span className="absolute inset-0 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 font-semibold z-20">
               <span>Discover Us</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

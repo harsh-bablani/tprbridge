@@ -18,6 +18,7 @@ export default function Navigation() {
 
   const navLinks = [
     { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
     { to: '/services', label: 'Services' },
     { to: '/contact', label: 'Contact' },
   ];
@@ -94,14 +95,6 @@ export default function Navigation() {
                 </Link>
               );
             })}
-            <Link
-              to="/contact"
-              className={`px-6 py-2.5 bg-gradient-to-r from-[#c53030] to-[#e04a4a] text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 ${
-                hasSolidBackground ? 'shadow-[#0b1f33]/20' : ''
-              }`}
-            >
-              Get Started
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -140,13 +133,6 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
-          <Link
-            to="/contact"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block w-full px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-full font-semibold text-center hover:shadow-lg transition-all duration-300"
-          >
-            Get Started
-          </Link>
         </div>
       </motion.div>
     </motion.nav>
