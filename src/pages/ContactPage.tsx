@@ -2,6 +2,7 @@ import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import PageHero from '../components/PageHero';
 import {
   Mail,
   Phone,
@@ -138,28 +139,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navigation />
-
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-[#fff7f7] via-[#fef2f2] to-[#f3f6fb] overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#fcd6d6]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#dbe9ff]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center relative z-10"
-        >
-          <h1 className="text-6xl md:text-7xl font-bold text-[#0b1f33] mb-6">
-            Get in <span className="text-[#c53030]">Touch</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-[#34445a] max-w-2xl mx-auto">
-            Ready to experience premium NRI services? Let's start a conversation about how we can help you.
-          </p>
-        </motion.div>
-      </section>
+      <PageHero title="Contact Us" />
 
       {/* Contact Info Cards */}
       <section className="py-12 px-6 -mt-10 relative z-10">

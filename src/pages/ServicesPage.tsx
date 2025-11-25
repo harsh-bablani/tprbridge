@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import PageHero from '../components/PageHero';
 import {
   Home,
   FileText,
@@ -217,66 +218,57 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navigation />
+      <PageHero title="Services" />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-[#fff7f7] via-[#fef2f2] to-[#f3f6fb] overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#fcd6d6]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#dbe9ff]/60 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
+      {/* Search and Filter Section */}
+      <section className="relative -mt-20 pb-12 px-6 z-20">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-[#f2dcdc]"
+          >
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto relative mb-6">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c53030]" size={24} />
+              <input
+                type="text"
+                placeholder="Search services..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 rounded-full bg-white/80 backdrop-blur-md border border-[#f2dcdc] text-[#0b1f33] placeholder-[#9aa4b5] focus:outline-none focus:ring-2 focus:ring-[#f87171] focus:border-transparent"
+              />
+            </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-7xl mx-auto text-center relative z-10"
-        >
-          <h1 className="text-6xl md:text-7xl font-bold text-[#0b1f33] mb-6">
-            Premium <span className="text-[#c53030]">Services</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-[#34445a] max-w-3xl mx-auto mb-12">
-            Comprehensive solutions tailored for NRI families with unmatched expertise and care
-          </p>
-
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c53030]" size={24} />
-            <input
-              type="text"
-              placeholder="Search services..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-full bg-white/80 backdrop-blur-md border border-[#f2dcdc] text-[#0b1f33] placeholder-[#9aa4b5] focus:outline-none focus:ring-2 focus:ring-[#f87171] focus:border-transparent"
-            />
-          </div>
-
-          {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <button
-              onClick={() => setSelectedCategory(null)}
-              className={`px-6 py-2 rounded-full font-medium transition-all ${
-                !selectedCategory
-                  ? 'bg-[#f87171] text-white shadow-lg shadow-[#f8717140]'
-                  : 'bg-white text-[#0b1f33] border border-[#f2dcdc] hover:bg-[#fef2f2]'
-              }`}
-            >
-              All Services
-            </button>
-            {services.map((service) => (
+            {/* Category Filters */}
+            <div className="flex flex-wrap justify-center gap-4">
               <button
-                key={service.id}
-                onClick={() => setSelectedCategory(service.id)}
+                onClick={() => setSelectedCategory(null)}
                 className={`px-6 py-2 rounded-full font-medium transition-all ${
-                  selectedCategory === service.id
+                  !selectedCategory
                     ? 'bg-[#f87171] text-white shadow-lg shadow-[#f8717140]'
                     : 'bg-white text-[#0b1f33] border border-[#f2dcdc] hover:bg-[#fef2f2]'
                 }`}
               >
-                  {service.title}
+                All Services
               </button>
-            ))}
-          </div>
-        </motion.div>
+              {services.map((service) => (
+                <button
+                  key={service.id}
+                  onClick={() => setSelectedCategory(service.id)}
+                  className={`px-6 py-2 rounded-full font-medium transition-all ${
+                    selectedCategory === service.id
+                      ? 'bg-[#f87171] text-white shadow-lg shadow-[#f8717140]'
+                      : 'bg-white text-[#0b1f33] border border-[#f2dcdc] hover:bg-[#fef2f2]'
+                  }`}
+                >
+                  {service.title}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Services Grid */}

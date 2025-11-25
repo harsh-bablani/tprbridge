@@ -24,10 +24,8 @@ export default function Navigation() {
   ];
 
   const isActive = (path: string) => location.pathname === path;
-  const isHome = location.pathname === '/';
 
-  const hasSolidBackground = isHome ? isScrolled : true;
-  const navBackgroundClass = hasSolidBackground
+  const navBackgroundClass = isScrolled
     ? 'bg-white/95 backdrop-blur-md shadow-xl'
     : 'bg-transparent';
 
@@ -38,9 +36,9 @@ export default function Navigation() {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackgroundClass}`}
       style={
-        isHome && !isScrolled
-          ? { backgroundColor: 'transparent', boxShadow: 'none', backdropFilter: 'none' }
-          : undefined
+        isScrolled
+          ? undefined
+          : { backgroundColor: 'transparent', boxShadow: 'none', backdropFilter: 'none' }
       }
     >
       <div className="max-w-7xl mx-auto px-6">
