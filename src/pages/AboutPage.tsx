@@ -74,27 +74,31 @@ export default function AboutPage() {
   const services = [
     {
       title: 'Property Management',
-      description: 'Complete oversight of your real estate investments in India',
+      description: 'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
     },
     {
-      title: 'Documentation Services',
-      description: 'Expert handling of all legal and administrative paperwork',
+      title: 'Long and Short Stay',
+      description: 'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
     },
     {
-      title: 'Healthcare Support',
-      description: 'Connecting your family with quality medical care in India',
+      title: 'Elderly Care',
+      description: 'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
     },
     {
-      title: 'Business Services',
-      description: 'Comprehensive support for your business operations in India',
+      title: 'Investments and Insurance',
+      description: 'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
     },
     {
-      title: 'Education Consulting',
-      description: 'Guidance for educational opportunities and admissions',
+      title: 'Doctor & Hospital Assistance',
+      description: 'Priority appointments, hospital coordination, discharge support, and second opinions handled end-to-end.',
     },
     {
-      title: 'Legal & Compliance',
-      description: 'Ensuring all legal requirements are met with precision',
+      title: 'Government Documentation',
+      description: 'Fast-track processing for IDs, certificates, attestations, and compliance paperwork across departments.',
+    },
+    {
+      title: 'Events & Gathering Services',
+      description: 'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
     },
   ];
 

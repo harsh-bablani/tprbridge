@@ -6,16 +6,16 @@ import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import {
   Home,
+  BedDouble,
+  HeartPulse,
+  PiggyBank,
+  Stethoscope,
   FileText,
-  Heart,
-  Briefcase,
-  GraduationCap,
-  Shield,
+  PartyPopper,
   X,
   Check,
   ArrowRight,
   Search,
-  DollarSign,
   Clock,
   Star,
 } from 'lucide-react';
@@ -29,11 +29,6 @@ interface Service {
   gradient: string;
   image: string;
   features: string[];
-  pricing: {
-    basic: string;
-    premium: string;
-    enterprise: string;
-  };
   duration: string;
   testimonials?: number;
 }
@@ -42,7 +37,7 @@ const services: Service[] = [
   {
     id: 'property-management',
     title: 'Property Management',
-    shortDescription: 'Complete property oversight, maintenance, and tenant management for your assets in India.',
+    shortDescription: 'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
     fullDescription: 'Our comprehensive property management services ensure your real estate investments in India are well-maintained, profitable, and hassle-free. We handle everything from tenant screening and rent collection to property maintenance and legal compliance.',
     icon: Home,
     gradient: 'from-[#c53030] to-[#7a0b0b]',
@@ -57,21 +52,100 @@ const services: Service[] = [
       'Vendor Management & Coordination',
       'Property Valuation & Market Analysis',
     ],
-    pricing: {
-      basic: '₹15,000/month',
-      premium: '₹25,000/month',
-      enterprise: 'Custom',
-    },
     duration: 'Ongoing',
     testimonials: 1247,
   },
   {
-    id: 'documentation',
-    title: 'Documentation Services',
-    shortDescription: 'Expert assistance with all legal documents, certificates, and government paperwork.',
-    fullDescription: 'Navigate India\'s complex documentation requirements with ease. Our expert team handles all paperwork, certificates, and government documentation, ensuring accuracy and compliance. From birth certificates to property deeds, we manage it all.',
-    icon: FileText,
+    id: 'long-short-stay',
+    title: 'Long and Short Stay',
+    shortDescription: 'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
+    fullDescription: 'Whether you need a place for a few days or several months, we provide carefully selected homes and serviced apartments that feel like home. Our accommodations come with housekeeping, security, and concierge support to ensure your comfort and peace of mind during your stay in India.',
+    icon: BedDouble,
     gradient: 'from-[#7a0b0b] to-[#0b1f33]',
+    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
+    features: [
+      'Fully Furnished Accommodations',
+      'Housekeeping & Maintenance Services',
+      '24/7 Security & Concierge Support',
+      'Flexible Stay Duration Options',
+      'Prime Location Properties',
+      'Utilities & Amenities Included',
+      'Airport Transfer Services',
+      'Local Area Orientation & Support',
+    ],
+    duration: 'Flexible',
+    testimonials: 892,
+  },
+  {
+    id: 'elderly-care',
+    title: 'Elderly Care',
+    shortDescription: 'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
+    fullDescription: 'We provide compassionate and professional care for your elderly family members in India. Our personalized care plans include home assistance, wellness monitoring, medical coordination, and emotional support to ensure your loved ones receive the attention and care they deserve.',
+    icon: HeartPulse,
+    gradient: 'from-[#e53e3e] to-[#b91c1c]',
+    image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
+    features: [
+      'Personalized Care Plans',
+      'Home Assistance & Daily Support',
+      'Health & Wellness Monitoring',
+      'Medical Appointment Coordination',
+      'Medication Management',
+      'Companionship & Emotional Support',
+      'Emergency Response Services',
+      'Regular Health Updates & Reports',
+    ],
+    duration: 'Ongoing',
+    testimonials: 1563,
+  },
+  {
+    id: 'investments-insurance',
+    title: 'Investments and Insurance',
+    shortDescription: 'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
+    fullDescription: 'Make informed financial decisions with our expert investment and insurance advisory services. We help NRIs build secure portfolios, choose the right insurance policies, and navigate India\'s financial landscape with confidence. Our services are tailored to your risk profile and long-term goals.',
+    icon: PiggyBank,
+    gradient: 'from-[#0b1f33] to-[#102c44]',
+    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=80',
+    features: [
+      'Portfolio Planning & Management',
+      'Investment Advisory Services',
+      'Insurance Policy Selection',
+      'Risk Assessment & Analysis',
+      'Tax-Efficient Investment Strategies',
+      'Regular Portfolio Reviews',
+      'NRI-Specific Financial Planning',
+      'Compliance & Documentation Support',
+    ],
+    duration: 'Ongoing',
+    testimonials: 634,
+  },
+  {
+    id: 'doctor-hospital-assistance',
+    title: 'Doctor & Hospital Assistance',
+    shortDescription: 'Priority appointments, hospital coordination, discharge support, and second opinions handled end-to-end.',
+    fullDescription: 'Ensure your family receives the best medical care in India with our comprehensive healthcare assistance. We coordinate priority doctor appointments, manage hospital admissions, facilitate second opinions, and provide complete support throughout the medical journey.',
+    icon: Stethoscope,
+    gradient: 'from-[#d33b3b] to-[#7a0b0b]',
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
+    features: [
+      'Priority Doctor Appointments',
+      'Hospital Admission Coordination',
+      'Medical Record Management',
+      'Second Opinion Consultations',
+      'Discharge & Follow-up Support',
+      'Pharmacy & Prescription Services',
+      'Health Insurance Claim Processing',
+      'Emergency Medical Response',
+    ],
+    duration: 'As needed',
+    testimonials: 478,
+  },
+  {
+    id: 'government-documentation',
+    title: 'Government Documentation',
+    shortDescription: 'Fast-track processing for IDs, certificates, attestations, and compliance paperwork across departments.',
+    fullDescription: 'Navigate India\'s complex documentation requirements with ease. Our expert team handles all government paperwork, certificates, and documentation, ensuring accuracy and compliance. From birth certificates to property deeds, we manage it all with fast-track processing.',
+    icon: FileText,
+    gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
     features: [
       'Birth, Marriage & Death Certificates',
@@ -83,117 +157,29 @@ const services: Service[] = [
       'Government Form Filing',
       'Document Translation & Apostille',
     ],
-    pricing: {
-      basic: '₹5,000/service',
-      premium: '₹12,000/service',
-      enterprise: 'Custom',
-    },
     duration: '7-30 days',
-    testimonials: 892,
-  },
-  {
-    id: 'healthcare',
-    title: 'Healthcare Support',
-    shortDescription: 'Medical appointments, hospital coordination, and healthcare management for your loved ones.',
-    fullDescription: 'Ensure your family receives the best healthcare in India. We coordinate medical appointments, manage hospital admissions, facilitate doctor consultations, and provide ongoing healthcare support for your loved ones.',
-    icon: Heart,
-    gradient: 'from-[#e53e3e] to-[#991b1b]',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&q=80',
-    features: [
-      'Doctor Appointment Scheduling',
-      'Hospital Admission Coordination',
-      'Medical Record Management',
-      'Pharmacy & Prescription Services',
-      'Health Insurance Claim Processing',
-      'Second Opinion Consultations',
-      'Medical Emergency Response',
-      'Senior Care & Home Health Services',
-    ],
-    pricing: {
-      basic: '₹10,000/month',
-      premium: '₹20,000/month',
-      enterprise: 'Custom',
-    },
-    duration: 'Ongoing',
-    testimonials: 1563,
-  },
-  {
-    id: 'business',
-    title: 'Business Services',
-    shortDescription: 'Company registration, compliance, and business advisory for your ventures in India.',
-    fullDescription: 'Launch and grow your business in India with our comprehensive business services. From company registration to ongoing compliance, tax filing, and business advisory, we provide end-to-end support for your entrepreneurial journey.',
-    icon: Briefcase,
-    gradient: 'from-[#0b1f33] to-[#102c44]',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80',
-    features: [
-      'Company Registration (LLP, Pvt Ltd, etc.)',
-      'GST Registration & Compliance',
-      'Tax Planning & Filing Services',
-      'Accounting & Bookkeeping',
-      'Business License & Permits',
-      'Trademark & IP Registration',
-      'Business Advisory & Consulting',
-      'Bank Account Opening Assistance',
-    ],
-    pricing: {
-      basic: '₹30,000/setup',
-      premium: '₹75,000/setup',
-      enterprise: 'Custom',
-    },
-    duration: '15-45 days',
-    testimonials: 634,
-  },
-  {
-    id: 'education',
-    title: 'Education Consulting',
-    shortDescription: 'School admissions, education counseling, and academic support for your children.',
-    fullDescription: 'Secure the best educational opportunities for your children in India. Our education consultants help with school admissions, application processes, academic counseling, and ongoing educational support to ensure your child\'s success.',
-    icon: GraduationCap,
-    gradient: 'from-[#d33b3b] to-[#7a0b0b]',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80',
-    features: [
-      'School & University Admissions',
-      'Application & Documentation Support',
-      'Entrance Exam Preparation Guidance',
-      'Education Counseling & Career Planning',
-      'Scholarship & Financial Aid Assistance',
-      'Academic Performance Monitoring',
-      'Tutoring & Study Support Services',
-      'Education Board Registration',
-    ],
-    pricing: {
-      basic: '₹15,000/admission',
-      premium: '₹35,000/admission',
-      enterprise: 'Custom',
-    },
-    duration: '2-6 months',
-    testimonials: 478,
-  },
-  {
-    id: 'legal',
-    title: 'Legal & Compliance',
-    shortDescription: 'Comprehensive legal support, dispute resolution, and regulatory compliance services.',
-    fullDescription: 'Protect your interests with our expert legal services. We provide comprehensive legal support including contract review, dispute resolution, property litigation, family law matters, and ongoing compliance monitoring.',
-    icon: Shield,
-    gradient: 'from-[#102c44] to-[#0b1f33]',
-    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80',
-    features: [
-      'Legal Consultation & Advisory',
-      'Contract Drafting & Review',
-      'Dispute Resolution & Litigation',
-      'Property & Real Estate Law',
-      'Family Law & Inheritance Matters',
-      'Employment & Labor Law Compliance',
-      'Regulatory Compliance Monitoring',
-      'Legal Document Verification',
-    ],
-    pricing: {
-      basic: '₹8,000/consultation',
-      premium: '₹25,000/consultation',
-      enterprise: 'Custom',
-    },
-    duration: 'As needed',
     testimonials: 721,
+  },
+  {
+    id: 'events-gathering',
+    title: 'Events & Gathering Services',
+    shortDescription: 'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
+    fullDescription: 'Create memorable moments with our comprehensive event planning services. Whether it\'s a wedding, religious ceremony, birthday celebration, or community gathering, we handle everything from venue selection and decoration to catering and coordination, ensuring your event is perfect.',
+    icon: PartyPopper,
+    gradient: 'from-[#7a0b0b] to-[#c53030]',
+    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
+    features: [
+      'Event Planning & Coordination',
+      'Venue Selection & Booking',
+      'Decoration & Theme Design',
+      'Catering Services',
+      'Photography & Videography',
+      'Entertainment Arrangements',
+      'Guest Management & Invitations',
+      'Religious Ceremony Coordination',
+    ],
+    duration: 'As per event',
+    testimonials: 456,
   },
 ];
 
@@ -334,10 +320,6 @@ export default function ServicesPage() {
                           <Clock size={16} />
                           <span>{service.duration}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <DollarSign size={16} />
-                          <span>From {service.pricing.basic}</span>
-                        </div>
                       </div>
 
                       <button
@@ -465,30 +447,6 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* Pricing */}
-                  <div className="mb-8 p-6 bg-gradient-to-br from-[#fdeaea] to-[#f4f1f9] rounded-2xl border border-[#f6dada]">
-                    <h3 className="text-2xl font-bold text-[#0b1f33] mb-4">Pricing Plans</h3>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-white p-4 rounded-xl">
-                        <div className="font-semibold text-slate-700 mb-2">Basic</div>
-                        <div className="text-2xl font-bold text-[#c53030]">
-                          {selectedService.pricing.basic}
-                        </div>
-                      </div>
-                      <div className="bg-white p-4 rounded-xl border-2 border-[#c53030]">
-                        <div className="font-semibold text-slate-700 mb-2">Premium</div>
-                        <div className="text-2xl font-bold text-[#c53030]">
-                          {selectedService.pricing.premium}
-                        </div>
-                      </div>
-                      <div className="bg-white p-4 rounded-xl">
-                        <div className="font-semibold text-slate-700 mb-2">Enterprise</div>
-                        <div className="text-2xl font-bold text-[#c53030]">
-                          {selectedService.pricing.enterprise}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                   {/* CTA */}
                   <div className="flex gap-4">

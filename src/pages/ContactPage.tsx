@@ -64,8 +64,19 @@ export default function ContactPage() {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Format the message for WhatsApp with all details
+    const whatsappMessage = `*Contact Form Submission - Tipping Bridge*\n\n` +
+      `*Name:* ${formData.name.trim()}\n` +
+      `*Email:* ${formData.email.trim()}\n` +
+      `*Phone:* ${formData.phone.trim()}\n` +
+      `*Service Interest:* ${formData.service.trim() || 'Not specified'}\n\n` +
+      `*Message:*\n${formData.message.trim()}\n\n` +
+      `_Submitted via Tipping Bridge Website_`;
+    
+    const whatsappUrl = `https://wa.me/917303667600?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Open WhatsApp with the message
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -107,14 +118,14 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: 'Call Us',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      content: '+91 73036 67600',
+      link: 'tel:+917303667600',
       gradient: 'from-[#7a0b0b] to-[#0b1f33]',
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      content: 'Mumbai, India',
+      content: 'Gurgaon, India',
       link: '#',
       gradient: 'from-[#0b1f33] to-[#102c44]',
     },
@@ -129,11 +140,12 @@ export default function ContactPage() {
 
   const services = [
     'Property Management',
-    'Documentation Services',
-    'Healthcare Support',
-    'Business Services',
-    'Education Consulting',
-    'Legal & Compliance',
+    'Long and Short Stay',
+    'Elderly Care',
+    'Investments and Insurance',
+    'Doctor & Hospital Assistance',
+    'Government Documentation',
+    'Events & Gathering Services',
   ];
 
   return (
@@ -397,7 +409,7 @@ export default function ContactPage() {
                   For urgent matters, call us directly or use our emergency contact line.
                 </p>
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+917303667600"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#f87171] to-[#c53030] text-white rounded-lg font-bold hover:shadow-lg transition-colors"
                 >
                   <Phone size={20} />

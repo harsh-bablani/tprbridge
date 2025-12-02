@@ -131,15 +131,15 @@ function Footer() {
               <li className="flex items-start gap-3">
                 <Phone size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+917303667600"
                   className="text-[#516074] hover:text-[#c53030] transition-colors duration-300"
                 >
-                  +1 (555) 123-4567
+                  +91 73036 67600
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
-                <span className="text-[#516074]">Mumbai, India</span>
+                <span className="text-[#516074]">Gurgaon, India</span>
               </li>
             </ul>
           </motion.div>
