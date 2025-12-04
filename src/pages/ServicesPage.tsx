@@ -16,8 +16,6 @@ import {
   Check,
   ArrowRight,
   Search,
-  Clock,
-  Star,
 } from 'lucide-react';
 
 interface Service {
@@ -297,30 +295,13 @@ export default function ServicesPage() {
 
                     {/* Content */}
                     <div className="p-6">
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors">
-                          {service.title}
-                        </h3>
-                        {service.testimonials && (
-                          <div className="flex items-center gap-1 text-[#f87171]">
-                            <Star size={16} className="fill-[#f87171]" />
-                            <span className="text-sm font-medium text-[#c53030]">
-                              {service.testimonials}
-                            </span>
-                          </div>
-                        )}
-                      </div>
+                      <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-3">
+                        {service.title}
+                      </h3>
 
                       <p className="text-slate-600 mb-4 leading-relaxed">
                         {service.shortDescription}
                       </p>
-
-                      <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
-                        <div className="flex items-center gap-1">
-                          <Clock size={16} />
-                          <span>{service.duration}</span>
-                        </div>
-                      </div>
 
                       <button
                         onClick={() => setSelectedService(service)}

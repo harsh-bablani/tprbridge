@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100088852623320', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/tipping.bridge/', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/tipping-bridge/', label: 'LinkedIn' },
   ]
 
   return (

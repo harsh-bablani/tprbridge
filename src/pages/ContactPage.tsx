@@ -45,12 +45,6 @@ export default function ContactPage() {
       newErrors.phone = 'Please enter a valid phone number';
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -70,7 +64,7 @@ export default function ContactPage() {
       `*Email:* ${formData.email.trim()}\n` +
       `*Phone:* ${formData.phone.trim()}\n` +
       `*Service Interest:* ${formData.service.trim() || 'Not specified'}\n\n` +
-      `*Message:*\n${formData.message.trim()}\n\n` +
+      (formData.message.trim() ? `*Message:*\n${formData.message.trim()}\n\n` : '') +
       `_Submitted via Tipping Bridge Website_`;
     
     const whatsappUrl = `https://wa.me/917303667600?text=${encodeURIComponent(whatsappMessage)}`;
@@ -313,7 +307,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
-                      Message <span className="text-red-500">*</span>
+                      Message
                     </label>
                     <div className="relative">
                       <MessageSquare className="absolute left-4 top-4 text-slate-400" size={20} />
@@ -335,7 +329,7 @@ export default function ContactPage() {
                       <p className="mt-1 text-sm text-red-500">{errors.message}</p>
                     )}
                     <p className="mt-1 text-xs text-slate-500">
-                      {formData.message.length}/1000 characters (minimum 10)
+                      {formData.message.length}/1000 characters
                     </p>
                   </div>
 
