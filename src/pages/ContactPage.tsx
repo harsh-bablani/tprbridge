@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
+// import emailjs from '@emailjs/browser'; // Commented out for demo
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
@@ -12,6 +13,7 @@ import {
   MessageSquare,
   Clock,
   User,
+  AlertCircle,
 } from 'lucide-react';
 
 export default function ContactPage() {
@@ -24,7 +26,15 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // EmailJS Configuration - COMMENTED OUT FOR DEMO
+  // You need to set these in your .env file or replace with your actual values
+  // Get these from https://www.emailjs.com/
+  // const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id';
+  // const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id';
+  // const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -57,35 +67,52 @@ export default function ContactPage() {
     }
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Format the message for WhatsApp with all details
-    const whatsappMessage = `*Contact Form Submission - Tipping Bridge*\n\n` +
-      `*Name:* ${formData.name.trim()}\n` +
-      `*Email:* ${formData.email.trim()}\n` +
-      `*Phone:* ${formData.phone.trim()}\n` +
-      `*Service Interest:* ${formData.service.trim() || 'Not specified'}\n\n` +
-      (formData.message.trim() ? `*Message:*\n${formData.message.trim()}\n\n` : '') +
-      `_Submitted via Tipping Bridge Website_`;
-    
-    const whatsappUrl = `https://wa.me/917303667600?text=${encodeURIComponent(whatsappMessage)}`;
-    
-    // Open WhatsApp with the message
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    // DEMO MODE - Simulate form submission
+    // EmailJS code commented out below
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      // COMMENTED OUT - EmailJS Implementation
+      // // Prepare email template parameters
+      // const templateParams = {
+      //   from_name: formData.name.trim(),
+      //   from_email: formData.email.trim(),
+      //   phone: formData.phone.trim(),
+      //   service: formData.service.trim() || 'Not specified',
+      //   message: formData.message.trim() || 'No message provided',
+      //   to_email: 'info@tippingbridge.com', // Your receiving email
+      // };
 
-    // Reset form after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-      });
-    }, 5000);
+      // // Send email using EmailJS
+      // await emailjs.send(
+      //   EMAILJS_SERVICE_ID,
+      //   EMAILJS_TEMPLATE_ID,
+      //   templateParams,
+      //   EMAILJS_PUBLIC_KEY
+      // );
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+        });
+      }, 5000);
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      setIsSubmitting(false);
+      setSubmitError('Failed to send message. Please try again or contact us directly at info@tippingbridge.com');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -196,17 +223,43 @@ export default function ContactPage() {
 
               {isSubmitted ? (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-8 bg-gradient-to-br from-[#fdeaea] to-[#f4f1f9] rounded-2xl border-2 border-[#f6dada] text-center"
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                  className="p-10 bg-gradient-to-br from-[#fdeaea] via-white to-[#f4f1f9] rounded-3xl border-2 border-[#f6dada] text-center shadow-xl"
                 >
-                  <CheckCircle className="mx-auto mb-4 text-[#c53030]" size={64} />
-                  <h3 className="text-2xl font-bold text-[#0b1f33] mb-2">
-                    Thank You!
-                  </h3>
-                  <p className="text-slate-600">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                    className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-full mb-6 shadow-lg"
+                  >
+                    <CheckCircle className="text-white" size={48} strokeWidth={2.5} />
+                  </motion.div>
+                  <motion.h3
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-3xl font-bold text-[#0b1f33] mb-3"
+                  >
+                    Thank You for Submitting!
+                  </motion.h3>
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-lg text-slate-600 mb-4"
+                  >
                     We've received your message and will get back to you soon.
-                  </p>
+                  </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-sm text-slate-500"
+                  >
+                    Our team typically responds within 24 hours.
+                  </motion.p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -332,6 +385,13 @@ export default function ContactPage() {
                       {formData.message.length}/1000 characters
                     </p>
                   </div>
+
+                  {submitError && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+                      <AlertCircle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
+                      <p className="text-sm text-red-700">{submitError}</p>
+                    </div>
+                  )}
 
                   <button
                     type="submit"

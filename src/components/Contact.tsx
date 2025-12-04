@@ -1,12 +1,14 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Mail, Phone, MapPin, Download, X } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Download, X, CheckCircle } from 'lucide-react';
 
-const brochurePath = '/TIPPING BRIDGE BUSINESS BROCHURE.pdf';
+// const brochurePath = '/TIPPING BRIDGE BUSINESS BROCHURE.pdf'; // Commented out for demo
 
 export default function Contact() {
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -43,7 +45,7 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const name = formData.name.trim();
     const phone = formData.phone.trim();
@@ -55,18 +57,47 @@ export default function Contact() {
       return;
     }
 
-    const whatsappMessage = `Brochure Request\nName: ${name}\nContact Number: ${phone}\nEmail: ${email}\nCountry: ${country}`;
-    const whatsappUrl = `https://wa.me/918000398836?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    setIsSubmitting(true);
+    setFormError(null);
 
-    const link = document.createElement('a');
-    link.href = brochurePath;
-    link.download = 'TippingBridge-Brochure.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // DEMO MODE - Simulate form submission
+    // WhatsApp code removed - just showing demo thank you message
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
-    handleCloseModal();
+      // COMMENTED OUT - WhatsApp Implementation
+      // const whatsappMessage = `Brochure Request\nName: ${name}\nContact Number: ${phone}\nEmail: ${email}\nCountry: ${country}`;
+      // const whatsappUrl = `https://wa.me/918000398836?text=${encodeURIComponent(whatsappMessage)}`;
+      // window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+      // COMMENTED OUT - PDF Download
+      // const link = document.createElement('a');
+      // link.href = brochurePath;
+      // link.download = 'TippingBridge-Brochure.pdf';
+      // document.body.appendChild(link);
+      // link.click();
+      // document.body.removeChild(link);
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          country: '',
+        });
+        handleCloseModal();
+      }, 5000);
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      setIsSubmitting(false);
+      setFormError('Failed to submit. Please try again.');
+    }
   };
 
   return (
@@ -199,80 +230,132 @@ export default function Contact() {
                   Share your details below. You&apos;ll receive the brochure instantly and our team will reach out shortly.
                 </p>
               </div>
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#0b1f33] mb-2">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
-                    placeholder="Enter your full name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-[#0b1f33] mb-2">
-                    Contact Number
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
-                    placeholder="Include country/area code"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-[#0b1f33] mb-2">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
-                    placeholder="name@example.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="country" className="block text-sm font-semibold text-[#0b1f33] mb-2">
-                    Country
-                  </label>
-                  <input
-                    id="country"
-                    name="country"
-                    type="text"
-                    value={formData.country}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
-                    placeholder="Where are you enquiring from?"
-                    required
-                  />
-                </div>
-                {formError && (
-                  <p className="text-sm font-medium text-[#c53030] bg-[#fde4e4] border border-[#fbcaca] rounded-lg px-4 py-2">
-                    {formError}
-                  </p>
-                )}
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white font-semibold py-3.5 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                  className="p-10 bg-gradient-to-br from-[#fdeaea] via-white to-[#f4f1f9] rounded-3xl border-2 border-[#f6dada] text-center shadow-xl"
                 >
-                  <Download size={20} />
-                  <span>Submit & Download</span>
-                </button>
-              </form>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                    className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-full mb-6 shadow-lg"
+                  >
+                    <CheckCircle className="text-white" size={48} strokeWidth={2.5} />
+                  </motion.div>
+                  <motion.h3
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-3xl font-bold text-[#0b1f33] mb-3"
+                  >
+                    Thank You for Submitting!
+                  </motion.h3>
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-lg text-slate-600 mb-4"
+                  >
+                    We've received your information and will get back to you soon.
+                  </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-sm text-slate-500"
+                  >
+                    Our team typically responds within 24 hours.
+                  </motion.p>
+                </motion.div>
+              ) : (
+                <form className="space-y-5" onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-[#0b1f33] mb-2">
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
+                      placeholder="Enter your full name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-[#0b1f33] mb-2">
+                      Contact Number
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
+                      placeholder="Include country/area code"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-[#0b1f33] mb-2">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
+                      placeholder="name@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="country" className="block text-sm font-semibold text-[#0b1f33] mb-2">
+                      Country
+                    </label>
+                    <input
+                      id="country"
+                      name="country"
+                      type="text"
+                      value={formData.country}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[#f2dcdc] bg-white px-4 py-3 text-[#0b1f33] focus:border-[#c53030] focus:ring-2 focus:ring-[#fcd6d6] transition-colors"
+                      placeholder="Where are you enquiring from?"
+                      required
+                    />
+                  </div>
+                  {formError && (
+                    <p className="text-sm font-medium text-[#c53030] bg-[#fde4e4] border border-[#fbcaca] rounded-lg px-4 py-2">
+                      {formError}
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white font-semibold py-3.5 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Download size={20} />
+                        <span>Submit & Download</span>
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
             </motion.div>
           </motion.div>
         )}
