@@ -1,7 +1,7 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Mail, Phone, MapPin, Download, X, CheckCircle } from 'lucide-react';
+import { ArrowRight, Mail, Phone, Download, X, CheckCircle } from 'lucide-react';
 
 // const brochurePath = '/TIPPING BRIDGE BUSINESS BROCHURE.pdf'; // Commented out for demo
 
@@ -151,12 +151,6 @@ export default function Contact() {
               title: 'Call Us',
               content: '+91 73036 67600',
               link: 'tel:+917303667600',
-            },
-            {
-              icon: MapPin,
-              title: 'Visit Us',
-              content: 'Gurgaon, India',
-              link: '#',
             },
           ].map((item, index) => {
             const Icon = item.icon;

@@ -7,7 +7,6 @@ import PageHero from '../components/PageHero';
 import {
   Mail,
   Phone,
-  MapPin,
   Send,
   CheckCircle,
   MessageSquare,
@@ -146,13 +145,6 @@ export default function ContactPage() {
       gradient: 'from-[#7a0b0b] to-[#0b1f33]',
     },
     {
-      icon: MapPin,
-      title: 'Visit Us',
-      content: 'Gurgaon, India',
-      link: '#',
-      gradient: 'from-[#0b1f33] to-[#102c44]',
-    },
-    {
       icon: Clock,
       title: 'Business Hours',
       content: 'Mon - Sat: 9 AM - 6 PM IST',
@@ -179,26 +171,49 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="py-12 px-6 -mt-10 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
-              return (
-                <motion.a
-                  key={info.title}
-                  href={info.link}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="block p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
-                >
+              const isClickable = info.link && info.link !== '#';
+              
+              const cardContent = (
+                <>
                   <div className={`inline-flex p-3 bg-gradient-to-br ${info.gradient} rounded-xl mb-4`}>
                     <Icon size={24} className="text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-[#0b1f33] mb-2">{info.title}</h3>
                   <p className="text-slate-600">{info.content}</p>
-                </motion.a>
+                </>
               );
+
+              if (isClickable) {
+                return (
+                  <motion.a
+                    key={info.title}
+                    href={info.link}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="block p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
+                  >
+                    {cardContent}
+                  </motion.a>
+                );
+              } else {
+                return (
+                  <motion.div
+                    key={info.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="block p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc] cursor-default"
+                  >
+                    {cardContent}
+                  </motion.div>
+                );
+              }
             })}
           </div>
         </div>
