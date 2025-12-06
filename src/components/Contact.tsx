@@ -17,6 +17,9 @@ export default function Contact() {
   });
   const [formError, setFormError] = useState<string | null>(null);
 
+  // Google Sheets Configuration
+  const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
+
   const handleOpenModal = () => {
     setFormError(null);
     setFormData({
@@ -60,24 +63,31 @@ export default function Contact() {
     setIsSubmitting(true);
     setFormError(null);
 
-    // DEMO MODE - Simulate form submission
-    // WhatsApp code removed - just showing demo thank you message
     try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Prepare data for Google Sheets
+      const submissionData = {
+        name: name,
+        email: email,
+        phone: phone,
+        country: country,
+        type: 'Brochure Request',
+        timestamp: new Date().toISOString(),
+      };
 
-      // COMMENTED OUT - WhatsApp Implementation
-      // const whatsappMessage = `Brochure Request\nName: ${name}\nContact Number: ${phone}\nEmail: ${email}\nCountry: ${country}`;
-      // const whatsappUrl = `https://wa.me/918000398836?text=${encodeURIComponent(whatsappMessage)}`;
-      // window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-
-      // COMMENTED OUT - PDF Download
-      // const link = document.createElement('a');
-      // link.href = brochurePath;
-      // link.download = 'TippingBridge-Brochure.pdf';
-      // document.body.appendChild(link);
-      // link.click();
-      // document.body.removeChild(link);
+      // Send data to Google Sheets via Google Apps Script
+      if (GOOGLE_SCRIPT_URL) {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Google Apps Script requires no-cors
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(submissionData),
+        });
+      } else {
+        console.log('Brochure request data:', submissionData);
+        console.warn('Google Script URL not configured. Add VITE_GOOGLE_SCRIPT_URL to .env file');
+      }
 
       setIsSubmitting(false);
       setIsSubmitted(true);

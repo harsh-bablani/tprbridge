@@ -29,12 +29,9 @@ export default function ContactPage() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // EmailJS Configuration - COMMENTED OUT FOR DEMO
-  // You need to set these in your .env file or replace with your actual values
-  // Get these from https://www.emailjs.com/
-  // const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id';
-  // const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id';
-  // const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
+  // Google Sheets Configuration
+  // Get this URL from your Google Apps Script Web App deployment
+  const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -69,30 +66,35 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    // DEMO MODE - Simulate form submission
-    // EmailJS code commented out below
     try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Prepare data for Google Sheets
+      const submissionData = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        service: formData.service.trim() || 'Not specified',
+        message: formData.message.trim() || 'No message provided',
+        timestamp: new Date().toISOString(),
+      };
 
-      // COMMENTED OUT - EmailJS Implementation
-      // // Prepare email template parameters
-      // const templateParams = {
-      //   from_name: formData.name.trim(),
-      //   from_email: formData.email.trim(),
-      //   phone: formData.phone.trim(),
-      //   service: formData.service.trim() || 'Not specified',
-      //   message: formData.message.trim() || 'No message provided',
-      //   to_email: 'info@tippingbridge.com', // Your receiving email
-      // };
+      // Send data to Google Sheets via Google Apps Script
+      if (GOOGLE_SCRIPT_URL) {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Google Apps Script requires no-cors
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(submissionData),
+        });
 
-      // // Send email using EmailJS
-      // await emailjs.send(
-      //   EMAILJS_SERVICE_ID,
-      //   EMAILJS_TEMPLATE_ID,
-      //   templateParams,
-      //   EMAILJS_PUBLIC_KEY
-      // );
+        // Note: With no-cors mode, we can't check response status
+        // But the data will still be sent to Google Sheets
+      } else {
+        // Fallback: Log to console if no script URL is configured
+        console.log('Form submission data:', submissionData);
+        console.warn('Google Script URL not configured. Add VITE_GOOGLE_SCRIPT_URL to .env file');
+      }
 
       setIsSubmitting(false);
       setIsSubmitted(true);
