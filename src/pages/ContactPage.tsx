@@ -79,7 +79,7 @@ export default function ContactPage() {
 
       // Send data to Google Sheets via Google Apps Script
       if (GOOGLE_SCRIPT_URL) {
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
+        await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors', // Google Apps Script requires no-cors
           headers: {
