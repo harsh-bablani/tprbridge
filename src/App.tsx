@@ -9,11 +9,13 @@ import ContactPage from './pages/ContactPage'
 import AboutPage from './pages/AboutPage'
 import Navigation from './components/Navigation'
 import WhatsAppButton from './components/WhatsAppButton'
+import CookieConsent from './components/CookieConsent'
 
 function App() {
   return (
     <Router>
       <WhatsAppButton />
+      <CookieConsent />
       <Routes>
         <Route
           path="/"
