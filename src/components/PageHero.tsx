@@ -6,9 +6,10 @@ const MOBILE_IMAGES = ['/m1.png', '/m2.png', '/m3.png', '/m4.png'];
 
 interface PageHeroProps {
   title: string;
+  children?: React.ReactNode;
 }
 
-export default function PageHero({ title }: PageHeroProps) {
+export default function PageHero({ title, children }: PageHeroProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -82,6 +83,15 @@ export default function PageHero({ title }: PageHeroProps) {
         >
           {title}
         </motion.h1>
+        {children && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+          >
+            {children}
+          </motion.div>
+        )}
       </div>
 
       {/* Slide indicators */}

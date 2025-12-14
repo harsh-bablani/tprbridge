@@ -186,17 +186,9 @@ export default function Contact() {
             to="/contact"
             className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#c53030] to-[#e04a4a] text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-[#c53030]/40 transition-all duration-300 hover:scale-105"
           >
-            <span>Contact Us Now</span>
+            <span>Get in Touch</span>
             <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
           </Link>
-
-          <button
-            onClick={handleOpenModal}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0b1f33] rounded-full font-bold text-lg shadow-lg border border-[#f2dcdc] hover:border-[#c53030] hover:text-[#c53030] transition-all duration-300 hover:-translate-y-0.5"
-          >
-            <Download size={20} className="text-[#c53030] group-hover:animate-pulse" />
-            <span>Download Our Brochure</span>
-          </button>
         </motion.div>
       </div>
 
@@ -228,7 +220,7 @@ export default function Contact() {
               </button>
               <div className="mb-8 text-center">
                 <h3 className="text-3xl font-bold text-[#0b1f33] mb-3">
-                  Download Our Brochure
+                  Know Us Better
                 </h3>
                 <p className="text-slate-600">
                   Share your details below. You&apos;ll receive the brochure instantly and our team will reach out shortly.
