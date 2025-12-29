@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { Target, Award, Globe, Users, Heart, CheckCircle } from 'lucide-react';
+import Counter from './Counter';
 
 export default function About() {
   const stats = [
-    { value: '15+', label: 'Years in Service', icon: Award },
-    { value: '5000+', label: 'Happy Families', icon: Users },
-    { value: '50+', label: 'Countries Served', icon: Globe },
-    { value: '99.8%', label: 'Satisfaction Rate', icon: Heart },
+    { value: '20+', label: 'Service Locations', icon: Award },
+    { value: '50+', label: 'Team Members', icon: Users },
+    { value: '1060+', label: 'Customers Served', icon: Globe },
+    { value: '95%', label: 'Customer Satisfaction Index', icon: Heart },
   ];
 
   const values = [
@@ -14,19 +15,19 @@ export default function About() {
       icon: Target,
       title: 'Our Vision',
       description:
-        'To be the most trusted friend and partner for NRI families in India—making every connection back home simple, smooth, and stress-free.',
+        'Tipping Bridge aspires to be the most trusted and respected professional services firm valued by NRIs for delivering excellence and becoming a one-point solution for all their needs in India.',
     },
     {
       icon: Award,
       title: 'Our Mission',
       description:
-        'To simplify NRI life with expert, caring support across all services—saving you time, money, and worry through reliable, trustworthy professionals.',
+        'To make the life of NRIs easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.',
     },
     {
       icon: Globe,
       title: 'Global Reach',
       description:
-        'Serving NRI families across the world with trusted partners in major cities and offices in key locations globally.',
+        "Serving NRI families across the world with trusted partners in major cities and offices in key locations globally. Whether you're in the USA, Canada, UK, Australia, Singapore, Dubai, or anywhere else, Tipping Bridge is ready to help you.",
     },
   ];
 
@@ -82,8 +83,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg text-slate-600 leading-relaxed mb-6"
             >
-              We understand what it means to be an NRI. Whether you're managing a home in India while living abroad,
-              caring for aging parents, or handling complex documentation, we're here to make your life easier.
+              Tipping Bridge is an organization specially formed to serve Non-Resident Indians (NRIs) who are currently living abroad and have direct or indirect liabilities and interests in India. We understand what it means to be an NRI—whether you're managing a home in India while living abroad, caring for aging parents, or handling complex documentation, we're here to make your life easier.
             </motion.p>
 
             <motion.p
@@ -93,8 +93,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-lg text-slate-600 leading-relaxed mb-6"
             >
-              With over 15 years of experience serving NRI families, we've built deep relationships with trusted partners,
-              government officials, and professionals across India. We know the challenges you face, and we're experts at solving them.
+              Our mission is to make the life of NRIs easier by providing professional services for all their small and big needs in India. We aim to make your holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
             </motion.p>
 
             <motion.p
@@ -104,8 +103,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg text-slate-600 leading-relaxed mb-8"
             >
-              Our goal is simple: to help you feel connected to India without the stress and worry. We handle the details
-              so you can focus on what truly matters—your family.
+              As your one-point solution for all NRI needs in India, we handle the details so you can focus on what truly matters—your family and your peace of mind.
             </motion.p>
 
             {/* Key Points */}
@@ -203,15 +201,11 @@ export default function About() {
                     <Icon size={24} className="text-[#c53030]" />
                   </div>
                 </div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                <Counter
+                  value={stat.value}
+                  duration={2000}
                   className="text-5xl font-bold text-[#c53030] mb-2"
-                >
-                  {stat.value}
-                </motion.div>
+                />
                 <div className="text-sm text-slate-600 font-semibold">{stat.label}</div>
               </motion.div>
             )

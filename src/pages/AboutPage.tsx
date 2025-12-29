@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
+import Counter from '../components/Counter';
 import {
   Target,
   Award,
@@ -20,39 +21,39 @@ import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
   const stats = [
-    { value: '15+', label: 'Years in Service', icon: Award },
-    { value: '5000+', label: 'Happy Families', icon: Users },
-    { value: '50+', label: 'Countries Served', icon: Globe },
-    { value: '99.8%', label: 'Satisfaction Rate', icon: Heart },
+    { value: '20+', label: 'Service Locations', icon: Award },
+    { value: '50+', label: 'Team Members', icon: Users },
+    { value: '1060+', label: 'Customers Served', icon: Globe },
+    { value: '95%', label: 'Customer Satisfaction Index', icon: Heart },
   ];
 
   const values = [
     {
       icon: Shield,
-      title: 'Trust & Reliability',
+      title: 'Integrity',
       description:
-        'We build lasting relationships based on integrity, transparency, and unwavering commitment to your success. Your trust is our most valuable asset.',
+        'We maintain a high standard of integrity and professionalism by doing the right thing. Our core values are the guiding beacons for all that we do and provide us the benchmark for assessing our performance.',
       color: 'from-[#c53030] to-[#7a0b0b]',
     },
     {
       icon: Heart,
-      title: 'Care & Compassion',
+      title: 'Courtesy',
       description:
-        'We understand that behind every service request is a family. We treat your needs with the same care and attention we would give our own.',
+        'We treat everybody with respect, courtesy, and compassion. We understand that behind every service request is a family, and we treat your needs with the same care and attention we would give our own.',
       color: 'from-[#e63946] to-[#c53030]',
     },
     {
       icon: Zap,
-      title: 'Efficiency & Speed',
+      title: 'Dynamism',
       description:
-        'Time is precious when you\'re managing things from afar. We deliver prompt, efficient solutions without compromising on quality or attention to detail.',
+        "We respond positively to the ever-changing socio-politico-economic environment and realign strategies to meet new challenges. Time is precious when you're managing things from afar, and we deliver prompt, efficient solutions.",
       color: 'from-[#7a0b0b] to-[#0b1f33]',
     },
     {
       icon: Handshake,
       title: 'Partnership',
       description:
-        'We don\'t just provide services—we become your trusted partner in India, working alongside you to achieve your goals and protect your interests.',
+        "We don't just provide services—we become your trusted partner in India, working alongside you to achieve your goals and protect your interests.",
       color: 'from-[#0b1f33] to-[#102c44]',
     },
     {
@@ -66,7 +67,7 @@ export default function AboutPage() {
       icon: Star,
       title: 'Excellence',
       description:
-        'We strive for excellence in every interaction, ensuring the highest standards of service quality, professionalism, and customer satisfaction.',
+        'We continuously strive for excellence in whatever we do and seek to create benchmarks for others. We ensure the highest standards of service quality, professionalism, and customer satisfaction.',
       color: 'from-[#102c44] to-[#0b1f33]',
     },
   ];
@@ -104,24 +105,24 @@ export default function AboutPage() {
 
   const whatMakesUsUnique = [
     {
-      title: 'Deep Local Knowledge',
+      title: 'One-Point Solution',
       description:
-        'Our team has extensive on-ground experience across major Indian cities, with established relationships with government officials, professionals, and service providers.',
+        'We are your comprehensive one-point solution for all NRI needs in India, eliminating the hassle of dealing with multiple service providers for different requirements.',
     },
     {
       title: 'NRI-Focused Expertise',
       description:
-        'We specialize exclusively in serving NRI families, understanding the unique challenges you face and tailoring our services to meet your specific needs.',
+        'Tipping Bridge is an organization specially formed to serve Non-Resident Indians who are currently living abroad and have direct or indirect liabilities and interests in India.',
     },
     {
-      title: 'Technology-Driven Solutions',
+      title: 'Professional Service Excellence',
       description:
-        'We leverage modern technology to keep you connected and informed, providing real-time updates and easy access to all your service information.',
+        'We provide professional services for all your small and big needs in India, ensuring that your holidays in India are actual holidays without the stress of running around for documentation and other tasks.',
     },
     {
-      title: 'Comprehensive Service Network',
+      title: 'Trusted and Respected',
       description:
-        'Our verified network of trusted partners spans across India, ensuring you get quality service no matter where your needs are located.',
+        'We aspire to be the most trusted and respected professional services firm valued by NRIs for delivering excellence in every interaction.',
     },
   ];
 
@@ -144,19 +145,13 @@ export default function AboutPage() {
                 Our Story
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Founded with a simple yet powerful vision, Tipping Bridge was born from the understanding that
-                being an NRI comes with unique challenges. Managing property, caring for family, handling
-                documentation, and staying connected to India while living abroad can be overwhelming.
+                Tipping Bridge is an organization specially formed to serve Non-Resident Indians (NRIs) who are currently living abroad and have direct or indirect liabilities and interests in India. We understand that being an NRI comes with unique challenges—managing property, caring for family, handling documentation, and staying connected to India while living abroad can be overwhelming.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                With over 15 years of experience, we've built deep relationships with trusted partners,
-                government officials, and professionals across India. We know the challenges you face, and
-                we're experts at solving them. Our team combines local expertise with a global perspective,
-                ensuring that distance never becomes a barrier to taking care of what matters most.
+                Our mission is to make the life of NRIs easier by providing professional services for all their small and big needs in India. We aim to make your holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Today, we're proud to serve thousands of NRI families across 50+ countries, helping them
-                stay connected to India with confidence, ease, and peace of mind.
+                As your one-point solution for all NRI needs in India, we serve families across the world—whether you're in the USA, Canada, UK, Australia, Singapore, Dubai, or anywhere else. Tipping Bridge is ready to help you stay connected to India with confidence, ease, and peace of mind.
               </p>
             </motion.div>
 
@@ -172,19 +167,14 @@ export default function AboutPage() {
                   <Target className="text-[#c53030] mb-4" size={40} />
                   <h3 className="text-2xl font-bold text-[#0b1f33] mb-3">Our Vision</h3>
                   <p className="text-slate-600 leading-relaxed">
-                    To be the most trusted friend and partner for NRI families in India—making every
-                    connection back home simple, smooth, and stress-free. We envision a world where distance
-                    is no longer a barrier to managing your life in India.
+                    Tipping Bridge aspires to be the most trusted and respected professional services firm valued by NRIs for delivering excellence and becoming a one-point solution for all their needs in India.
                   </p>
                 </div>
                 <div className="border-t border-[#f6dada] pt-6">
                   <Award className="text-[#c53030] mb-4" size={40} />
                   <h3 className="text-2xl font-bold text-[#0b1f33] mb-3">Our Mission</h3>
                   <p className="text-slate-600 leading-relaxed">
-                    To simplify NRI life with expert, caring support across all services—saving you time,
-                    money, and worry through reliable, trustworthy professionals. We're committed to
-                    providing seamless experiences that let you focus on what truly matters: your family and
-                    your future.
+                    To make the life of NRIs easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
                   </p>
                 </div>
               </div>
@@ -220,7 +210,11 @@ export default function AboutPage() {
                       <Icon size={24} className="text-[#c53030]" />
                     </div>
                   </div>
-                  <div className="text-5xl font-bold text-[#c53030] mb-2">{stat.value}</div>
+                  <Counter
+                    value={stat.value}
+                    duration={2000}
+                    className="text-5xl font-bold text-[#c53030] mb-2"
+                  />
                   <div className="text-sm text-slate-600 font-semibold">{stat.label}</div>
                 </motion.div>
               );
