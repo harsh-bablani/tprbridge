@@ -57,7 +57,7 @@ const familyImages = [
     src: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200&q=80',
     alt: 'Family gathering',
     title: 'Your Trusted Partner in India',
-    description: '15+ years of dedicated service to NRI families',
+    description: 'Dedicated service to NRI families',
   },
   {
     src: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=80',

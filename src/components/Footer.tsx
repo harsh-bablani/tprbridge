@@ -157,12 +157,12 @@ function Footer() {
               &copy; {currentYear} Tipping Bridge. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
+              <Link to="/privacy-policy" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
+              </Link>
+              <Link to="/privacy-policy" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>

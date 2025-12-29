@@ -13,57 +13,57 @@ import {
 
 const services = [
   {
-    title: 'Property Management',
+    title: 'Property Management for NRIs',
     description:
-      'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
+      'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.',
     icon: Home,
     gradient: 'from-[#c53030] to-[#7a0b0b]',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
   },
   {
-    title: 'Long and Short Stay',
+    title: 'Long and Short Stay Service Apartments',
     description:
-      'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
+      'Returning to India for a family reunion, executive travel, a friends\' get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays.',
     icon: BedDouble,
     gradient: 'from-[#7a0b0b] to-[#0b1f33]',
     image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
   },
   {
-    title: 'Elderly Care',
+    title: 'Elder Care',
     description:
-      'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
+      'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination. Tipping Bridge Elder Care brings structured assistance across Health & Fitness, Filing & Forms, Technology & Troubleshooting, Home Security & Maintenance, and Memories & Milestones.',
     icon: HeartPulse,
     gradient: 'from-[#e53e3e] to-[#b91c1c]',
     image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=800&q=80',
   },
   {
-    title: 'Investments and Insurance',
+    title: 'Investments & Insurance',
     description:
-      'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
+      'Manage India-side financial matters with clarity, even when you live overseas. Tipping Bridge supports NRIs through Investment & Wealth Management across Insurance, Mutual Funds and Real Estate, helping you plan and execute from anywhere.',
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&q=80',
   },
   {
-    title: 'Doctor & Hospital Assistance',
+    title: 'Assistance Services with Doctor & Hospitalisation',
     description:
-      'Priority appointments, hospital coordination, discharge support, and second opinions handled end-to-end.',
+      'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent. Tipping Bridge supports NRIs with end-to-end assistance for doctor appointments and hospitalisation so your family receives timely care, at home and at the hospital, with clear coordination.',
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',
   },
   {
-    title: 'Government Documentation',
+    title: 'Legal & Documentation',
     description:
-      'Fast-track processing for IDs, certificates, attestations, and compliance paperwork across departments.',
+      'When you\'re overseas, even routine paperwork in India can become time-consuming and stressful. With just a phone call, Tipping Bridge can connect you to a dedicated team of legal experts to help address your family\'s tax and legal documentation needs in India, so work moves forward in your absence.',
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80',
   },
   {
-    title: 'Events & Gathering Services',
+    title: 'Small Events & Gathering Services',
     description:
-      'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
+      'Being overseas shouldn\'t mean missing the moments that matter at home. Tipping Bridge helps NRIs create and coordinate small celebrations in India so your family can enjoy the occasion, while we take on the organisation and responsibility.',
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80',

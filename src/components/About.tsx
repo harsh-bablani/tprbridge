@@ -83,7 +83,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg text-slate-600 leading-relaxed mb-6"
             >
-              Tipping Bridge is an organization specially formed to serve Non-Resident Indians (NRIs) who are currently living abroad and have direct or indirect liabilities and interests in India. We understand what it means to be an NRI—whether you're managing a home in India while living abroad, caring for aging parents, or handling complex documentation, we're here to make your life easier.
+              Tipping Bridge is an organization specially formed to serve Non-Resident Indians (NRIs) who are currently living abroad and have direct or indirect liabilities and interests in India. We understand what it means to be an NRI, whether you are managing a home in India while living abroad, caring for aging parents, or handling complex documentation, we're here to make your life easier.
             </motion.p>
 
             <motion.p
@@ -103,7 +103,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg text-slate-600 leading-relaxed mb-8"
             >
-              As your one-point solution for all NRI needs in India, we handle the details so you can focus on what truly matters—your family and your peace of mind.
+              As your one-point solution for all NRI needs in India, we handle the details so you can focus on what truly matters,your family and your peace of mind.
             </motion.p>
 
             {/* Key Points */}

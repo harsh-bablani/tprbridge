@@ -77,7 +77,7 @@ function Hero() {
           className="inline-block font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#b71c1c]/70 via-[#e63946]/65 to-[#102a43]/60 tracking-[-0.01em] whitespace-nowrap text-xl sm:text-5xl lg:text-6xl leading-[1.45] sm:leading-[1.3] lg:leading-[1.15] drop-shadow-[0_6px_18px_rgba(16,42,67,0.2)]"
           style={{ fontFamily: 'Sora, Manrope, sans-serif' }}
         >
-          Making Your Life Easy, One Service at a Time
+          Bridging Distance, Building Trust
         </motion.h1>
 
         {/* <motion.p
