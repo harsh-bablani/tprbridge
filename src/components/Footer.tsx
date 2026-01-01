@@ -92,18 +92,21 @@ function Footer() {
             <ul className="space-y-3">
               {[
                 'Property Management',
-                'Documentation',
-                'Healthcare Support',
-                'Legal Services',
+                'Long and Short Stay',
+                'Elderly Care',
+                'Investments and Insurance',
+                'Doctor & Hospital Assistance',
+                'Government Documentation',
+                'Events & Gathering Services',
               ].map((service) => (
                 <li key={service}>
-                  <a
-                    href="/services"
+                  <Link
+                    to="/services"
                     className="text-[#516074] hover:text-[#c53030] transition-colors duration-300 flex items-center gap-2 group"
                   >
                     <span className="w-0 group-hover:w-2 h-0.5 bg-[#c53030] transition-all duration-300"></span>
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -157,12 +160,12 @@ function Footer() {
               &copy; {currentYear} Tipping Bridge. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <Link to="/privacy-policy" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
+              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
                 Privacy Policy
-              </Link>
-              <Link to="/privacy-policy" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
+              </a>
+              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
                 Terms of Service
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

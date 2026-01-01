@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
-const DESKTOP_IMAGES = ['/2.png', '/4.png', '/5.png']
+const DESKTOP_IMAGES = ['/2.png', '/4.png', '/5.png', '/6.png', '/7.png']
 const MOBILE_IMAGES = ['/m1.png', '/m2.png', '/m3.png', '/m4.png']
 
 function Hero() {
@@ -57,7 +57,7 @@ function Hero() {
               animate={{ scale: index === currentImageIndex ? 1 : 1.05 }}
               transition={{ duration: 8, ease: 'easeOut' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/70 to-white/85"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/65 via-white/50 to-white/65"></div>
           </motion.div>
         ))}
       </div>
@@ -77,7 +77,7 @@ function Hero() {
           className="inline-block font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#b71c1c]/70 via-[#e63946]/65 to-[#102a43]/60 tracking-[-0.01em] whitespace-nowrap text-xl sm:text-5xl lg:text-6xl leading-[1.45] sm:leading-[1.3] lg:leading-[1.15] drop-shadow-[0_6px_18px_rgba(16,42,67,0.2)]"
           style={{ fontFamily: 'Sora, Manrope, sans-serif' }}
         >
-          Bridging Distance, Building Trust
+          One Point Solution for all NRI needs in INDIA
         </motion.h1>
 
         {/* <motion.p

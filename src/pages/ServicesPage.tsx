@@ -18,7 +18,6 @@ import {
   Search,
   Download,
   CheckCircle,
-  Package,
 } from 'lucide-react';
 
 interface Service {
@@ -32,116 +31,249 @@ interface Service {
   features: string[];
   duration: string;
   testimonials?: number;
+  packages?: {
+    name: string;
+    services: Record<string, string>;
+  }[];
 }
 
 const services: Service[] = [
   {
     id: 'property-management',
-    title: 'Property Management for NRIs',
-    shortDescription: 'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.',
-    fullDescription: 'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.',
+    title: 'Property Management',
+    shortDescription: 'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
+    fullDescription: 'Our comprehensive property management services ensure your real estate investments in India are well-maintained, profitable, and hassle-free. We handle everything from tenant screening and rent collection to property maintenance and legal compliance.',
     icon: Home,
     gradient: 'from-[#c53030] to-[#7a0b0b]',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
     features: [
-      'Tenant & Tenancy: Listing and marketing, enquiries and viewings, tenant onboarding, and ongoing tenancy coordination.',
-      'Rent & Deposit: Rent collection support, deposit tracking, and clear visibility of paid, due, and pending amounts.',
-      'Keys & Access: Secure key custody and strictly authorised access for inspections, maintenance, and handovers.',
-      'Maintenance & Repairs: Preventive upkeep and repairs coordinated with trusted vendors, with documented scope and cost transparency.',
-      'Possession & Handover: Support for move-ins, tenant transitions, and possession formalities for newly purchased or recently vacated homes.',
-      'One dependable point of contact. Professional reporting. Reliable execution.',
+      '24/7 Property Monitoring & Maintenance',
+      'Tenant Screening & Management',
+      'Rent Collection & Financial Reporting',
+      'Legal Compliance & Documentation',
+      'Regular Property Inspections',
+      'Emergency Response Services',
+      'Vendor Management & Coordination',
+      'Property Valuation & Market Analysis',
     ],
     duration: 'Ongoing',
     testimonials: 1247,
   },
   {
     id: 'long-short-stay',
-    title: 'Long and Short Stay Service Apartments',
-    shortDescription: 'Returning to India for a family reunion, executive travel, a friends\' get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays.',
-    fullDescription: 'Returning to India for a family reunion, executive travel, a friends\' get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays. If you feel homesick when you travel or you\'re back in India seasonally, our apartment homes are built to feel like a second home, neatly furnished so you\'re not burdened with carrying essentials. From food to furniture and other amenities, our carefully selected properties help you start each day fresh, focused, and settled. Expect spacious rooms, basic Wi-Fi support, laundry and fitness rooms, and additional kitchen items, close to grocery, shopping, entertainment, and pharmacies, so you get hotel-like convenience without sacrificing home-like comfort. Choose flexible move-in and move-out dates, with simple monthly pricing, special rates/discounts for longer stays, and a single monthly payment. Book with confidence: properties are reviewed by our trusted guest community, and you receive 24/7 support during your stay. Need to work while you\'re here? Find work-friendly spaces with high-speed Wi-Fi and dedicated working areas, ideal for staffing, displacement, and relocation.',
+    title: 'Long and Short Stay',
+    shortDescription: 'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
+    fullDescription: 'Whether you need a place for a few days or several months, we provide carefully selected homes and serviced apartments that feel like home. Our accommodations come with housekeeping, security, and concierge support to ensure your comfort and peace of mind during your stay in India.',
     icon: BedDouble,
     gradient: 'from-[#7a0b0b] to-[#0b1f33]',
     image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
-    features: [],
+    features: [
+      'Fully Furnished Accommodations',
+      'Housekeeping & Maintenance Services',
+      '24/7 Security & Concierge Support',
+      'Flexible Stay Duration Options',
+      'Prime Location Properties',
+      'Utilities & Amenities Included',
+      'Airport Transfer Services',
+      'Local Area Orientation & Support',
+    ],
     duration: 'Flexible',
     testimonials: 892,
   },
   {
     id: 'elderly-care',
-    title: 'Elder Care',
-    shortDescription: 'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination. Tipping Bridge Elder Care brings structured assistance across Health & Fitness, Filing & Forms, Technology & Troubleshooting, Home Security & Maintenance, and Memories & Milestones, so support continues even whilst you are miles away.',
-    fullDescription: 'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination. Tipping Bridge Elder Care brings structured assistance across Health & Fitness, Filing & Forms, Technology & Troubleshooting, Home Security & Maintenance, and Memories & Milestones, so support continues even whilst you are miles away.',
+    title: 'Elderly Care',
+    shortDescription: 'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
+    fullDescription: 'We provide compassionate and professional care for your elderly family members in India. Our personalized care plans include home assistance, wellness monitoring, medical coordination, and emotional support to ensure your loved ones receive the attention and care they deserve.',
     icon: HeartPulse,
     gradient: 'from-[#e53e3e] to-[#b91c1c]',
     image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
     features: [
-      'Health & Fitness: Our healthcare team is trained to handle emergency situations, and can arrange tele-consultations, home doctor visits, sample home collections for lab tests, nurse/medical attendant services, post-surgical support, medicine delivery, medical equipment rentals, physiotherapy, medical-record maintenance, and ambulance/hospitalisation assistance.',
-      'Filing & Forms: Support for income tax return filing, banking assistance, legal documentation help, and Aadhaar/Voter ID and senior citizen card assistance.',
-      'Technology & Troubleshooting: Zoom/Google Hangouts support, social media setup, popular apps (Zomato/Uber/Netflix), hardware repair support, and personalised tutorials to bridge the digital gap.',
-      'Home Security & Maintenance: Plumber/electrician/carpenter support, whitewash, appliance repairs, pest control, annual maintenance contracts, CCTV/video doorbell installation, and police verification of domestic staff, with supervision where needed.',
-      'Memories & Milestones: Birthdays, anniversaries and festivals, gifts, décor, food, florist and pooja services, because emotional wellbeing matters too.',
+      'Personalized Care Plans',
+      'Home Assistance & Daily Support',
+      'Health & Wellness Monitoring',
+      'Medical Appointment Coordination',
+      'Medication Management',
+      'Companionship & Emotional Support',
+      'Emergency Response Services',
+      'Regular Health Updates & Reports',
     ],
     duration: 'Ongoing',
     testimonials: 1563,
+    packages: [
+      {
+        name: 'Soul',
+        services: {
+          'Dedicated Personal Manager': 'Assistant Manager',
+          'Visits by the Care Manager for a personal update': 'Monthly',
+          'Vital Check-ups to be done by Trained Staff': 'Monthly',
+          'Organizing / collecting samples and health lab visits': 'Twice a Year',
+          'Assistance with Travel Services': 'Monthly',
+          'Assistance to home repair and Maintenance': 'Twice a Year',
+          'Health and Basic updates to Next of Kin / Guardian': 'Monthly',
+          'Assistance in all Tipping Bridge Services': 'Monthly',
+          'Inventory listing & ordering groceries / consumables for home': '✖',
+          'Organizing Annual Health Check-ups': '✖',
+          'Maintenance of health records on online storage accessible to Kin / Guardian': '✖',
+          'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✖',
+          'Social Engagement & Wellness Camps for Mental Health': '✖',
+          'Technology Support & Troubleshooting': '✖',
+          'Complimentary Runner Service': '✖',
+          'Home Delivery of Medicines': '✖',
+          'Organizing Pill Box': '✖',
+          'Tele-Consulting with Empanelled Physicians / Specialists': '✖',
+          'Assisting Visits to Doctors or Hospitals': '✖',
+          'Technological Support & Tutorials on Apps & Social Media': '✖',
+          'Assistance for Bank / Pension Office Visits': '✖',
+          'Police Verification of Housemaids / Drivers': '✖',
+          'Assistance in Car Repairs & Maintenance': '✖',
+          'Assistance in Utility Bill Payments & Dispute Resolution': '✖',
+          'Deep Cleaning of Homes for Proper Hygiene': '✖',
+        },
+      },
+      {
+        name: 'Grandeur',
+        services: {
+          'Dedicated Personal Manager': 'Care Manager',
+          'Visits by the Care Manager for a personal update': 'Bi-Monthly',
+          'Vital Check-ups to be done by Trained Staff': 'Bi-Monthly',
+          'Organizing / collecting samples and health lab visits': 'Quarterly',
+          'Assistance with Travel Services': 'Bi-Monthly',
+          'Assistance to home repair and Maintenance': 'Monthly',
+          'Health and Basic updates to Next of Kin / Guardian': 'Weekly',
+          'Assistance in all Tipping Bridge Services': 'Bi-Monthly',
+          'Inventory listing & ordering groceries / consumables for home': 'Bi-Monthly',
+          'Organizing Annual Health Check-ups': 'Yearly',
+          'Maintenance of health records on online storage accessible to Kin / Guardian': '✖',
+          'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✔',
+          'Social Engagement & Wellness Camps for Mental Health': '✔',
+          'Technology Support & Troubleshooting': '✖',
+          'Complimentary Runner Service': '✔',
+          'Home Delivery of Medicines': '✔',
+          'Organizing Pill Box': '✖',
+          'Tele-Consulting with Empanelled Physicians / Specialists': '✖',
+          'Assisting Visits to Doctors or Hospitals': '✖',
+          'Technological Support & Tutorials on Apps & Social Media': '✖',
+          'Assistance for Bank / Pension Office Visits': '✖',
+          'Police Verification of Housemaids / Drivers': '✖',
+          'Assistance in Car Repairs & Maintenance': '✖',
+          'Assistance in Utility Bill Payments & Dispute Resolution': '✖',
+          'Deep Cleaning of Homes for Proper Hygiene': '✖',
+        },
+      },
+      {
+        name: 'Maharaja',
+        services: {
+          'Dedicated Personal Manager': 'Care Manager',
+          'Visits by the Care Manager for a personal update': 'Weekly',
+          'Vital Check-ups to be done by Trained Staff': 'Every Week',
+          'Organizing / collecting samples and health lab visits': 'Monthly',
+          'Assistance with Travel Services': 'Every time whenever required',
+          'Assistance to home repair and Maintenance': 'Whenever required even multiple times',
+          'Health and Basic updates to Next of Kin / Guardian': 'Bi-Weekly',
+          'Assistance in all Tipping Bridge Services': 'Weekly',
+          'Inventory listing & ordering groceries / consumables for home': 'Weekly',
+          'Organizing Annual Health Check-ups': 'Once a Quarter',
+          'Maintenance of health records on online storage accessible to Kin / Guardian': '✔',
+          'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✔',
+          'Social Engagement & Wellness Camps for Mental Health': '✔',
+          'Technology Support & Troubleshooting': 'Monthly',
+          'Complimentary Runner Service': '✔',
+          'Home Delivery of Medicines': '✔',
+          'Organizing Pill Box': 'Monthly',
+          'Tele-Consulting with Empanelled Physicians / Specialists': 'Monthly / Whenever Required',
+          'Assisting Visits to Doctors or Hospitals': 'Whenever required even multiple times',
+          'Technological Support & Tutorials on Apps & Social Media': 'Monthly',
+          'Assistance for Bank / Pension Office Visits': 'Monthly',
+          'Police Verification of Housemaids / Drivers': '✔',
+          'Assistance in Car Repairs & Maintenance': 'Quarterly / Half-Yearly / Yearly',
+          'Assistance in Utility Bill Payments & Dispute Resolution': '✔',
+          'Deep Cleaning of Homes for Proper Hygiene': 'Half-Yearly',
+        },
+      },
+    ],
   },
   {
     id: 'investments-insurance',
-    title: 'Investments & Insurance',
-    shortDescription: 'Manage India-side financial matters with clarity, even when you live overseas. Tipping Bridge supports NRIs through Investment & Wealth Management across Insurance, Mutual Funds and Real Estate, helping you plan and execute from anywhere.',
-    fullDescription: 'Manage India-side financial matters with clarity, even when you live overseas. Tipping Bridge supports NRIs through Investment & Wealth Management across Insurance, Mutual Funds and Real Estate, helping you plan and execute from anywhere.',
+    title: 'Investments and Insurance',
+    shortDescription: 'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
+    fullDescription: 'Make informed financial decisions with our expert investment and insurance advisory services. We help NRIs build secure portfolios, choose the right insurance policies, and navigate India\'s financial landscape with confidence. Our services are tailored to your risk profile and long-term goals.',
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=80',
     features: [
-      'Insurance: Support for Life/Term, Motor/Auto, Health and Home insurance. Insurance solicitation in India is governed by IRDA. Our Insurance Specialist provides competitive rates for term plans and motor insurance specially negotiated for NRI clients. Motor cover includes comprehensive car insurance, third-party liability and personal accident cover. For health insurance, we guide you to a tailor-made plan based on your requirements and pass on benefits from negotiated rates. For home insurance, we guide you to policies that are cost competitive on premium pricing and strong on consumer benefits.',
-      'Mutual Funds & Investing: Unbiased recommendations focused on long-term wealth creation, with execution support across Direct Mutual Funds, Stocks, ETFs, Bonds and Savings. Our wealth advisory helps create a robust plan aligned to your risk-return needs, stay disciplined during volatile markets, and diversify across assets.',
-      'Real Estate: Guidance for NRI clients with best/transparent/unbiased deals, and support on formalities and negotiations to acquire your chosen property.',
+      'Portfolio Planning & Management',
+      'Investment Advisory Services',
+      'Insurance Policy Selection',
+      'Risk Assessment & Analysis',
+      'Tax-Efficient Investment Strategies',
+      'Regular Portfolio Reviews',
+      'NRI-Specific Financial Planning',
+      'Compliance & Documentation Support',
     ],
     duration: 'Ongoing',
     testimonials: 634,
   },
   {
     id: 'doctor-hospital-assistance',
-    title: 'Assistance Services with Doctor & Hospitalisation',
-    shortDescription: 'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent. Tipping Bridge supports NRIs with end-to-end assistance for doctor appointments and hospitalisation so your family receives timely care, at home and at the hospital, with clear coordination.',
-    fullDescription: 'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent. Tipping Bridge supports NRIs with end-to-end assistance for doctor appointments and hospitalisation so your family receives timely care, at home and at the hospital, with clear coordination. We organise tele-consultations with qualified and experienced doctors and can ensure you are on the same call with your parents and the doctor/specialist, so decisions are informed and connected. We also coordinate home visits by doctors, sample home collection for lab tests, and post-surgical support through nurses and medical attendants. When ongoing support is required, we can help with home delivery of medicines, rental of medical equipment, medical supplies, physiotherapy coordination, and maintenance of medical records. For nutrition and lifestyle, support can include a dietician, fitness coaches, and health menu/food delivery aligned to the diet plan. In emergencies, we provide ambulance assistance and emergency support for hospitalisation, along with medicine routine planning and reminder schedules.',
+    title: 'Doctor & Hospital Assistance',
+    shortDescription: 'Priority appointments, hospital coordination, discharge support, and second opinions handled end-to-end.',
+    fullDescription: 'Ensure your family receives the best medical care in India with our comprehensive healthcare assistance. We coordinate priority doctor appointments, manage hospital admissions, facilitate second opinions, and provide complete support throughout the medical journey.',
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
-    features: [],
+    features: [
+      'Priority Doctor Appointments',
+      'Hospital Admission Coordination',
+      'Medical Record Management',
+      'Second Opinion Consultations',
+      'Discharge & Follow-up Support',
+      'Pharmacy & Prescription Services',
+      'Health Insurance Claim Processing',
+      'Emergency Medical Response',
+    ],
     duration: 'As needed',
     testimonials: 478,
   },
   {
     id: 'government-documentation',
-    title: 'Legal & Documentation',
-    shortDescription: 'When you\'re overseas, even routine paperwork in India can become time-consuming and stressful. With just a phone call, Tipping Bridge can connect you to a dedicated team of legal experts to help address your family\'s tax and legal documentation needs in India, so work moves forward in your absence.',
-    fullDescription: 'When you\'re overseas, even routine paperwork in India can become time-consuming and stressful. With just a phone call, Tipping Bridge can connect you to a dedicated team of legal experts to help address your family\'s tax and legal documentation needs in India, so work moves forward in your absence.',
+    title: 'Government Documentation',
+    shortDescription: 'Fast-track processing for IDs, certificates, attestations, and compliance paperwork across departments.',
+    fullDescription: 'Navigate India\'s complex documentation requirements with ease. Our expert team handles all government paperwork, certificates, and documentation, ensuring accuracy and compliance. From birth certificates to property deeds, we manage it all with fast-track processing.',
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
     features: [
-      'Certificates: birth certificate, marriage certificate, death certificate, and changes/non-availability of birth certificate.',
-      'Education & references: degree certificate, marksheet/transcription, syllabus copy, and reference letters.',
-      'Identity & filings: PAN card application/submission, document procurement, and filing of IT returns.',
-      'Tax & compliance support: attending to IT notice / tax authority visits, and financial taxation and legal advice.',
-      'Claims, loans & legal guidance: life/general insurance and mediclaim claim follow-ups, loan syndicate follow-up, and arranging lawyers\' opinions and legal matter expert advice.',
-      'Court-related formalities: legalisation, notarisation and attestation of documents, including court visits.',
-      'Hidden Wealth Facilitation.',
-      'A single professional point of coordination, built for NRIs who want reliable execution in India without repeated follow-ups.',
+      'Birth, Marriage & Death Certificates',
+      'Passport & Visa Documentation',
+      'Property Deeds & Title Documents',
+      'Educational Certificates & Transcripts',
+      'Power of Attorney Documents',
+      'Legal Notarization Services',
+      'Government Form Filing',
+      'Document Translation & Apostille',
     ],
     duration: '7-30 days',
     testimonials: 721,
   },
   {
     id: 'events-gathering',
-    title: 'Small Events & Gathering Services',
-    shortDescription: 'Being overseas shouldn\'t mean missing the moments that matter at home. Tipping Bridge helps NRIs create and coordinate small celebrations in India so your family can enjoy the occasion, while we take on the organisation and responsibility.',
-    fullDescription: 'Being overseas shouldn\'t mean missing the moments that matter at home. Tipping Bridge helps NRIs create and coordinate small celebrations in India so your family can enjoy the occasion, while we take on the organisation and responsibility. Allow us to help you celebrate every special occasion and milestone in style, without having to manage the details from abroad. From birthdays and anniversaries to festivals, or a simple Havan/Pooja, we plan the celebration and coordinate the key elements, including decoration, personalised gifts and experiences, and food, so what remains are beautiful memories to cherish. We also support "Memories & Milestones" requests such as florist services, festival décor and essentials, home salon and spa services, personalised family photo shoots, runner services, and movie/theatre tickets. Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut, arranged with care.',
+    title: 'Events & Gathering Services',
+    shortDescription: 'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
+    fullDescription: 'Create memorable moments with our comprehensive event planning services. Whether it\'s a wedding, religious ceremony, birthday celebration, or community gathering, we handle everything from venue selection and decoration to catering and coordination, ensuring your event is perfect.',
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
-    features: [],
+    features: [
+      'Event Planning & Coordination',
+      'Venue Selection & Booking',
+      'Decoration & Theme Design',
+      'Catering Services',
+      'Photography & Videography',
+      'Entertainment Arrangements',
+      'Guest Management & Invitations',
+      'Religious Ceremony Coordination',
+    ],
     duration: 'As per event',
     testimonials: 456,
   },
@@ -153,7 +285,6 @@ export default function ServicesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
-  const [isPackageTableOpen, setIsPackageTableOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
@@ -483,34 +614,51 @@ export default function ServicesPage() {
                   </p>
 
                   {/* Features */}
-                  {selectedService.features.length > 0 && (
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-bold text-slate-800 mb-4">What's Included</h3>
-                      <div className="grid md:grid-cols-2 gap-3">
-                        {selectedService.features.map((feature) => (
-                          <div key={feature} className="flex items-start gap-3">
-                            <Check className="text-[#c53030] flex-shrink-0 mt-1" size={20} />
-                            <span className="text-slate-700">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-slate-800 mb-4">What's Included</h3>
+                    <div className="grid md:grid-cols-2 gap-3">
+                      {selectedService.features.map((feature) => (
+                        <div key={feature} className="flex items-start gap-3">
+                          <Check className="text-[#c53030] flex-shrink-0 mt-1" size={20} />
+                          <span className="text-slate-700">{feature}</span>
+                        </div>
+                      ))}
                     </div>
-                  )}
+                  </div>
 
-                  {/* Package Table Button for Elder Care */}
-                  {selectedService.id === 'elderly-care' && (
+                  {/* Packages Section */}
+                  {selectedService.packages && (
                     <div className="mb-8">
-                      <button
-                        onClick={() => {
-                          setSelectedService(null);
-                          setTimeout(() => setIsPackageTableOpen(true), 300);
-                        }}
-                        className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-[#e53e3e] to-[#b91c1c] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
-                      >
-                        <Package size={24} />
-                        <span>View Care Packages</span>
-                        <ArrowRight size={20} />
-                      </button>
+                      <h3 className="text-2xl font-bold text-slate-800 mb-6">Care Packages</h3>
+
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse border border-slate-300 bg-white rounded-lg shadow-sm">
+                          <thead>
+                            <tr className="bg-slate-50">
+                              <th className="border border-slate-300 px-4 py-3 text-left font-bold text-slate-800">Services Offered</th>
+                              {selectedService.packages.map((pkg) => (
+                                <th key={pkg.name} className="border border-slate-300 px-4 py-3 text-center font-bold text-slate-800">
+                                  {pkg.name}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {Object.keys(selectedService.packages[0].services).map((serviceName) => (
+                              <tr key={serviceName} className="hover:bg-slate-50">
+                                <td className="border border-slate-300 px-4 py-3 font-medium text-slate-700">
+                                  {serviceName}
+                                </td>
+                                {selectedService.packages!.map((pkg) => (
+                                  <td key={pkg.name} className="border border-slate-300 px-4 py-3 text-center text-slate-600">
+                                    {pkg.services[serviceName]}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   )}
 
@@ -700,333 +848,6 @@ export default function ServicesPage() {
                   </button>
                 </form>
               )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Package Table Modal for Elder Care */}
-      <AnimatePresence>
-        {isPackageTableOpen && (
-          <motion.div
-            className="fixed inset-0 z-[9999] flex items-center justify-center px-4 py-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <div
-              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-              onClick={() => setIsPackageTableOpen(false)}
-            ></div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="relative w-full max-w-7xl bg-white rounded-3xl shadow-2xl max-h-[90vh] overflow-hidden border border-[#f2dcdc]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header */}
-              <div className="bg-gradient-to-r from-[#e53e3e] to-[#b91c1c] p-6 text-white">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-3xl font-bold mb-2">Elder Care Packages</h2>
-                    <p className="text-white/90">Choose the perfect care plan for your loved ones</p>
-                  </div>
-                  <button
-                    onClick={() => setIsPackageTableOpen(false)}
-                    className="p-2 hover:bg-white/20 rounded-full transition-colors"
-                    aria-label="Close package table"
-                  >
-                    <X size={24} className="text-white" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Table Container */}
-              <div className="overflow-x-auto p-6 max-h-[calc(90vh-120px)] overflow-y-auto">
-                <div className="min-w-full">
-                  {/* Table */}
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr>
-                        <th className="bg-gradient-to-br from-slate-50 to-slate-100 p-4 text-left font-bold text-slate-800 border-b-2 border-slate-200">
-                          Services Offered
-                        </th>
-                        <th className="bg-gradient-to-br from-[#fef2f2] to-[#fee2e2] p-4 text-center font-bold text-[#0b1f33] border-b-2 border-[#fecaca]">
-                          <div className="flex flex-col items-center">
-                            <span className="text-xl">Soul</span>
-                            <span className="text-sm font-normal text-slate-600">Basic Care</span>
-                          </div>
-                        </th>
-                        <th className="bg-gradient-to-br from-[#fef2f2] to-[#fee2e2] p-4 text-center font-bold text-[#0b1f33] border-b-2 border-[#fecaca]">
-                          <div className="flex flex-col items-center">
-                            <span className="text-xl">Grandeur</span>
-                            <span className="text-sm font-normal text-slate-600">Premium Care</span>
-                          </div>
-                        </th>
-                        <th className="bg-gradient-to-br from-[#fef2f2] to-[#fee2e2] p-4 text-center font-bold text-[#0b1f33] border-b-2 border-[#fecaca]">
-                          <div className="flex flex-col items-center">
-                            <span className="text-xl">Maharaja</span>
-                            <span className="text-sm font-normal text-slate-600">Elite Care</span>
-                          </div>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Dedicated Personal Manager</td>
-                        <td className="p-4 text-center text-slate-600">Assistant Manager</td>
-                        <td className="p-4 text-center text-slate-600">Care Manager</td>
-                        <td className="p-4 text-center text-slate-600">Care Manager</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Visits by the Care Manager for a personal update</td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Bi-Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Weekly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Vital Checkups to be done by Trained Staff</td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Bi-Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Every Week</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Organizing collecting samples and health lab visits</td>
-                        <td className="p-4 text-center text-slate-600">Twice a Year</td>
-                        <td className="p-4 text-center text-slate-600">Quarterly</td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Assistance with Travel Services</td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Bi-Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Every time whenever Required</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Assistance to home repair and Maintenance</td>
-                        <td className="p-4 text-center text-slate-600">Twice a Year</td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Whenever required even multiple times</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Health and Basic updates to next to Kin/Guardian</td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Weekly</td>
-                        <td className="p-4 text-center text-slate-600">Bi-weekly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Assistance in all Tipping bridge Services</td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Bi-Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Weekly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">An inventory listing and raising online requisite, ordering of grocery and other consumables for home</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Bi-Monthly</td>
-                        <td className="p-4 text-center text-slate-600">Weekly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Organizing Annual Health Check ups</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Yearly</td>
-                        <td className="p-4 text-center text-slate-600">Once a Quarter</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Maintenance of health records on online storage accessible to kin/Guardian</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Medical Emergency Assistance (Ambulance and Hospitalisation Support)</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Social Engagement and wellness camps for mental Health</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Technology Support and Trouble Shooting</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Complementary Runner Service</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Home delivery of Medicines</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Organizing Pill Box</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Tele Consulting with the Empanelled General Physician or Specialists</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Monthly/Whenever Required</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700">Assisting to Visits to Doctors or Hospitals</td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center">
-                          <span className="text-red-500 font-bold text-xl">✗</span>
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Whenever required even multiple times</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors bg-blue-50/30">
-                        <td className="p-4 font-medium text-slate-700">Technological Support and tutorials on apps and social media</td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors bg-blue-50/30">
-                        <td className="p-4 font-medium text-slate-700">Assistance visits to Banks or Pension collection office Visits</td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Monthly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors bg-blue-50/30">
-                        <td className="p-4 font-medium text-slate-700">Helping in police verification of Housemaids and Drivers</td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors bg-blue-50/30">
-                        <td className="p-4 font-medium text-slate-700">Assistance in Car Repairs and maintenance</td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Quarterly /Half Yearly /Yearly</td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors bg-blue-50/30">
-                        <td className="p-4 font-medium text-slate-700">Assistance in Utility Bill payments and dispute resolution support</td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors bg-blue-50/30">
-                        <td className="p-4 font-medium text-slate-700">Deep Cleaning of Homes for proper hygiene</td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center">
-                          <Check className="text-green-600 mx-auto" size={24} />
-                        </td>
-                        <td className="p-4 text-center text-slate-600">Half Yearly</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Footer CTA */}
-              <div className="bg-gradient-to-r from-slate-50 to-slate-100 p-6 border-t border-slate-200">
-                <div className="flex flex-col sm:flex-row gap-4 justify-end">
-                  <button
-                    onClick={() => setIsPackageTableOpen(false)}
-                    className="px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg font-semibold hover:bg-slate-200 transition-colors"
-                  >
-                    Close
-                  </button>
-                  <a
-                    href="/contact"
-                    className="px-6 py-3 bg-gradient-to-r from-[#e53e3e] to-[#b91c1c] text-white rounded-lg font-bold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <span>Contact Us</span>
-                    <ArrowRight size={20} />
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         )}

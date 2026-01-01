@@ -103,7 +103,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg text-slate-600 leading-relaxed mb-8"
             >
-              As your one-point solution for all NRI needs in India, we handle the details so you can focus on what truly matters,your family and your peace of mind.
+              As your one-point solution for all NRI needs in India, we handle the details so you can focus on what truly matters, your family and your peace of mind.
             </motion.p>
 
             {/* Key Points */}
