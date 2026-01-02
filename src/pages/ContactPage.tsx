@@ -180,8 +180,11 @@ export default function ContactPage() {
                 <>
                   <motion.div
                     className={`inline-flex p-4 bg-gradient-to-br ${info.gradient} rounded-2xl mb-6 shadow-xl relative`}
-                    whileHover={{ scale: 1.15, rotate: 360 }}
-                    transition={{ duration: 0.6, type: "spring" }}
+                    whileHover={{ 
+                      scale: 1.15, 
+                      rotate: 360,
+                      transition: { duration: 0.6, type: "spring" }
+                    }}
                     animate={{
                       boxShadow: [
                         "0 10px 30px rgba(197, 48, 48, 0.3)",
