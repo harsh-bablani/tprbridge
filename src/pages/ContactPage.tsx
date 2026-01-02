@@ -169,20 +169,49 @@ export default function ContactPage() {
       <PageHero title="Contact Us" />
 
       {/* Contact Info Cards */}
-      <section className="py-12 px-6 -mt-10 relative z-10">
+      <section className="py-16 px-6 -mt-10 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               const isClickable = info.link && info.link !== '#';
               
               const cardContent = (
                 <>
-                  <div className={`inline-flex p-3 bg-gradient-to-br ${info.gradient} rounded-xl mb-4`}>
-                    <Icon size={24} className="text-white" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[#0b1f33] mb-2">{info.title}</h3>
-                  <p className="text-slate-600">{info.content}</p>
+                  <motion.div
+                    className={`inline-flex p-4 bg-gradient-to-br ${info.gradient} rounded-2xl mb-6 shadow-xl relative`}
+                    whileHover={{ scale: 1.15, rotate: 360 }}
+                    transition={{ duration: 0.6, type: "spring" }}
+                    animate={{
+                      boxShadow: [
+                        "0 10px 30px rgba(197, 48, 48, 0.3)",
+                        "0 15px 40px rgba(197, 48, 48, 0.5)",
+                        "0 10px 30px rgba(197, 48, 48, 0.3)",
+                      ],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <Icon size={28} className="text-white relative z-10" strokeWidth={2} />
+                    <motion.div
+                      className="absolute inset-0 bg-white/20 rounded-2xl blur-xl"
+                      animate={{
+                        opacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  </motion.div>
+                  <h3 className="text-2xl font-extrabold text-[#0b1f33] mb-3 group-hover:text-[#c53030] transition-colors">
+                    {info.title}
+                  </h3>
+                  <p className="text-slate-600 text-lg font-medium">{info.content}</p>
                 </>
               );
 
@@ -191,12 +220,24 @@ export default function ContactPage() {
                   <motion.a
                     key={info.title}
                     href={info.link}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    className="block p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.15, type: "spring", stiffness: 100 }}
+                    whileHover={{ y: -12, scale: 1.03 }}
+                    className="group relative block p-8 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.4)] transition-all duration-500 border-2 border-[#f2dcdc] hover:border-[#c53030] overflow-hidden"
                   >
+                    {/* Animated gradient border */}
+                    <motion.div
+                      className={`absolute inset-0 bg-gradient-to-r ${info.gradient} opacity-0 group-hover:opacity-100 rounded-3xl -z-10`}
+                      transition={{ duration: 0.4 }}
+                    />
+                    
+                    {/* Shimmer effect */}
+                    <motion.div
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                      transition={{ duration: 1 }}
+                    />
+                    
                     {cardContent}
                   </motion.a>
                 );
@@ -204,11 +245,11 @@ export default function ContactPage() {
                 return (
                   <motion.div
                     key={info.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    className="block p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc] cursor-default"
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.15, type: "spring", stiffness: 100 }}
+                    whileHover={{ y: -12, scale: 1.03 }}
+                    className="group relative block p-8 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.4)] transition-all duration-500 border-2 border-[#f2dcdc] hover:border-[#c53030] overflow-hidden cursor-default"
                   >
                     {cardContent}
                   </motion.div>
@@ -410,23 +451,40 @@ export default function ContactPage() {
                     </div>
                   )}
 
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-bold text-lg hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full relative overflow-hidden flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-xl font-extrabold text-lg shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(197,48,48,0.5)] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
+                    {/* Shimmer effect */}
+                    <motion.div
+                      className="absolute inset-0 -translate-x-full hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                      transition={{ duration: 1 }}
+                    />
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Sending...</span>
+                        <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span className="relative z-10">Sending...</span>
                       </>
                     ) : (
                       <>
-                        <Send size={20} />
-                        <span>Send Message</span>
+                        <Send size={22} className="relative z-10" strokeWidth={2.5} />
+                        <motion.span
+                          className="relative z-10"
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          Send Message
+                        </motion.span>
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </form>
               )}
             </motion.div>

@@ -72,31 +72,96 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative py-20 sm:py-32 bg-gradient-to-b from-white via-[#f5f2f2] to-[#f9f3f3] overflow-hidden px-4 sm:px-6">
-      {/* Decorative elements */}
+    <section className="relative py-24 sm:py-40 bg-gradient-to-b from-white via-[#fef5f5] to-[#f3f6fb] overflow-hidden px-4 sm:px-6">
+      {/* Optimized Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#fbd5d5] rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#c7d2fe] rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <motion.div
+          style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+          animate={{
+            opacity: [0.15, 0.25, 0.15],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#fbd5d5] to-[#c53030]/15 rounded-full mix-blend-multiply filter blur-2xl"
+        />
+        <motion.div
+          style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+          animate={{
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-[#c7d2fe] to-[#0b1f33]/15 rounded-full mix-blend-multiply filter blur-2xl"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 sm:mb-20"
+          transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+          className="text-center mb-20 sm:mb-28"
         >
-          <div className="inline-block mb-6">
-            <div className="h-1 w-16 bg-[#c53030] mx-auto"></div>
-          </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0b1f33] mb-6 tracking-tight">
-            Our <span className="text-[#c53030]">Premium Services</span>
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <motion.div
+            className="inline-block mb-8"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, type: "spring" }}
+          >
+            <motion.div
+              className="h-1.5 w-24 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] mx-auto rounded-full shadow-lg shadow-[#c53030]/50"
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            />
+          </motion.div>
+          
+          <motion.h2
+            className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#0b1f33] mb-8 tracking-tight"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Our{' '}
+            <motion.span
+              className="text-transparent bg-clip-text bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#7a0b0b] relative"
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              style={{
+                backgroundSize: "200% 200%",
+              }}
+            >
+              Premium Services
+            </motion.span>
+          </motion.h2>
+          
+          <motion.p
+            className="text-xl sm:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Comprehensive solutions tailored to meet every need of NRI families with excellence and care
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Services Grid */}
@@ -113,43 +178,143 @@ export default function Services() {
                 whileHover={{ y: -12, transition: { duration: 0.3 } }}
                 className="group relative h-full"
               >
-                <div className="relative h-full rounded-3xl p-[1px] bg-gradient-to-br from-[#fde4e4] via-white to-[#dbe9ff] transition-all duration-300 group-hover:shadow-[0_20px_45px_-28px_rgba(197,48,48,0.65)]">
-                  <div className="relative h-full bg-white/90 rounded-[calc(1.5rem-1px)] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f1e5e5]">
+                <div className="relative h-full rounded-3xl p-[2px] bg-gradient-to-br from-[#c53030]/30 via-[#7a0b0b]/20 to-[#0b1f33]/20 transition-all duration-500 group-hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.5)] group-hover:p-[3px]">
+                  {/* Animated border glow */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#7a0b0b] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    style={{
+                      backgroundSize: "200% 200%",
+                    }}
+                  />
+                  
+                  <div className="relative h-full bg-white/95 backdrop-blur-xl rounded-[calc(1.5rem-2px)] overflow-hidden shadow-2xl group-hover:shadow-[0_40px_80px_-20px_rgba(197,48,48,0.4)] transition-all duration-500 border border-white/50">
+                    {/* Shimmer Effect */}
+                    <motion.div
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent z-20"
+                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                    />
+                    
                     {/* Image Background */}
-                    <div className="relative h-48 overflow-hidden">
+                    <div className="relative h-56 overflow-hidden">
                       <motion.img
                         src={service.image}
                         alt={service.title}
                         className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.5 }}
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
+                      <motion.div
+                        className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
+                        initial={{ opacity: 0.75 }}
+                        whileHover={{ opacity: 0.85 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      
+                      {/* Floating Icon */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="p-4 bg-white/25 backdrop-blur-sm rounded-2xl border border-white/40">
-                          <Icon size={48} className="text-white" strokeWidth={1.5} />
-                        </div>
+                        <motion.div
+                          className="p-5 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl"
+                          whileHover={{
+                            scale: 1.2,
+                            rotate: [0, -10, 10, -10, 0],
+                            boxShadow: "0 25px 50px rgba(255,255,255,0.3)"
+                          }}
+                          transition={{
+                            scale: { duration: 0.3 },
+                            rotate: { duration: 0.8 }
+                          }}
+                        >
+                          <motion.div
+                            animate={{
+                              y: [0, -15, 0],
+                              rotate: [0, 5, -5, 0]
+                            }}
+                            transition={{
+                              duration: 4,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <Icon size={56} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
+                          </motion.div>
+                        </motion.div>
                       </div>
+                      
+                      {/* Decorative Corners */}
+                      <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl" />
+                      <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl" />
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 sm:p-7">
-                      <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors">
+                    <div className="p-8 relative">
+                      {/* Glow Effect */}
+                      <motion.div
+                        className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 blur-3xl -z-10`}
+                        transition={{ duration: 0.5 }}
+                      />
+                      
+                      <motion.h3
+                        className="text-2xl font-extrabold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-4 relative"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                      >
                         {service.title}
-                      </h3>
-                      <p className="text-slate-600 leading-relaxed mb-4 text-base sm:text-lg">
+                        <motion.div
+                          className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#c53030] to-transparent"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "100%" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                        />
+                      </motion.h3>
+                      
+                      <motion.p
+                        className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg font-medium"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                      >
                         {service.description}
-                      </p>
-                      <div className="flex items-center text-[#c53030] font-semibold group-hover:gap-2 transition-all">
-                        <span>Learn more</span>
-                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                      </div>
+                      </motion.p>
+                      
+                      <motion.div
+                        className="flex items-center text-[#c53030] font-bold text-lg group-hover:gap-3 transition-all cursor-pointer"
+                        whileHover={{ x: 5 }}
+                      >
+                        <motion.span
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          Learn more
+                        </motion.span>
+                        <motion.div
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.1
+                          }}
+                        >
+                          <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" strokeWidth={2.5} />
+                        </motion.div>
+                      </motion.div>
                     </div>
-
-                    {/* Hover effect gradient */}
-                    <motion.div
-                      className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}
-                    />
                   </div>
                 </div>
               </motion.div>

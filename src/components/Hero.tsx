@@ -69,16 +69,62 @@ function Hero() {
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/90 to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-8 flex flex-col items-center justify-center min-h-[calc(100vh-6rem)] sm:min-h-[calc(100vh-8rem)] text-center space-y-6 pt-12 sm:pt-16">
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
-          className="inline-block font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#b71c1c]/70 via-[#e63946]/65 to-[#102a43]/60 tracking-[-0.01em] whitespace-nowrap text-xl sm:text-5xl lg:text-6xl leading-[1.45] sm:leading-[1.3] lg:leading-[1.15] drop-shadow-[0_6px_18px_rgba(16,42,67,0.2)]"
-          style={{ fontFamily: 'Sora, Manrope, sans-serif' }}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 flex flex-col items-center justify-center min-h-[calc(100vh-6rem)] sm:min-h-[calc(100vh-8rem)] text-center space-y-8 pt-12 sm:pt-16">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="relative"
         >
-          One Point Solution for all NRI needs in INDIA
-        </motion.h1>
+          {/* Optimized background glow for text */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-[#c53030]/20 via-[#7a0b0b]/15 to-[#0b1f33]/20 blur-2xl -z-10"
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+            animate={{
+              opacity: [0.2, 0.3, 0.2],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
+            className="inline-block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#0b1f33] tracking-tight text-2xl sm:text-6xl lg:text-7xl leading-tight drop-shadow-2xl relative"
+            style={{ fontFamily: 'Sora, Manrope, sans-serif' }}
+          >
+            <motion.span
+              style={{
+                backgroundSize: "200% 200%",
+                willChange: 'background-position',
+                transform: 'translateZ(0)'
+              }}
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#0b1f33] bg-clip-text text-transparent"
+            >
+              One Point Solution for all NRI needs in INDIA
+            </motion.span>
+            
+            {/* Decorative underline */}
+            <motion.div
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-2 bg-gradient-to-r from-transparent via-[#c53030] to-transparent rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: "80%" }}
+              transition={{ duration: 1.2, delay: 0.8 }}
+            />
+          </motion.h1>
+        </motion.div>
 
         {/* <motion.p
           initial={{ opacity: 0, y: 24 }}
@@ -90,56 +136,91 @@ function Hero() {
         </motion.p> */}
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-          className="mt-12 flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center"
+          transition={{ duration: 1, delay: 0.7, ease: 'easeOut' }}
+          className="mt-16 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center"
         >
-          <Link
-            to="/about"
-            className="group relative inline-flex items-center justify-center px-8 py-3.5 sm:py-4 bg-transparent backdrop-blur-md border-2 border-[#c53030]/70 text-[#c53030]/80 rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl hover:shadow-[#c53030]/20 transition-all duration-300 hover:scale-105 hover:border-[#c53030] overflow-hidden"
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <span className="relative z-10 flex items-center gap-2 group-hover:opacity-0 transition-opacity duration-300">
-              <span>Discover Us</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-[#c53030]/90 to-[#7a0b0b]/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
-            <span className="absolute inset-0 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 font-semibold z-20">
-              <span>Discover Us</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-          </Link>
+            <Link
+              to="/about"
+              className="group relative inline-flex items-center justify-center px-10 py-4 sm:py-5 bg-transparent backdrop-blur-xl border-2 border-[#c53030]/80 text-[#c53030] rounded-full font-bold text-base sm:text-lg shadow-2xl hover:shadow-[0_20px_40px_-12px_rgba(197,48,48,0.4)] transition-all duration-500 hover:border-[#c53030] overflow-hidden"
+            >
+              {/* Animated gradient background on hover */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] opacity-0 group-hover:opacity-100"
+                transition={{ duration: 0.4 }}
+              />
+              
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                transition={{ duration: 0.8 }}
+              />
+              
+              <span className="relative z-10 flex items-center gap-3 group-hover:text-white transition-colors duration-300">
+                <span>Discover Us</span>
+                <motion.svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  animate={{ x: [0, 3, 0] }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </motion.svg>
+              </span>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Slide indicators */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+      {/* Enhanced Slide indicators */}
+      <motion.div
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-10 flex gap-3"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
         {imageSet.map((_, index) => (
-          <button
+          <motion.button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-[#f87171] w-8' : 'bg-[#0b1f33]/40 w-2 hover:bg-[#c53030]/60'
-              }`}
+            className={`h-2.5 rounded-full transition-all duration-500 relative overflow-hidden ${
+              index === currentImageIndex 
+                ? 'bg-gradient-to-r from-[#c53030] to-[#7a0b0b] w-10 shadow-lg shadow-[#c53030]/50' 
+                : 'bg-[#0b1f33]/30 w-2.5 hover:bg-[#c53030]/60 hover:w-6'
+            }`}
             aria-label={`Go to slide ${index + 1}`}
-          />
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {index === currentImageIndex && (
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                animate={{
+                  x: ["-100%", "100%"],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+            )}
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }
