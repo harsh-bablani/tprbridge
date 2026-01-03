@@ -30,7 +30,6 @@ interface Service {
   image: string;
   features: string[];
   duration: string;
-  testimonials?: number;
   packages?: {
     name: string;
     services: Record<string, string>;
@@ -57,7 +56,6 @@ const services: Service[] = [
       'Property Valuation & Market Analysis',
     ],
     duration: 'Ongoing',
-    testimonials: 1247,
   },
   {
     id: 'long-short-stay',
@@ -78,7 +76,6 @@ const services: Service[] = [
       'Local Area Orientation & Support',
     ],
     duration: 'Flexible',
-    testimonials: 892,
   },
   {
     id: 'elderly-care',
@@ -99,7 +96,6 @@ const services: Service[] = [
       'Regular Health Updates & Reports',
     ],
     duration: 'Ongoing',
-    testimonials: 1563,
     packages: [
       {
         name: 'Soul',
@@ -212,7 +208,6 @@ const services: Service[] = [
       'Compliance & Documentation Support',
     ],
     duration: 'Ongoing',
-    testimonials: 634,
   },
   {
     id: 'doctor-hospital-assistance',
@@ -233,7 +228,6 @@ const services: Service[] = [
       'Emergency Medical Response',
     ],
     duration: 'As needed',
-    testimonials: 478,
   },
   {
     id: 'government-documentation',
@@ -254,7 +248,6 @@ const services: Service[] = [
       'Document Translation & Apostille',
     ],
     duration: '7-30 days',
-    testimonials: 721,
   },
   {
     id: 'events-gathering',
@@ -275,7 +268,6 @@ const services: Service[] = [
       'Religious Ceremony Coordination',
     ],
     duration: 'As per event',
-    testimonials: 456,
   },
 ];
 
@@ -699,23 +691,6 @@ export default function ServicesPage() {
                             </div>
                           </motion.button>
 
-                          {/* Floating Badge */}
-                          {service.testimonials && (
-                            <motion.div
-                              className="absolute top-4 right-4 px-3 py-1.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white text-xs font-bold rounded-full shadow-lg"
-                              initial={{ opacity: 0, scale: 0 }}
-                              whileInView={{ opacity: 1, scale: 1 }}
-                              viewport={{ once: true }}
-                              transition={{ 
-                                delay: index * 0.1 + 0.5,
-                                type: "spring",
-                                stiffness: 200
-                              }}
-                              whileHover={{ scale: 1.1, rotate: 5 }}
-                            >
-                              {service.testimonials}+ Reviews
-                            </motion.div>
-                          )}
                         </div>
                       </div>
                     </div>
