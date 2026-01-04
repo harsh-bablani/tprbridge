@@ -57,7 +57,7 @@ function Hero() {
               animate={{ scale: index === currentImageIndex ? 1 : 1.05 }}
               transition={{ duration: 8, ease: 'easeOut' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/65 via-white/50 to-white/65"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/30 to-white/40 sm:from-white/50 sm:via-white/40 sm:to-white/50"></div>
           </motion.div>
         ))}
       </div>
