@@ -456,64 +456,83 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <AnimatePresence mode="wait">
+          <motion.div
+            key={searchQuery + selectedCategory}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
             <motion.div
-              key={searchQuery + selectedCategory}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 1 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.2,
+                  },
+                },
+              }}
             >
-              {filteredServices.map((service, index) => {
+              {filteredServices.map((service) => {
                 const Icon = service.icon;
                 return (
                   <motion.div
                     key={service.id}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ y: -12, transition: { duration: 0.3 } }}
+                    variants={{
+                      hidden: { opacity: 0, y: 50, scale: 0.95 },
+                      visible: { opacity: 1, y: 0, scale: 1 },
+                    }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    whileHover={{
+                      y: -15,
+                      scale: 1.03,
+                      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                      transition: { duration: 0.3 }
+                    }}
                     className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
                   >
-                    {/* Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
-                          <Icon size={48} className="text-white" strokeWidth={1.5} />
-                        </div>
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
+                        <Icon size={48} className="text-white" strokeWidth={1.5} />
                       </div>
                     </div>
+                  </div>
 
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-3">
-                        {service.title}
-                      </h3>
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-3">
+                      {service.title}
+                    </h3>
 
-                      <p className="text-slate-600 mb-4 leading-relaxed">
-                        {service.shortDescription}
-                      </p>
+                    <p className="text-slate-600 mb-4 leading-relaxed">
+                      {service.shortDescription}
+                    </p>
 
-                      <button
-                        onClick={() => setSelectedService(service)}
-                        className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
-                      >
-                        <span>View Details</span>
-                        <ArrowRight size={18} />
-                      </button>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+                    <button
+                      onClick={() => setSelectedService(service)}
+                      className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+                    >
+                      <span>View Details</span>
+                      <ArrowRight size={18} />
+                    </button>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </motion.div>
 
           {filteredServices.length === 0 && (
             <motion.div

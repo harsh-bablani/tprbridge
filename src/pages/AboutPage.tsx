@@ -244,28 +244,53 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => {
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 1 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                  delayChildren: 0.2,
+                },
+              },
+            }}
+          >
+            {values.map((value) => {
               const Icon = value.icon;
               return (
                 <motion.div
                   key={value.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 50, scale: 0.9 },
+                    visible: { opacity: 1, y: 0, scale: 1 },
+                  }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  whileHover={{
+                    y: -12,
+                    scale: 1.03,
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    transition: { duration: 0.3 }
+                  }}
                   className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
                 >
-                  <div className={`inline-flex p-4 bg-gradient-to-br ${value.color} rounded-xl mb-4`}>
+                  <motion.div
+                    className={`inline-flex p-4 bg-gradient-to-br ${value.color} rounded-xl mb-4`}
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <Icon size={28} className="text-white" />
-                  </div>
+                  </motion.div>
                   <h3 className="text-xl font-bold text-[#0b1f33] mb-3">{value.title}</h3>
                   <p className="text-slate-600 leading-relaxed">{value.description}</p>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -290,14 +315,36 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {whatMakesUsUnique.map((item, index) => (
+          <motion.div
+            className="grid md:grid-cols-2 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 1 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2,
+                  delayChildren: 0.1,
+                },
+              },
+            }}
+          >
+            {whatMakesUsUnique.map((item) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                variants={{
+                  hidden: { opacity: 0, x: -50, scale: 0.95 },
+                  visible: { opacity: 1, x: 0, scale: 1 },
+                }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                whileHover={{
+                  x: -5,
+                  scale: 1.02,
+                  boxShadow: '0 20px 40px -12px rgba(0, 0, 0, 0.15)',
+                  transition: { duration: 0.3 }
+                }}
                 className="bg-white rounded-2xl p-8 shadow-lg border border-[#f2dcdc]"
               >
                 <div className="flex items-start gap-4">
@@ -311,7 +358,7 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -343,23 +390,51 @@ export default function AboutPage() {
             </Link>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 1 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.1,
+                },
+              },
+            }}
+          >
+            {services.map((service) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
+                variants={{
+                  hidden: { opacity: 0, y: 50, scale: 0.95 },
+                  visible: { opacity: 1, y: 0, scale: 1 },
+                }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                whileHover={{
+                  y: -12,
+                  scale: 1.02,
+                  boxShadow: '0 20px 40px -12px rgba(0, 0, 0, 0.15)',
+                  transition: { duration: 0.3 }
+                }}
                 className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-[#f2dcdc]"
               >
-                <div className="h-1 w-12 bg-[#c53030] mb-4"></div>
+                <motion.div
+                  className="h-1 w-12 bg-[#c53030] mb-4"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  style={{ originX: 0 }}
+                />
                 <h3 className="text-xl font-bold text-[#0b1f33] mb-2">{service.title}</h3>
                 <p className="text-slate-600">{service.description}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

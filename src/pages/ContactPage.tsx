@@ -444,7 +444,6 @@ export default function ContactPage() {
                 </h3>
                 <ul className="space-y-3">
                   {[
-                    '15+ Years of Experience',
                     '5,000+ Happy Families',
                     '24/7 Dedicated Support',
                     'Verified & Trusted Partners',

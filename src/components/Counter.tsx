@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { useInView, motion } from 'framer-motion';
 
 interface CounterProps {
   value: string;
@@ -48,9 +48,15 @@ export default function Counter({ value, duration = 2000, className = '' }: Coun
   }, [isInView, numericValue, duration]);
 
   return (
-    <div ref={ref} className={className}>
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       {count}{suffix}
-    </div>
+    </motion.div>
   );
 }
 
