@@ -26,7 +26,7 @@ export default function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   const navBackgroundClass = isScrolled
-    ? 'bg-white/98 backdrop-blur-xl shadow-2xl border-b border-[#f2dcdc]/50'
+    ? 'bg-gradient-to-r from-white/95 to-[#fefbfb]/95 backdrop-blur-2xl shadow-[0_8px_32px_rgba(197,48,48,0.12)] border-b border-gradient-to-r from-[#c53030]/10 to-[#7a0b0b]/10'
     : 'bg-transparent';
 
   return (

@@ -38,7 +38,14 @@ function Hero() {
   }, [imageSet.length, currentImageIndex])
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#fef5f5] to-[#f3f6fb]">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#fef9f8] to-[#f0f5fb]">
+      {/* Premium background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white/20 z-5 pointer-events-none" />
+      
+      {/* Luxury gradient orbs */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#c53030]/8 to-transparent rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#0b1f33]/5 to-transparent rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none" />
+      
       {/* Background Image Carousel */}
       <div className="absolute inset-0 z-0">
         {imageSet.map((image, index) => (
@@ -52,6 +59,7 @@ function Hero() {
             <motion.img
               src={image}
               alt="Hero slide"
+              loading="lazy"
               className="absolute inset-0 h-full w-full object-cover bg-white"
               initial={{ scale: 1.05 }}
               animate={{ scale: index === currentImageIndex ? 1 : 1.05 }}

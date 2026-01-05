@@ -12,8 +12,9 @@ function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-br from-[#0b1f33] via-[#1a2f47] to-[#0b1f33] text-white overflow-hidden">
-      {/* Luxury Decorative elements */}
+    <footer className="relative bg-gradient-to-br from-[#0a1628] via-[#162232] to-[#0a1628] text-white overflow-hidden">
+      {/* Premium Luxury Decorative elements */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           style={{ willChange: 'opacity', transform: 'translateZ(0)' }}

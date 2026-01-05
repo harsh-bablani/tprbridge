@@ -18,6 +18,8 @@ import {
   Search,
   Download,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
 interface Service {
@@ -28,6 +30,7 @@ interface Service {
   icon: typeof Home;
   gradient: string;
   image: string;
+  images: string[];
   features: string[];
   duration: string;
   packages?: {
@@ -45,6 +48,11 @@ const services: Service[] = [
     icon: Home,
     gradient: 'from-[#c53030] to-[#7a0b0b]',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
+      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
+      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80',
+    ],
     features: [
       '24/7 Property Monitoring & Maintenance',
       'Tenant Screening & Management',
@@ -65,6 +73,10 @@ const services: Service[] = [
     icon: BedDouble,
     gradient: 'from-[#7a0b0b] to-[#0b1f33]',
     image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80',
+    ],
     features: [
       'Fully Furnished Accommodations',
       'Housekeeping & Maintenance Services',
@@ -85,6 +97,11 @@ const services: Service[] = [
     icon: HeartPulse,
     gradient: 'from-[#e53e3e] to-[#b91c1c]',
     image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
+      'https://images.unsplash.com/photo-1576091160550-112173f31c77?w=1200&q=80',
+      'https://images.unsplash.com/photo-1492635592522-04a01f0d6e6a?w=1200&q=80',
+    ],
     features: [
       'Personalized Care Plans',
       'Home Assistance & Daily Support',
@@ -197,6 +214,11 @@ const services: Service[] = [
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=80',
+      'https://images.unsplash.com/photo-1633356122544-f134ef2944f0?w=1200&q=80',
+      'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1200&q=80',
+    ],
     features: [
       'Portfolio Planning & Management',
       'Investment Advisory Services',
@@ -217,6 +239,11 @@ const services: Service[] = [
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
+      'https://images.unsplash.com/photo-1576091160388-112836e42a98?w=1200&q=80',
+      'https://images.unsplash.com/photo-1631217314831-c6227db76b6e?w=1200&q=80',
+    ],
     features: [
       'Priority Doctor Appointments',
       'Hospital Admission Coordination',
@@ -237,6 +264,11 @@ const services: Service[] = [
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
+      'https://images.unsplash.com/photo-1507842217343-583f20270319?w=1200&q=80',
+      'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80',
+    ],
     features: [
       'Birth, Marriage & Death Certificates',
       'Passport & Visa Documentation',
@@ -257,6 +289,11 @@ const services: Service[] = [
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
+      'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&q=80',
+      'https://images.unsplash.com/photo-1519225421421-9c63335b43a8?w=1200&q=80',
+    ],
     features: [
       'Event Planning & Coordination',
       'Venue Selection & Booking',
@@ -273,6 +310,7 @@ const services: Service[] = [
 
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -382,16 +420,20 @@ export default function ServicesPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-white/50 via-[#fef9f8]/80 to-[#f0f5fb]/70">
+      {/* Premium luxury overlay */}
+      <div className="fixed inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-0" />
       <Navigation />
       <PageHero title="Services">
-        <button
+        <motion.button
           onClick={handleOpenModal}
-          className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0b1f33] rounded-full font-bold text-lg shadow-lg border border-[#f2dcdc] hover:border-[#c53030] hover:text-[#c53030] transition-all duration-300 hover:-translate-y-0.5"
+          whileHover={{ scale: 1.05, y: -5 }}
+          whileTap={{ scale: 0.98 }}
+          className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-white/98 to-white/95 text-[#0b1f33] rounded-full font-bold text-lg shadow-2xl hover:shadow-[0_20px_40px_rgba(197,48,48,0.2)] border-2 border-gradient-to-r from-[#f2dcdc] to-white/30 hover:border-[#c53030] hover:text-[#c53030] transition-all duration-300 backdrop-blur-sm"
         >
           <Download size={20} className="text-[#c53030] group-hover:animate-pulse" />
           <span>Know Us Better</span>
-        </button>
+        </motion.button>
       </PageHero>
 
       {/* Search and Filter Section */}
@@ -490,15 +532,12 @@ export default function ServicesPage() {
           <AnimatePresence mode="wait">
             <motion.div
               key={searchQuery + selectedCategory}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               initial="hidden"
               animate="visible"
+              exit="hidden"
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               variants={{
-                hidden: { opacity: 1 },
+                hidden: { opacity: 0 },
                 visible: {
                   opacity: 1,
                   transition: {
@@ -508,49 +547,128 @@ export default function ServicesPage() {
                 },
               }}
             >
-              {filteredServices.map((service) => {
+              {filteredServices.map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <motion.div
                     key={service.id}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     whileHover={{ y: -12, transition: { duration: 0.3 } }}
-                    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
+                    className="group relative h-full"
                   >
-                    {/* Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    <div className="relative h-full rounded-3xl p-[2px] bg-gradient-to-br from-[#c53030]/30 via-[#7a0b0b]/20 to-[#0b1f33]/20 transition-all duration-500 group-hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.5)] group-hover:p-[3px]">
+
+                      {/* Animated border glow */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#7a0b0b] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
+                        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        style={{ backgroundSize: "200% 200%" }}
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
-                          <Icon size={48} className="text-white" strokeWidth={1.5} />
+
+                      <div className="relative h-full bg-white/95 backdrop-blur-xl rounded-[calc(1.5rem-2px)] overflow-hidden shadow-2xl group-hover:shadow-[0_40px_80px_-20px_rgba(197,48,48,0.4)] transition-all duration-500 border border-white/50">
+
+                        {/* Shimmer Effect */}
+                        <motion.div
+                          className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent z-20"
+                          transition={{ duration: 1.5, ease: "easeInOut" }}
+                        />
+
+                        {/* Image Background */}
+                        <div className="relative h-56 overflow-hidden">
+                          <motion.img
+                            src={service.image}
+                            alt={service.title}
+                            loading="lazy"
+                            className="w-full h-full object-cover"
+                            whileHover={{ scale: 1.2 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                          />
+
+                          <motion.div
+                            className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
+                            initial={{ opacity: 0.75 }}
+                            whileHover={{ opacity: 0.85 }}
+                            transition={{ duration: 0.3 }}
+                          />
+
+                          {/* Floating Icon */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <motion.div
+                              className="p-5 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl"
+                              whileHover={{
+                                scale: 1.2,
+                                rotate: [0, -10, 10, -10, 0],
+                                boxShadow: "0 25px 50px rgba(255,255,255,0.3)"
+                              }}
+                              transition={{
+                                scale: { duration: 0.3 },
+                                rotate: { duration: 0.8 }
+                              }}
+                            >
+                              <motion.div
+                                animate={{ y: [0, -15, 0], rotate: [0, 5, -5, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                              >
+                                <Icon size={56} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
+                              </motion.div>
+                            </motion.div>
+                          </div>
+
+                          {/* Decorative Corners */}
+                          <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl" />
+                          <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-8 relative">
+
+                          <motion.div
+                            className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 blur-3xl -z-10`}
+                            transition={{ duration: 0.5 }}
+                          />
+
+                          <motion.h3
+                            className="text-2xl font-extrabold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-4 relative"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                          >
+                            {service.title}
+
+                            <motion.div
+                              className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#c53030] to-transparent"
+                              initial={{ width: 0 }}
+                              animate={{ width: "100%" }}
+                              transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                            />
+                          </motion.h3>
+
+                          <motion.p
+                            className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg font-medium"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                          >
+                            {service.shortDescription}
+                          </motion.p>
+
+                          <motion.button
+                            onClick={() => {
+                              setSelectedService(service);
+                              setCurrentImageIndex(0);
+                            }}
+                            className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            <span>View Details</span>
+                            <ArrowRight size={18} />
+                          </motion.button>
                         </div>
                       </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-3">
-                        {service.title}
-                      </h3>
-
-                      <p className="text-slate-600 mb-4 leading-relaxed">
-                        {service.shortDescription}
-                      </p>
-
-                      <button
-                        onClick={() => setSelectedService(service)}
-                        className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
-                      >
-                        <span>View Details</span>
-                        <ArrowRight size={18} />
-                      </button>
                     </div>
                   </motion.div>
                 );
@@ -613,7 +731,7 @@ export default function ServicesPage() {
                 exit={{ opacity: 0, scale: 0.8, y: 50 }}
                 transition={{ type: 'spring', damping: 20, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/50"
+                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white/98 to-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_50px_100px_-15px_rgba(0,0,0,0.3)] border border-gradient-to-br from-white/70 to-white/50"
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -622,53 +740,51 @@ export default function ServicesPage() {
                   margin: '0 auto',
                 }}
               >
-            {/* Optimized Border Glow */}
-            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${selectedService.gradient} opacity-15 blur-xl -z-10`} />
+            {/* Premium Border Glow */}
+            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${selectedService.gradient} opacity-20 blur-2xl -z-10`} />
               <div className="relative">
-                {/* Header Image */}
-                <div className="relative h-72 overflow-hidden">
-                  <motion.img
-                    src={selectedService.image}
-                    alt={selectedService.title}
-                    className="w-full h-full object-cover"
-                    initial={{ scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.6 }}
-                  />
+                {/* Image Slider */}
+                <div className="relative h-80 overflow-hidden bg-gradient-to-br from-[#0b1f33] to-[#c53030]">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={selectedService.images[currentImageIndex]}
+                      alt={`${selectedService.title} - Image ${currentImageIndex + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  </AnimatePresence>
+
+                  {/* Dark Overlay Gradient */}
                   <motion.div
                     className={`absolute inset-0 bg-gradient-to-br ${selectedService.gradient}`}
-                    initial={{ opacity: 0.7 }}
-                    animate={{ opacity: 0.85 }}
-                    transition={{ duration: 0.6 }}
+                    animate={{ opacity: [0.6, 0.75, 0.6] }}
+                    transition={{ duration: 5, repeat: Infinity }}
                   />
-                  
-                  {/* Optimized Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+
+                  {/* Floating Icon */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     {(() => {
                       const Icon = selectedService.icon;
                       return (
                         <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ 
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{
                             type: "spring",
-                            stiffness: 200,
+                            stiffness: 150,
                             damping: 20,
                             delay: 0.2
                           }}
-                          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                         >
                           <motion.div
-                            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                            animate={{
-                              y: [0, -10, 0],
-                            }}
-                            transition={{
-                              duration: 6,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
-                            className="p-6 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl"
+                            animate={{ y: [0, -15, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            className="p-6 bg-white/15 backdrop-blur-xl rounded-3xl border-2 border-white/40 shadow-2xl"
                           >
                             <Icon size={72} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
                           </motion.div>
@@ -676,7 +792,65 @@ export default function ServicesPage() {
                       );
                     })()}
                   </div>
-                  
+
+                  {/* Navigation Buttons */}
+                  <motion.button
+                    onClick={() => {
+                      setCurrentImageIndex((prev) => (prev === 0 ? selectedService.images.length - 1 : prev - 1));
+                    }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 hover:scale-110 transition-all border border-white/30 shadow-xl"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <ChevronLeft size={28} />
+                  </motion.button>
+
+                  <motion.button
+                    onClick={() => {
+                      setCurrentImageIndex((prev) => (prev === selectedService.images.length - 1 ? 0 : prev + 1));
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 hover:scale-110 transition-all border border-white/30 shadow-xl"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <ChevronRight size={28} />
+                  </motion.button>
+
+                  {/* Image Counter and Dots */}
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10">
+                    {/* Dot Indicators */}
+                    <div className="flex gap-3">
+                      {selectedService.images.map((_, index) => (
+                        <motion.button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={`rounded-full transition-all ${
+                            index === currentImageIndex
+                              ? 'bg-white shadow-lg'
+                              : 'bg-white/40 hover:bg-white/60'
+                          }`}
+                          animate={{
+                            width: index === currentImageIndex ? 32 : 12,
+                            height: 12,
+                          }}
+                          whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Image Counter */}
+                    <motion.div
+                      className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/30 text-white text-sm font-semibold"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {currentImageIndex + 1} / {selectedService.images.length}
+                    </motion.div>
+                  </div>
+
+                  {/* Close Button */}
                   <motion.button
                     onClick={() => setSelectedService(null)}
                     className="absolute top-6 right-6 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-all border border-white/30"
@@ -689,15 +863,15 @@ export default function ServicesPage() {
                     <X size={24} />
                   </motion.button>
 
-                  {/* Decorative Elements */}
+                  {/* Decorative Corners */}
                   <motion.div
-                    className="absolute top-6 left-6 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl"
+                    className="absolute top-6 left-6 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl pointer-events-none"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4 }}
                   />
                   <motion.div
-                    className="absolute bottom-6 right-6 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl"
+                    className="absolute bottom-6 right-6 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl pointer-events-none"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5 }}
