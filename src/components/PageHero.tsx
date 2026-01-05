@@ -68,21 +68,67 @@ export default function PageHero({ title, children }: PageHeroProps) {
 
       {/* Soft accents */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 -left-24 h-60 w-60 rounded-full bg-[#fde4e4]/70 blur-3xl" />
-        <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-[#dbe9ff]/70 blur-3xl" />
+        <div className="absolute -top-24 -left-24 h-60 w-60 rounded-full bg-[#fde4e4]/60 blur-2xl" />
+        <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-[#dbe9ff]/60 blur-2xl" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/90 to-transparent" />
       </div>
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-8 flex flex-col items-center justify-center min-h-[calc(100vh-6rem)] sm:min-h-[calc(100vh-8rem)] text-center space-y-6 pt-12 sm:pt-16">
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
-          className="inline-block font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#b71c1c]/70 via-[#e63946]/65 to-[#102a43]/60 tracking-[-0.01em] text-xl sm:text-5xl lg:text-6xl leading-[1.45] sm:leading-[1.3] lg:leading-[1.15] drop-shadow-[0_6px_18px_rgba(16,42,67,0.2)]"
-          style={{ fontFamily: 'Sora, Manrope, sans-serif' }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="relative"
         >
-          {title}
-        </motion.h1>
+          {/* Optimized background glow */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-[#c53030]/20 via-[#7a0b0b]/15 to-[#0b1f33]/20 blur-2xl -z-10"
+            style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
+            animate={{
+              opacity: [0.2, 0.3, 0.2],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
+            className="inline-block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#0b1f33] tracking-tight text-2xl sm:text-6xl lg:text-7xl leading-tight drop-shadow-2xl relative"
+            style={{ fontFamily: 'Sora, Manrope, sans-serif' }}
+          >
+            <motion.span
+              style={{
+                backgroundSize: "200% 200%",
+                willChange: 'background-position',
+                transform: 'translateZ(0)'
+              }}
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#0b1f33] bg-clip-text text-transparent"
+            >
+              {title}
+            </motion.span>
+            
+            {/* Decorative underline */}
+            <motion.div
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-2 bg-gradient-to-r from-transparent via-[#c53030] to-transparent rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: "70%" }}
+              transition={{ duration: 1.2, delay: 0.8 }}
+            />
+          </motion.h1>
+        </motion.div>
         {children && (
           <motion.div
             initial={{ opacity: 0, y: 24 }}

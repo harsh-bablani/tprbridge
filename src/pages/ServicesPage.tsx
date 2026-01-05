@@ -30,7 +30,6 @@ interface Service {
   image: string;
   features: string[];
   duration: string;
-  testimonials?: number;
   packages?: {
     name: string;
     services: Record<string, string>;
@@ -57,7 +56,6 @@ const services: Service[] = [
       'Property Valuation & Market Analysis',
     ],
     duration: 'Ongoing',
-    testimonials: 1247,
   },
   {
     id: 'long-short-stay',
@@ -78,7 +76,6 @@ const services: Service[] = [
       'Local Area Orientation & Support',
     ],
     duration: 'Flexible',
-    testimonials: 892,
   },
   {
     id: 'elderly-care',
@@ -99,7 +96,6 @@ const services: Service[] = [
       'Regular Health Updates & Reports',
     ],
     duration: 'Ongoing',
-    testimonials: 1563,
     packages: [
       {
         name: 'Soul',
@@ -212,7 +208,6 @@ const services: Service[] = [
       'Compliance & Documentation Support',
     ],
     duration: 'Ongoing',
-    testimonials: 634,
   },
   {
     id: 'doctor-hospital-assistance',
@@ -233,7 +228,6 @@ const services: Service[] = [
       'Emergency Medical Response',
     ],
     duration: 'As needed',
-    testimonials: 478,
   },
   {
     id: 'government-documentation',
@@ -254,7 +248,6 @@ const services: Service[] = [
       'Document Translation & Apostille',
     ],
     duration: '7-30 days',
-    testimonials: 721,
   },
   {
     id: 'events-gathering',
@@ -275,7 +268,6 @@ const services: Service[] = [
       'Religious Ceremony Coordination',
     ],
     duration: 'As per event',
-    testimonials: 456,
   },
 ];
 
@@ -406,49 +398,88 @@ export default function ServicesPage() {
       <section className="relative -mt-20 pb-12 px-6 z-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-[#f2dcdc]"
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
+            }}
+            className="relative bg-white/95 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-white/50 overflow-hidden"
           >
+            {/* Optimized Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#c53030]/5 via-[#7a0b0b]/5 to-[#0b1f33]/5 opacity-30" />
+
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto relative mb-6">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c53030]" size={24} />
-              <input
-                type="text"
-                placeholder="Search services..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-full bg-white/80 backdrop-blur-md border border-[#f2dcdc] text-[#0b1f33] placeholder-[#9aa4b5] focus:outline-none focus:ring-2 focus:ring-[#f87171] focus:border-transparent"
-              />
+            <div className="max-w-2xl mx-auto relative mb-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <div className="absolute left-5 top-1/2 -translate-y-1/2">
+                  <Search className="text-[#c53030]" size={26} />
+                </div>
+                <motion.input
+                  type="text"
+                  placeholder="Search services..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-14 pr-6 py-5 rounded-2xl bg-white/90 backdrop-blur-md border-2 border-[#f2dcdc] text-[#0b1f33] placeholder-[#9aa4b5] focus:outline-none focus:ring-4 focus:ring-[#f87171]/30 focus:border-[#c53030] transition-all shadow-lg hover:shadow-xl"
+                  whileFocus={{ scale: 1.02 }}
+                />
+              </motion.div>
             </div>
 
             {/* Category Filters */}
-            <div className="flex flex-wrap justify-center gap-4">
-              <button
+            <motion.div
+              className="flex flex-wrap justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <motion.button
                 onClick={() => setSelectedCategory(null)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                className={`px-8 py-3 rounded-full font-bold text-base transition-all relative overflow-hidden ${
                   !selectedCategory
-                    ? 'bg-[#f87171] text-white shadow-lg shadow-[#f8717140]'
-                    : 'bg-white text-[#0b1f33] border border-[#f2dcdc] hover:bg-[#fef2f2]'
+                    ? 'bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white shadow-xl shadow-[#c53030]/40'
+                    : 'bg-white text-[#0b1f33] border-2 border-[#f2dcdc] hover:bg-[#fef2f2] hover:border-[#c53030]'
                 }`}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                All Services
-              </button>
-              {services.map((service) => (
-                <button
+                  {!selectedCategory && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-50" />
+                  )}
+                <span className="relative z-10">All Services</span>
+              </motion.button>
+              {services.map((service, index) => (
+                <motion.button
                   key={service.id}
                   onClick={() => setSelectedCategory(service.id)}
-                  className={`px-6 py-2 rounded-full font-medium transition-all ${
+                  className={`px-8 py-3 rounded-full font-bold text-base transition-all relative overflow-hidden ${
                     selectedCategory === service.id
-                      ? 'bg-[#f87171] text-white shadow-lg shadow-[#f8717140]'
-                      : 'bg-white text-[#0b1f33] border border-[#f2dcdc] hover:bg-[#fef2f2]'
+                      ? 'bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white shadow-xl shadow-[#c53030]/40'
+                      : 'bg-white text-[#0b1f33] border-2 border-[#f2dcdc] hover:bg-[#fef2f2] hover:border-[#c53030]'
                   }`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: 0.3 + index * 0.05,
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {service.title}
-                </button>
+                  {selectedCategory === service.id && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-50" />
+                  )}
+                  <span className="relative z-10">{service.title}</span>
+                </motion.button>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -456,13 +487,13 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            key={searchQuery + selectedCategory}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          <AnimatePresence mode="wait">
             <motion.div
+              key={searchQuery + selectedCategory}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               initial="hidden"
               animate="visible"
@@ -482,57 +513,50 @@ export default function ServicesPage() {
                 return (
                   <motion.div
                     key={service.id}
-                    variants={{
-                      hidden: { opacity: 0, y: 50, scale: 0.95 },
-                      visible: { opacity: 1, y: 0, scale: 1 },
-                    }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
-                    whileHover={{
-                      y: -15,
-                      scale: 1.03,
-                      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                      transition: { duration: 0.3 }
-                    }}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -12, transition: { duration: 0.3 } }}
                     className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
                   >
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
-                        <Icon size={48} className="text-white" strokeWidth={1.5} />
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-80`}></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
+                          <Icon size={48} className="text-white" strokeWidth={1.5} />
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-3">
-                      {service.title}
-                    </h3>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-3">
+                        {service.title}
+                      </h3>
 
-                    <p className="text-slate-600 mb-4 leading-relaxed">
-                      {service.shortDescription}
-                    </p>
+                      <p className="text-slate-600 mb-4 leading-relaxed">
+                        {service.shortDescription}
+                      </p>
 
-                    <button
-                      onClick={() => setSelectedService(service)}
-                      className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight size={18} />
-                    </button>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </motion.div>
+                      <button
+                        onClick={() => setSelectedService(service)}
+                        className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+                      >
+                        <span>View Details</span>
+                        <ArrowRight size={18} />
+                      </button>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
 
           {filteredServices.length === 0 && (
             <motion.div
@@ -584,12 +608,12 @@ export default function ServicesPage() {
               />
               {/* Modal Content */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                transition={{ type: 'spring', damping: 20, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl"
+                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/50"
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -598,105 +622,295 @@ export default function ServicesPage() {
                   margin: '0 auto',
                 }}
               >
+            {/* Optimized Border Glow */}
+            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${selectedService.gradient} opacity-15 blur-xl -z-10`} />
               <div className="relative">
                 {/* Header Image */}
-                <div className="relative h-64 overflow-hidden">
-                  <img
+                <div className="relative h-72 overflow-hidden">
+                  <motion.img
                     src={selectedService.image}
                     alt={selectedService.title}
                     className="w-full h-full object-cover"
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.6 }}
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${selectedService.gradient} opacity-90`}></div>
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-br ${selectedService.gradient}`}
+                    initial={{ opacity: 0.7 }}
+                    animate={{ opacity: 0.85 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  
+                  {/* Optimized Icon */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     {(() => {
                       const Icon = selectedService.icon;
                       return (
-                        <Icon size={64} className="text-white" strokeWidth={1.5} />
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ 
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 20,
+                            delay: 0.2
+                          }}
+                          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                        >
+                          <motion.div
+                            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                            animate={{
+                              y: [0, -10, 0],
+                            }}
+                            transition={{
+                              duration: 6,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                            className="p-6 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl"
+                          >
+                            <Icon size={72} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
+                          </motion.div>
+                        </motion.div>
                       );
                     })()}
                   </div>
-                  <button
+                  
+                  <motion.button
                     onClick={() => setSelectedService(null)}
-                    className="absolute top-4 right-4 p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
+                    className="absolute top-6 right-6 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-all border border-white/30"
+                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.3 }}
                   >
                     <X size={24} />
-                  </button>
+                  </motion.button>
+
+                  {/* Decorative Elements */}
+                  <motion.div
+                    className="absolute top-6 left-6 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4 }}
+                  />
+                  <motion.div
+                    className="absolute bottom-6 right-6 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 }}
+                  />
                 </div>
 
                 {/* Content */}
-                <div className="p-8">
-                  <h2 className="text-4xl font-bold text-slate-800 mb-4">
+                <div className="p-10">
+                  <motion.h2
+                    className="text-5xl font-bold text-slate-800 mb-6 bg-gradient-to-r from-[#0b1f33] to-[#c53030] bg-clip-text text-transparent"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
                     {selectedService.title}
-                  </h2>
-                  <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+                  </motion.h2>
+                  
+                  <motion.p
+                    className="text-xl text-slate-600 mb-10 leading-relaxed"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
                     {selectedService.fullDescription}
-                  </p>
+                  </motion.p>
 
-                  {/* Features */}
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-slate-800 mb-4">What's Included</h3>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      {selectedService.features.map((feature) => (
-                        <div key={feature} className="flex items-start gap-3">
-                          <Check className="text-[#c53030] flex-shrink-0 mt-1" size={20} />
-                          <span className="text-slate-700">{feature}</span>
-                        </div>
+                  {/* Features with Stagger Animation */}
+                  <div className="mb-10">
+                    <motion.h3
+                      className="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                    >
+                      <motion.div
+                        className="h-1 w-16 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: 64 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                      />
+                      What's Included
+                    </motion.h3>
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {selectedService.features.map((feature, index) => (
+                        <motion.div
+                          key={feature}
+                          className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-white to-[#fef2f2] border border-[#f2dcdc] hover:border-[#c53030] hover:shadow-lg transition-all group/feature"
+                          initial={{ opacity: 0, x: -30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ 
+                            duration: 0.5, 
+                            delay: 0.5 + index * 0.05,
+                            type: "spring",
+                            stiffness: 100
+                          }}
+                          whileHover={{ 
+                            x: 5,
+                            scale: 1.02,
+                            transition: { duration: 0.2 }
+                          }}
+                        >
+                          <motion.div
+                            className="p-2 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-lg shadow-lg"
+                            whileHover={{ rotate: 360, scale: 1.1 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <Check className="text-white flex-shrink-0" size={20} />
+                          </motion.div>
+                          <span className="text-slate-700 font-medium group-hover/feature:text-[#c53030] transition-colors pt-1">
+                            {feature}
+                          </span>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
 
                   {/* Packages Section */}
                   {selectedService.packages && (
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-bold text-slate-800 mb-6">Care Packages</h3>
+                    <motion.div
+                      className="mb-10"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                    >
+                      <h3 className="text-3xl font-bold text-slate-800 mb-8 flex items-center gap-3">
+                        <motion.div
+                          className="h-1 w-16 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
+                          initial={{ width: 0 }}
+                          animate={{ width: 64 }}
+                          transition={{ duration: 0.6, delay: 0.7 }}
+                        />
+                        Care Packages
+                      </h3>
 
-                      <div className="overflow-x-auto">
-                        <table className="w-full border-collapse border border-slate-300 bg-white rounded-lg shadow-sm">
+                      <div className="overflow-x-auto rounded-2xl shadow-xl border border-[#f2dcdc]">
+                        <table className="w-full border-collapse bg-white">
                           <thead>
-                            <tr className="bg-slate-50">
-                              <th className="border border-slate-300 px-4 py-3 text-left font-bold text-slate-800">Services Offered</th>
-                              {selectedService.packages.map((pkg) => (
-                                <th key={pkg.name} className="border border-slate-300 px-4 py-3 text-center font-bold text-slate-800">
+                            <tr className="bg-gradient-to-r from-[#c53030] to-[#7a0b0b]">
+                              <th className="px-6 py-4 text-left font-bold text-white text-lg">Services Offered</th>
+                              {selectedService.packages.map((pkg, index) => (
+                                <motion.th
+                                  key={pkg.name}
+                                  className="px-6 py-4 text-center font-bold text-white text-lg"
+                                  initial={{ opacity: 0, y: -20 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                                >
                                   {pkg.name}
-                                </th>
+                                </motion.th>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
-                            {Object.keys(selectedService.packages[0].services).map((serviceName) => (
-                              <tr key={serviceName} className="hover:bg-slate-50">
-                                <td className="border border-slate-300 px-4 py-3 font-medium text-slate-700">
+                            {Object.keys(selectedService.packages[0].services).map((serviceName, rowIndex) => (
+                              <motion.tr
+                                key={serviceName}
+                                className="hover:bg-gradient-to-r hover:from-[#fef2f2] hover:to-white transition-all border-b border-[#f2dcdc]"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ 
+                                  duration: 0.4, 
+                                  delay: 0.9 + rowIndex * 0.03 
+                                }}
+                              >
+                                <td className="px-6 py-4 font-semibold text-slate-700">
                                   {serviceName}
                                 </td>
-                                {selectedService.packages!.map((pkg) => (
-                                  <td key={pkg.name} className="border border-slate-300 px-4 py-3 text-center text-slate-600">
-                                    {pkg.services[serviceName]}
-                                  </td>
+                                {selectedService.packages!.map((pkg, colIndex) => (
+                                  <motion.td
+                                    key={pkg.name}
+                                    className="px-6 py-4 text-center text-slate-600 font-medium"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ 
+                                      duration: 0.3, 
+                                      delay: 1 + rowIndex * 0.03 + colIndex * 0.05 
+                                    }}
+                                  >
+                                    {pkg.services[serviceName] === '✔' ? (
+                                      <motion.span
+                                        className="inline-block text-2xl text-green-600"
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        transition={{ 
+                                          type: "spring",
+                                          stiffness: 200,
+                                          delay: 1.1 + rowIndex * 0.03 + colIndex * 0.05
+                                        }}
+                                      >
+                                        ✓
+                                      </motion.span>
+                                    ) : pkg.services[serviceName] === '✖' ? (
+                                      <span className="text-xl text-slate-400">—</span>
+                                    ) : (
+                                      <span>{pkg.services[serviceName]}</span>
+                                    )}
+                                  </motion.td>
                                 ))}
-                              </tr>
+                              </motion.tr>
                             ))}
                           </tbody>
                         </table>
                       </div>
-                    </div>
+                    </motion.div>
                   )}
 
                   {/* CTA */}
-                  <div className="flex gap-4">
-                    <a
+                  <motion.div
+                    className="flex gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                  >
+                    <motion.a
                       href="/contact"
-                      className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-bold hover:shadow-lg hover:scale-105 transition-all duration-300"
+                      className="flex-1 relative overflow-hidden group/cta"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <span>Get Started</span>
-                      <ArrowRight size={20} />
-                    </a>
-                    <button
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-xl"
+                        whileHover={{
+                          boxShadow: "0 15px 40px rgba(197, 48, 48, 0.5)"
+                        }}
+                      />
+                      <motion.div
+                        className="absolute inset-0 -translate-x-full group-hover/cta:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                        transition={{ duration: 0.8 }}
+                      />
+                      <div className="relative flex items-center justify-center gap-3 px-8 py-5 text-white font-bold text-lg rounded-xl">
+                        <motion.span
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          Get Started
+                        </motion.span>
+                        <ArrowRight size={22} className="group-hover/cta:translate-x-1 transition-transform" />
+                      </div>
+                    </motion.a>
+                    <motion.button
                       onClick={() => setSelectedService(null)}
-                      className="px-6 py-4 border-2 border-[#f2dcdc] text-[#0b1f33] rounded-lg font-semibold hover:bg-[#fdf5f5] transition-colors"
+                      className="px-8 py-5 border-2 border-[#f2dcdc] text-[#0b1f33] rounded-xl font-semibold hover:bg-[#fdf5f5] hover:border-[#c53030] transition-all"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       Close
-                    </button>
-                  </div>
+                    </motion.button>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>

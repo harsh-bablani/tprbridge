@@ -26,15 +26,15 @@ export default function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   const navBackgroundClass = isScrolled
-    ? 'bg-white/95 backdrop-blur-md shadow-xl'
+    ? 'bg-white/98 backdrop-blur-xl shadow-2xl border-b border-[#f2dcdc]/50'
     : 'bg-transparent';
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackgroundClass}`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBackgroundClass}`}
       style={
         isScrolled
           ? undefined
@@ -44,13 +44,16 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group md:-ml-[5%]">
+          <Link to="/" className="flex items-center group md:-ml-[5%] relative">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-[#c53030]/20 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            />
             <motion.img
               src="/tpbridge-logo.png"
               alt="Tipping Bridge"
-              className="h-20 w-20 md:h-24 md:w-24 object-contain"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              className="h-20 w-20 md:h-24 md:w-24 object-contain relative z-10"
+              whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+              transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
             />
           </Link>
 
@@ -66,17 +69,18 @@ export default function Navigation() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="relative group"
+                  className="relative group px-2 py-1"
                 >
-                  <span
-                    className={`text-lg font-semibold transition-colors duration-300 ${getLinkClassName()}`}
+                  <motion.span
+                    className={`text-lg font-bold transition-all duration-300 relative z-10 ${getLinkClassName()}`}
+                    whileHover={{ scale: 1.05 }}
                   >
                     {link.label}
-                  </span>
+                  </motion.span>
                   {isActive(link.to) && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c53030]"
+                      className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full shadow-lg shadow-[#c53030]/50"
                       initial={false}
                       transition={{
                         type: 'spring',
@@ -87,9 +91,13 @@ export default function Navigation() {
                   )}
                   {!isActive(link.to) && (
                     <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c53030] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+                      className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
                     />
                   )}
+                  {/* Hover glow effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-[#c53030]/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0"
+                  />
                 </Link>
               );
             })}

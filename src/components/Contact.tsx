@@ -138,19 +138,21 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
           {[
             {
               icon: Mail,
               title: 'Email Us',
               content: 'info@tippingbridge.com',
               link: 'mailto:info@tippingbridge.com',
+              gradient: 'from-[#c53030] to-[#7a0b0b]',
             },
             {
               icon: Phone,
               title: 'Call Us',
               content: '+91 73036 67600',
               link: 'tel:+917303667600',
+              gradient: 'from-[#7a0b0b] to-[#0b1f33]',
             },
           ].map((item, index) => {
             const Icon = item.icon;
@@ -158,18 +160,46 @@ export default function Contact() {
               <motion.a
                 key={item.title}
                 href={item.link}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.05 }}
-                className="block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
+                transition={{ duration: 0.6, delay: index * 0.15, type: "spring", stiffness: 100 }}
+                whileHover={{ y: -12, scale: 1.03 }}
+                className="group relative block p-10 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.4)] transition-all duration-500 border-2 border-[#f2dcdc] hover:border-[#c53030] overflow-hidden"
               >
-                <div className="inline-flex p-4 bg-[#fde4e4] rounded-full mb-4">
-                  <Icon size={32} className="text-[#c53030]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#0b1f33] mb-2">{item.title}</h3>
-                <p className="text-slate-600">{item.content}</p>
+                {/* Animated gradient border */}
+                <motion.div
+                  className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-100 rounded-3xl -z-10`}
+                  transition={{ duration: 0.4 }}
+                />
+                
+                {/* Optimized shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out" />
+                
+                <motion.div
+                  className={`inline-flex p-5 bg-gradient-to-br ${item.gradient} rounded-2xl mb-6 shadow-xl relative z-10`}
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Icon size={36} className="text-white" strokeWidth={2} />
+                  <motion.div
+                    className="absolute inset-0 bg-white/20 rounded-2xl blur-xl"
+                    animate={{
+                      opacity: [0.3, 0.6, 0.3],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.div>
+                <h3 className="text-2xl font-extrabold text-[#0b1f33] mb-3 group-hover:text-white transition-colors relative z-10">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 group-hover:text-white/90 transition-colors text-lg font-medium relative z-10">
+                  {item.content}
+                </p>
               </motion.a>
             );
           })}
@@ -182,13 +212,42 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center space-y-6"
         >
-          <Link
-            to="/contact"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#c53030] to-[#e04a4a] text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-[#c53030]/40 transition-all duration-300 hover:scale-105"
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <span>Get in Touch</span>
-            <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-          </Link>
+            <Link
+              to="/contact"
+              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-full font-extrabold text-lg shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(197,48,48,0.5)] transition-all duration-500 overflow-hidden"
+            >
+              {/* Optimized shimmer effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out" />
+              
+              <motion.span
+                animate={{ x: [0, 3, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="relative z-10"
+              >
+                Get in Touch
+              </motion.span>
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.1
+                }}
+                className="relative z-10"
+              >
+                <ArrowRight className="group-hover:translate-x-2 transition-transform" size={22} strokeWidth={2.5} />
+              </motion.div>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
 

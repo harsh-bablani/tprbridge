@@ -12,11 +12,39 @@ function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-br from-[#f8fafc] via-[#fef7f7] to-[#f3f6fb] text-[#0b1f33] overflow-hidden">
-      {/* Decorative elements */}
+    <footer className="relative bg-gradient-to-br from-[#0b1f33] via-[#1a2f47] to-[#0b1f33] text-white overflow-hidden">
+      {/* Luxury Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#fcd6d6]/50 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#dbe9ff]/50 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <motion.div
+          style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
+          animate={{
+            opacity: [0.08, 0.15, 0.08],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-0 right-0 w-96 h-96 bg-[#c53030]/15 rounded-full mix-blend-multiply filter blur-2xl"
+        />
+        <motion.div
+          style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
+          animate={{
+            opacity: [0.1, 0.18, 0.1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          className="absolute bottom-0 left-0 w-96 h-96 bg-[#7a0b0b]/15 rounded-full mix-blend-multiply filter blur-2xl"
+        />
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
@@ -28,26 +56,43 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <img src="/tpbridge-logo.png" alt="Tipping Bridge" className="h-10 w-10 object-contain" />
-              <h3 className="text-2xl font-bold tracking-tight text-[#0b1f33]">Tipping Bridge</h3>
-            </div>
-            <p className="text-[#516074] leading-relaxed mb-6">
+            <motion.div
+              className="flex items-center gap-3 mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
+              <motion.img
+                src="/tpbridge-logo.png"
+                alt="Tipping Bridge"
+                className="h-12 w-12 object-contain filter brightness-0 invert"
+                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                animate={{ y: [0, -2, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <h3 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-white to-[#fcd6d6] bg-clip-text text-transparent">
+                Tipping Bridge
+              </h3>
+            </motion.div>
+            <p className="text-white/80 leading-relaxed mb-8 text-lg">
               Your trusted partner for NRI services in India. Connecting families across continents with expert care and seamless service.
             </p>
             <div className="flex gap-4">
-              {socialLinks.map((social) => {
+              {socialLinks.map((social, index) => {
                 const Icon = social.icon
                 return (
                   <motion.a
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    whileHover={{ scale: 1.15, y: -2 }}
-                    whileTap={{ scale: 0.92 }}
-                    className="p-2 bg-white shadow-sm hover:bg-[#fbe4e4] rounded-lg transition-colors duration-300"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
+                    whileHover={{ scale: 1.15, y: -4 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="relative p-3 bg-white/10 backdrop-blur-md hover:bg-gradient-to-br hover:from-[#c53030] hover:to-[#7a0b0b] rounded-xl transition-all duration-300 border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl"
                   >
-                    <Icon size={20} />
+                    <Icon size={22} className="text-white" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300" />
                   </motion.a>
                 )
               })}
@@ -61,22 +106,44 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-[#0b1f33]">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
+              <motion.div
+                className="h-1 w-8 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              />
+              Quick Links
+            </h4>
+            <ul className="space-y-4">
               {[
                 { to: '/', label: 'Home' },
                 { to: '/services', label: 'Services' },
                 { to: '/contact', label: 'Contact' },
-              ].map((link) => (
-                <li key={link.label}>
+              ].map((link, index) => (
+                <motion.li
+                  key={link.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
                   <Link
                     to={link.to}
-                    className="text-[#516074] hover:text-[#c53030] transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-white/80 hover:text-white transition-all duration-300 flex items-center gap-3 group text-lg font-medium"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-[#c53030] transition-all duration-300"></span>
-                    {link.label}
+                    <motion.span
+                      className="w-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] group-hover:w-6 transition-all duration-300 rounded-full"
+                    />
+                    <motion.span
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {link.label}
+                    </motion.span>
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
@@ -88,8 +155,17 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-[#0b1f33]">Services</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
+              <motion.div
+                className="h-1 w-8 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              />
+              Services
+            </h4>
+            <ul className="space-y-4">
               {[
                 'Property Management',
                 'Long and Short Stay',
@@ -98,16 +174,29 @@ function Footer() {
                 'Doctor & Hospital Assistance',
                 'Government Documentation',
                 'Events & Gathering Services',
-              ].map((service) => (
-                <li key={service}>
+              ].map((service, index) => (
+                <motion.li
+                  key={service}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
+                >
                   <Link
                     to="/services"
-                    className="text-[#516074] hover:text-[#c53030] transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-white/80 hover:text-white transition-all duration-300 flex items-center gap-3 group text-lg font-medium"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-[#c53030] transition-all duration-300"></span>
-                    {service}
+                    <motion.span
+                      className="w-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] group-hover:w-6 transition-all duration-300 rounded-full"
+                    />
+                    <motion.span
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {service}
+                    </motion.span>
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
@@ -119,53 +208,120 @@ function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-lg font-semibold mb-6 text-[#0b1f33]">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Mail size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
+            <h4 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
+              <motion.div
+                className="h-1 w-8 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              />
+              Contact Us
+            </h4>
+            <ul className="space-y-5">
+              <motion.li
+                className="flex items-start gap-4 group"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ x: 5 }}
+              >
+                <motion.div
+                  className="p-2 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-lg shadow-lg"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                >
+                  <Mail size={20} className="text-white" />
+                </motion.div>
                 <a
                   href="mailto:info@tippingbridge.com"
-                  className="text-[#516074] hover:text-[#c53030] transition-colors duration-300"
+                  className="text-white/80 hover:text-white transition-colors duration-300 text-lg font-medium pt-1"
                 >
                   info@tippingbridge.com
                 </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
+              </motion.li>
+              <motion.li
+                className="flex items-start gap-4 group"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                whileHover={{ x: 5 }}
+              >
+                <motion.div
+                  className="p-2 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-lg shadow-lg"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                >
+                  <Phone size={20} className="text-white" />
+                </motion.div>
                 <a
                   href="tel:+917303667600"
-                  className="text-[#516074] hover:text-[#c53030] transition-colors duration-300"
+                  className="text-white/80 hover:text-white transition-colors duration-300 text-lg font-medium pt-1"
                 >
                   +91 73036 67600
                 </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={20} className="text-[#c53030] flex-shrink-0 mt-1" />
-                <span className="text-[#516074]">Gurgaon, India</span>
-              </li>
+              </motion.li>
+              <motion.li
+                className="flex items-start gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <motion.div
+                  className="p-2 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-lg shadow-lg"
+                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  animate={{ scale: [1, 1.03, 1] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <MapPin size={20} className="text-white" />
+                </motion.div>
+                <span className="text-white/80 text-lg font-medium pt-1">Gurgaon, India</span>
+              </motion.li>
             </ul>
           </motion.div>
         </div>
 
         {/* Bottom Bar */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="border-t border-[#e7dede] pt-8"
+          transition={{ duration: 0.8 }}
+          className="border-t border-white/10 pt-10 mt-12"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[#516074] text-sm">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <motion.p
+              className="text-white/60 text-base font-medium"
+              whileHover={{ scale: 1.05 }}
+            >
               &copy; {currentYear} Tipping Bridge. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
+            </motion.p>
+            <div className="flex gap-8 text-base">
+              <motion.a
+                href="#"
+                className="text-white/60 hover:text-white transition-all duration-300 font-medium relative group"
+                whileHover={{ scale: 1.05 }}
+              >
                 Privacy Policy
-              </a>
-              <a href="#" className="text-[#516074] hover:text-[#c53030] transition-colors duration-300">
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+                />
+              </motion.a>
+              <motion.a
+                href="#"
+                className="text-white/60 hover:text-white transition-all duration-300 font-medium relative group"
+                whileHover={{ scale: 1.05 }}
+              >
                 Terms of Service
-              </a>
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+                />
+              </motion.a>
             </div>
           </div>
         </motion.div>
