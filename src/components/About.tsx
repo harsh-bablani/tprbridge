@@ -32,7 +32,10 @@ export default function About() {
   ];
 
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-b from-white via-[#fef5f5] to-[#f3f6fb] overflow-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-b from-white/50 via-[#fef9f8] to-[#f0f5fb]/70 overflow-hidden">
+      {/* Premium luxury background elements */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+      
       {/* Optimized Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div

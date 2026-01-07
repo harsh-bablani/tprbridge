@@ -64,6 +64,7 @@ export default function ImageCarousel({
           <img
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
+            loading="lazy"
             className="w-full h-full object-cover"
           />
           {(images[currentIndex].title || images[currentIndex].description) && (

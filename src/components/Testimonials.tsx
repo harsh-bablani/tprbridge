@@ -75,7 +75,10 @@ const familyImages = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-28 sm:py-40 bg-gradient-to-b from-[#fef5f5] via-white to-[#f3f6fb] overflow-hidden px-4 sm:px-6">
+    <section className="relative py-28 sm:py-40 bg-gradient-to-b from-white/50 via-[#fef9f8]/70 to-[#f0f5fb]/70 overflow-hidden px-4 sm:px-6">
+      {/* Premium luxury overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none" />
+      
       {/* Luxury Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -194,7 +197,7 @@ export default function Testimonials() {
               <div className="relative h-full rounded-3xl p-[2px] bg-gradient-to-br from-[#c53030]/20 via-[#7a0b0b]/20 to-[#0b1f33]/20 transition-all duration-500 group-hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.4)] group-hover:p-[3px]">
                 {/* Animated border glow */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#7a0b0b] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
+                  className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   }}
@@ -208,10 +211,10 @@ export default function Testimonials() {
                   }}
                 />
                 
-                <div className="relative h-full bg-white/95 backdrop-blur-xl rounded-[calc(1.5rem-2px)] p-10 shadow-2xl group-hover:shadow-[0_40px_80px_-20px_rgba(197,48,48,0.4)] transition-all duration-500 border border-white/50 overflow-hidden">
-                  {/* Shimmer Effect */}
+                <div className="relative h-full bg-gradient-to-br from-white/97 to-white/93 backdrop-blur-xl rounded-[calc(1.5rem-2px)] p-10 shadow-2xl group-hover:shadow-[0_50px_100px_-20px_rgba(197,48,48,0.5)] transition-all duration-500 border border-gradient-to-br from-white/70 to-white/50 overflow-hidden">
+                  {/* Premium Shimmer Effect */}
                   <motion.div
-                    className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent z-20"
+                    className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent z-20"
                     transition={{ duration: 1.5, ease: "easeInOut" }}
                   />
                   
@@ -224,6 +227,7 @@ export default function Testimonials() {
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
+                        loading="lazy"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-br from-[#c53030]/20 to-transparent" />

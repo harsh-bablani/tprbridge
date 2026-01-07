@@ -72,37 +72,30 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative py-24 sm:py-40 bg-gradient-to-b from-white via-[#fef5f5] to-[#f3f6fb] overflow-hidden px-4 sm:px-6">
+    <section className="relative py-24 sm:py-40 bg-gradient-to-b from-white/50 via-[#fef9f8]/80 to-[#f0f5fb]/70 overflow-hidden px-4 sm:px-6">
+      
+      {/* Premium luxury overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+
       {/* Optimized Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
-          animate={{
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ opacity: [0.15, 0.25, 0.15] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#fbd5d5] to-[#c53030]/15 rounded-full mix-blend-multiply filter blur-2xl"
         />
+
         <motion.div
           style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
-          animate={{
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
+          animate={{ opacity: [0.2, 0.3, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-[#c7d2fe] to-[#0b1f33]/15 rounded-full mix-blend-multiply filter blur-2xl"
         />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -111,6 +104,7 @@ export default function Services() {
           transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
           className="text-center mb-20 sm:mb-28"
         >
+
           <motion.div
             className="inline-block mb-8"
             initial={{ scale: 0 }}
@@ -126,7 +120,7 @@ export default function Services() {
               transition={{ duration: 0.8 }}
             />
           </motion.div>
-          
+
           <motion.h2
             className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#0b1f33] mb-8 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
@@ -137,22 +131,14 @@ export default function Services() {
             Our{' '}
             <motion.span
               className="text-transparent bg-clip-text bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#7a0b0b] relative"
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              style={{
-                backgroundSize: "200% 200%",
-              }}
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              style={{ backgroundSize: "200% 200%" }}
             >
               Premium Services
             </motion.span>
           </motion.h2>
-          
+
           <motion.p
             className="text-xl sm:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
             initial={{ opacity: 0, y: 20 }}
@@ -168,6 +154,7 @@ export default function Services() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {services.map((service, index) => {
             const Icon = service.icon;
+
             return (
               <motion.div
                 key={service.title}
@@ -175,49 +162,45 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -12, transition: { duration: 0.3 } }}
+                whileHover={{ y: -15, transition: { duration: 0.3 } }}
                 className="group relative h-full"
               >
-                <div className="relative h-full rounded-3xl p-[2px] bg-gradient-to-br from-[#c53030]/30 via-[#7a0b0b]/20 to-[#0b1f33]/20 transition-all duration-500 group-hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.5)] group-hover:p-[3px]">
-                  {/* Animated border glow */}
+                <div className="relative h-full rounded-3xl p-[2px] bg-gradient-to-br from-[#c53030]/40 via-[#7a0b0b]/30 to-[#0b1f33]/25 transition-all duration-500 group-hover:shadow-[0_40px_80px_-15px_rgba(197,48,48,0.6)] group-hover:p-[3px]">
+
+                  {/* Premium animated border glow */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#7a0b0b] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    style={{
-                      backgroundSize: "200% 200%",
-                    }}
+                    className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
+                    animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    style={{ backgroundSize: "200% 200%" }}
                   />
-                  
-                  <div className="relative h-full bg-white/95 backdrop-blur-xl rounded-[calc(1.5rem-2px)] overflow-hidden shadow-2xl group-hover:shadow-[0_40px_80px_-20px_rgba(197,48,48,0.4)] transition-all duration-500 border border-white/50">
-                    {/* Shimmer Effect */}
+
+                  <div className="relative h-full bg-gradient-to-br from-white/97 to-white/93 backdrop-blur-xl rounded-[calc(1.5rem-2px)] overflow-hidden shadow-2xl group-hover:shadow-[0_50px_100px_-20px_rgba(197,48,48,0.5)] transition-all duration-500 border border-gradient-to-br from-white/70 to-white/50">
+
+                    {/* Premium Shimmer Effect */}
                     <motion.div
-                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent z-20"
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent z-20"
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                     />
-                    
+
                     {/* Image Background */}
                     <div className="relative h-56 overflow-hidden">
                       <motion.img
                         src={service.image}
                         alt={service.title}
+                        loading="lazy"
                         className="w-full h-full object-cover"
                         whileHover={{ scale: 1.2 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                       />
+
                       <motion.div
                         className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
                         initial={{ opacity: 0.75 }}
                         whileHover={{ opacity: 0.85 }}
                         transition={{ duration: 0.3 }}
                       />
-                      
+
                       {/* Floating Icon */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <motion.div
@@ -233,21 +216,14 @@ export default function Services() {
                           }}
                         >
                           <motion.div
-                            animate={{
-                              y: [0, -15, 0],
-                              rotate: [0, 5, -5, 0]
-                            }}
-                            transition={{
-                              duration: 4,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
+                            animate={{ y: [0, -15, 0], rotate: [0, 5, -5, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                           >
                             <Icon size={56} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
                           </motion.div>
                         </motion.div>
                       </div>
-                      
+
                       {/* Decorative Corners */}
                       <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl" />
                       <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl" />
@@ -255,12 +231,12 @@ export default function Services() {
 
                     {/* Content */}
                     <div className="p-8 relative">
-                      {/* Glow Effect */}
+
                       <motion.div
                         className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 blur-3xl -z-10`}
                         transition={{ duration: 0.5 }}
                       />
-                      
+
                       <motion.h3
                         className="text-2xl font-extrabold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-4 relative"
                         initial={{ opacity: 0, x: -20 }}
@@ -269,6 +245,7 @@ export default function Services() {
                         transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
                       >
                         {service.title}
+
                         <motion.div
                           className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#c53030] to-transparent"
                           initial={{ width: 0 }}
@@ -277,7 +254,7 @@ export default function Services() {
                           transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
                         />
                       </motion.h3>
-                      
+
                       <motion.p
                         className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg font-medium"
                         initial={{ opacity: 0, y: 10 }}
@@ -287,33 +264,9 @@ export default function Services() {
                       >
                         {service.description}
                       </motion.p>
-                      
-                      <motion.div
-                        className="flex items-center text-[#c53030] font-bold text-lg group-hover:gap-3 transition-all cursor-pointer"
-                        whileHover={{ x: 5 }}
-                      >
-                        <motion.span
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          Learn more
-                        </motion.span>
-                        <motion.div
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: 0.1
-                          }}
-                        >
-                          <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" strokeWidth={2.5} />
-                        </motion.div>
-                      </motion.div>
+
+                      {/* Learn More removed 👇 (EMPTY SPOT LEFT CLEAN) */}
+
                     </div>
                   </div>
                 </div>
@@ -338,6 +291,7 @@ export default function Services() {
             <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
           </Link>
         </motion.div>
+
       </div>
     </section>
   );

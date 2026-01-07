@@ -111,11 +111,14 @@ export default function Contact() {
   };
 
   return (
-    <section className="relative py-24 sm:py-32 bg-gradient-to-br from-[#fff7f7] via-[#fef2f2] to-[#f3f6fb] overflow-hidden px-4 sm:px-6">
+    <section className="relative py-24 sm:py-32 bg-gradient-to-br from-white/60 via-[#fef9f8]/80 to-[#f0f5fb]/70 overflow-hidden px-4 sm:px-6">
+      {/* Premium luxury overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none" />
+      
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#fcd6d6]/60 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#dbe9ff]/60 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
+        <motion.div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-[#fcd6d6]/40 to-[#c53030]/10 rounded-full mix-blend-multiply filter blur-3xl" animate={{ opacity: [0.4, 0.6, 0.4] }} transition={{ duration: 8, repeat: Infinity }} />
+        <motion.div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#dbe9ff]/40 to-[#0b1f33]/5 rounded-full mix-blend-multiply filter blur-3xl" animate={{ opacity: [0.4, 0.6, 0.4] }} transition={{ duration: 8, repeat: Infinity, delay: 2 }} />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -164,8 +167,8 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.15, type: "spring", stiffness: 100 }}
-                whileHover={{ y: -12, scale: 1.03 }}
-                className="group relative block p-10 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-[0_30px_60px_-15px_rgba(197,48,48,0.4)] transition-all duration-500 border-2 border-[#f2dcdc] hover:border-[#c53030] overflow-hidden"
+                whileHover={{ y: -15, scale: 1.05 }}
+                className="group relative block p-10 bg-gradient-to-br from-white/97 to-white/93 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-[0_40px_80px_-15px_rgba(197,48,48,0.5)] transition-all duration-500 border-2 border-gradient-to-r from-[#f2dcdc] to-white/30 hover:border-[#c53030] overflow-hidden"
               >
                 {/* Animated gradient border */}
                 <motion.div
