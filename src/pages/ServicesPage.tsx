@@ -526,7 +526,6 @@ export default function ServicesPage() {
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {filteredServices.map((service, index) => {
-                const Icon = service.icon;
                 return (
                   <motion.div
                     key={service.id}
@@ -588,34 +587,6 @@ export default function ServicesPage() {
                             whileHover={{ opacity: 0.85 }}
                             transition={{ duration: 0.3 }}
                           />
-                          
-                          {/* Floating Icon Container */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <motion.div
-                              className="p-5 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl"
-                              style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                              whileHover={{ 
-                                scale: 1.1,
-                              }}
-                              transition={{ 
-                                scale: { duration: 0.3, ease: "easeOut" }
-                              }}
-                            >
-                              <motion.div
-                                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                                animate={{ 
-                                  y: [0, -8, 0],
-                                }}
-                                transition={{
-                                  duration: 5,
-                                  repeat: Infinity,
-                                  ease: "easeInOut"
-                                }}
-                              >
-                                <Icon size={56} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
-                              </motion.div>
-                            </motion.div>
-                          </div>
 
                           {/* Decorative Corner Elements */}
                           <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-white/30 rounded-tl-2xl" />
@@ -783,41 +754,6 @@ export default function ServicesPage() {
                     animate={{ opacity: 0.85 }}
                     transition={{ duration: 0.6 }}
                   />
-                  
-                  {/* Optimized Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {(() => {
-                      const Icon = selectedService.icon;
-                      return (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ 
-                            type: "spring",
-                            stiffness: 200,
-                            damping: 20,
-                            delay: 0.2
-                          }}
-                          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                        >
-                          <motion.div
-                            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                            animate={{
-                              y: [0, -10, 0],
-                            }}
-                            transition={{
-                              duration: 6,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
-                            className="p-6 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl"
-                          >
-                            <Icon size={72} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
-                          </motion.div>
-                        </motion.div>
-                      );
-                    })()}
-                  </div>
                   
                   <motion.button
                     onClick={() => setSelectedService(null)}
