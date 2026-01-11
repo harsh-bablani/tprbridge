@@ -322,7 +322,7 @@ const services: Service[] = [
       'Allow us to help you celebrate every special occasion and milestone in style, without having to manage the details from abroad.\n\n' +
       'From birthdays and anniversaries to festivals, or a simple Havan/Pooja, we plan the celebration and coordinate the key elements, including decoration, personalised gifts and experiences, and food, so what remains are beautiful memories to cherish.\n\n' +
       'We also support “Memories & Milestones” requests such as florist services, festival décor and essentials, home salon and spa services, personalised family photo shoots, runner services, and movie/theatre tickets.\n\n' +
-      'Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut—arranged with care.',
+      'Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut arranged with care.',
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
@@ -876,78 +876,9 @@ export default function ServicesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                   >
-                    {selectedService.fullDescription.split('\n\n').map((section, index) => {
-                      const isMainDescription = index === 0;
-                      const hasColon = section.includes(':');
-
-                      if (isMainDescription) {
-                        return (
-                          <motion.p
-                            key={index}
-                            className="text-xl text-slate-600 leading-relaxed mb-8"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4 + index * 0.1 }}
-                          >
-                            {section}
-                          </motion.p>
-                        );
-                      }
-
-                      if (hasColon) {
-                        const [heading, ...contentParts] = section.split(':');
-                        const content = contentParts.join(':').trim();
-
-                        return (
-                          <motion.div
-                            key={index}
-                            className="mb-8"
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.4 + index * 0.1 }}
-                          >
-                            <h4 className="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-3">
-                              <motion.div
-                                className="h-1 w-8 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
-                                initial={{ width: 0 }}
-                                animate={{ width: 32 }}
-                                transition={{ delay: 0.5 + index * 0.1 }}
-                              />
-                              {heading}
-                            </h4>
-                            <div className="text-lg text-slate-600 leading-relaxed pl-4 border-l-4 border-[#f2dcdc] bg-gradient-to-r from-[#fef9f8]/50 to-transparent p-6 rounded-r-lg">
-                              {content.split(', ').map((item, itemIndex) => (
-                                <motion.span
-                                  key={itemIndex}
-                                  className="inline-block mr-2 mb-2"
-                                  initial={{ opacity: 0, scale: 0.8 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  transition={{ delay: 0.6 + index * 0.1 + itemIndex * 0.05 }}
-                                >
-                                  <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 rounded-full text-sm font-medium shadow-sm border border-[#f2dcdc]">
-                                    <span className="w-2 h-2 bg-[#c53030] rounded-full"></span>
-                                    {item.trim()}
-                                  </span>
-                                </motion.span>
-                              ))}
-                            </div>
-                          </motion.div>
-                        );
-                      }
-
-                      // Fallback for sections without colon
-                      return (
-                        <motion.p
-                          key={index}
-                          className="text-lg text-slate-600 leading-relaxed mb-6"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.4 + index * 0.1 }}
-                        >
-                          {section}
-                        </motion.p>
-                      );
-                    })}
+                    <div className="text-lg text-slate-600 leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
+                      {selectedService.fullDescription}
+                    </div>
                   </motion.div>
 
                   {/* Our Packages Button */}
