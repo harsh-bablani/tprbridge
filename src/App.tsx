@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import Hero from './components/Hero'
 import About from './components/About'
+import VideoSection from './components/VideoSection'
 import Services from './components/Services'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -41,6 +42,7 @@ function App() {
               <main>
                 <Hero />
                 <About />
+                <VideoSection />
                 <Services />
                 <Contact />
               </main>
