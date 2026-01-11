@@ -13,7 +13,7 @@ import {
 
 const services = [
   {
-    title: 'Property Management',
+    title: 'Property Management for NRIs',
     description:
       'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
     icon: Home,
@@ -21,7 +21,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
   },
   {
-    title: 'Long and Short Stay',
+    title: 'Long and Short Stay Service Apartments',
     description:
       'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
     icon: BedDouble,
@@ -29,7 +29,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
   },
   {
-    title: 'Elderly Care',
+    title: 'Elder Care',
     description:
       'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
     icon: HeartPulse,
@@ -37,7 +37,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=800&q=80',
   },
   {
-    title: 'Investments and Insurance',
+    title: 'Investments & Insurance',
     description:
       'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
     icon: PiggyBank,
@@ -45,23 +45,23 @@ const services = [
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&q=80',
   },
   {
-    title: 'Doctor & Hospital Assistance',
+    title: 'Legal & Documentation',
     description:
-      'Priority appointments, hospital coordination, discharge support, and second opinions handled end-to-end.',
-    icon: Stethoscope,
+      'Fast-track processing for certificates, legal paperwork, and compliance documentation with expert coordination.',
+    icon: FileText,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',
   },
   {
-    title: 'Government Documentation',
+    title: 'Assistance Services with Doctor & Hospitalisation',
     description:
-      'Fast-track processing for IDs, certificates, attestations, and compliance paperwork across departments.',
-    icon: FileText,
+      'Priority medical appointments, hospital coordination, and healthcare support handled end-to-end.',
+    icon: Stethoscope,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80',
   },
   {
-    title: 'Events & Gathering Services',
+    title: 'Small Events & Gathering Services',
     description:
       'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
     icon: PartyPopper,
@@ -153,8 +153,6 @@ export default function Services() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {services.map((service, index) => {
-            const Icon = service.icon;
-
             return (
               <motion.div
                 key={service.title}
@@ -200,29 +198,6 @@ export default function Services() {
                         whileHover={{ opacity: 0.85 }}
                         transition={{ duration: 0.3 }}
                       />
-
-                      {/* Floating Icon */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                          className="p-5 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 shadow-2xl"
-                          whileHover={{
-                            scale: 1.2,
-                            rotate: [0, -10, 10, -10, 0],
-                            boxShadow: "0 25px 50px rgba(255,255,255,0.3)"
-                          }}
-                          transition={{
-                            scale: { duration: 0.3 },
-                            rotate: { duration: 0.8 }
-                          }}
-                        >
-                          <motion.div
-                            animate={{ y: [0, -15, 0], rotate: [0, 5, -5, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                          >
-                            <Icon size={56} className="text-white drop-shadow-2xl" strokeWidth={1.5} />
-                          </motion.div>
-                        </motion.div>
-                      </div>
 
                       {/* Decorative Corners */}
                       <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl" />

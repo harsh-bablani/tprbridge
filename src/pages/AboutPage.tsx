@@ -415,23 +415,29 @@ export default function AboutPage() {
                 }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
                 whileHover={{
-                  y: -12,
+                  y: -8,
                   scale: 1.02,
-                  boxShadow: '0 20px 40px -12px rgba(0, 0, 0, 0.15)',
+                  boxShadow: '0 20px 40px -12px rgba(197, 48, 48, 0.15)',
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-[#f2dcdc]"
+                className="group relative h-full"
               >
-                <motion.div
-                  className="h-1 w-12 bg-[#c53030] mb-4"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  style={{ originX: 0 }}
-                />
-                <h3 className="text-xl font-bold text-[#0b1f33] mb-2">{service.title}</h3>
-                <p className="text-slate-600">{service.description}</p>
+                <div className="relative h-full rounded-2xl p-[1px] bg-gradient-to-br from-[#c53030]/30 via-[#7a0b0b]/20 to-[#0b1f33]/20 transition-all duration-500 group-hover:shadow-[0_30px_60px_-12px_rgba(197,48,48,0.4)] group-hover:p-[2px]">
+                  <div className="relative h-full bg-gradient-to-br from-white/98 to-white/95 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-500 border border-white/70">
+                    <div className="p-8 relative">
+                      <motion.div
+                        className="h-1 w-12 bg-gradient-to-r from-[#c53030] to-[#7a0b0b]"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        style={{ originX: 0 }}
+                      />
+                      <h3 className="text-xl font-bold text-[#0b1f33] mb-3 mt-3 group-hover:text-[#c53030] transition-colors">{service.title}</h3>
+                      <p className="text-slate-600 leading-relaxed text-base">{service.description}</p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>

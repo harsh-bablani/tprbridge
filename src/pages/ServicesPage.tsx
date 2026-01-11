@@ -13,7 +13,6 @@ import {
   FileText,
   PartyPopper,
   X,
-  Check,
   ArrowRight,
   Search,
   Download,
@@ -31,7 +30,7 @@ interface Service {
   gradient: string;
   image: string;
   images: string[];
-  features: string[];
+  features?: string[];
   duration: string;
   packages?: {
     name: string;
@@ -41,176 +40,205 @@ interface Service {
 
 const services: Service[] = [
   {
-    id: 'property-management',
-    title: 'Property Management',
-    shortDescription: 'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
-    fullDescription: 'Our comprehensive property management services ensure your real estate investments in India are well-maintained, profitable, and hassle-free. We handle everything from tenant screening and rent collection to property maintenance and legal compliance.',
-    icon: Home,
-    gradient: 'from-[#c53030] to-[#7a0b0b]',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
-      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80',
-    ],
-    features: [
-      '24/7 Property Monitoring & Maintenance',
-      'Tenant Screening & Management',
-      'Rent Collection & Financial Reporting',
-      'Legal Compliance & Documentation',
-      'Regular Property Inspections',
-      'Emergency Response Services',
-      'Vendor Management & Coordination',
-      'Property Valuation & Market Analysis',
-    ],
-    duration: 'Ongoing',
-  },
-  {
-    id: 'long-short-stay',
-    title: 'Long and Short Stay',
-    shortDescription: 'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
-    fullDescription: 'Whether you need a place for a few days or several months, we provide carefully selected homes and serviced apartments that feel like home. Our accommodations come with housekeeping, security, and concierge support to ensure your comfort and peace of mind during your stay in India.',
-    icon: BedDouble,
-    gradient: 'from-[#7a0b0b] to-[#0b1f33]',
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
-      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80',
-    ],
-    features: [
-      'Fully Furnished Accommodations',
-      'Housekeeping & Maintenance Services',
-      '24/7 Security & Concierge Support',
-      'Flexible Stay Duration Options',
-      'Prime Location Properties',
-      'Utilities & Amenities Included',
-      'Airport Transfer Services',
-      'Local Area Orientation & Support',
-    ],
-    duration: 'Flexible',
-  },
-  {
-    id: 'elderly-care',
-    title: 'Elderly Care',
-    shortDescription: 'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
-    fullDescription: 'We provide compassionate and professional care for your elderly family members in India. Our personalized care plans include home assistance, wellness monitoring, medical coordination, and emotional support to ensure your loved ones receive the attention and care they deserve.',
-    icon: HeartPulse,
-    gradient: 'from-[#e53e3e] to-[#b91c1c]',
-    image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
-      'https://images.unsplash.com/photo-1576091160550-112173f31c77?w=1200&q=80',
-      'https://images.unsplash.com/photo-1492635592522-04a01f0d6e6a?w=1200&q=80',
-    ],
-    features: [
-      'Personalized Care Plans',
-      'Home Assistance & Daily Support',
-      'Health & Wellness Monitoring',
-      'Medical Appointment Coordination',
-      'Medication Management',
-      'Companionship & Emotional Support',
-      'Emergency Response Services',
-      'Regular Health Updates & Reports',
-    ],
-    duration: 'Ongoing',
-    packages: [
-      {
-        name: 'Soul',
-        services: {
-          'Dedicated Personal Manager': 'Assistant Manager',
-          'Visits by the Care Manager for a personal update': 'Monthly',
-          'Vital Check-ups to be done by Trained Staff': 'Monthly',
-          'Organizing / collecting samples and health lab visits': 'Twice a Year',
-          'Assistance with Travel Services': 'Monthly',
-          'Assistance to home repair and Maintenance': 'Twice a Year',
-          'Health and Basic updates to Next of Kin / Guardian': 'Monthly',
-          'Assistance in all Tipping Bridge Services': 'Monthly',
-          'Inventory listing & ordering groceries / consumables for home': '✖',
-          'Organizing Annual Health Check-ups': '✖',
-          'Maintenance of health records on online storage accessible to Kin / Guardian': '✖',
-          'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✖',
-          'Social Engagement & Wellness Camps for Mental Health': '✖',
-          'Technology Support & Troubleshooting': '✖',
-          'Complimentary Runner Service': '✖',
-          'Home Delivery of Medicines': '✖',
-          'Organizing Pill Box': '✖',
-          'Tele-Consulting with Empanelled Physicians / Specialists': '✖',
-          'Assisting Visits to Doctors or Hospitals': '✖',
-          'Technological Support & Tutorials on Apps & Social Media': '✖',
-          'Assistance for Bank / Pension Office Visits': '✖',
-          'Police Verification of Housemaids / Drivers': '✖',
-          'Assistance in Car Repairs & Maintenance': '✖',
-          'Assistance in Utility Bill Payments & Dispute Resolution': '✖',
-          'Deep Cleaning of Homes for Proper Hygiene': '✖',
-        },
+  id: 'property-management',
+  title: 'Property Management for NRIs',
+  shortDescription:
+    'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.',
+  fullDescription:
+    'Property Management for NRIs\n\n' +
+
+    'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.\n\n' +
+
+    'Tenant & Tenancy: Listing and marketing, enquiries and viewings, tenant onboarding, and ongoing tenancy coordination.\n\n' +
+
+    'Rent & Deposit: Rent collection support, deposit tracking, and clear visibility of paid, due, and pending amounts.\n\n' +
+
+    'Keys & Access: Secure key custody and strictly authorised access for inspections, maintenance, and handovers.\n\n' +
+
+    'Maintenance & Repairs: Preventive upkeep and repairs coordinated with trusted vendors, with documented scope and cost transparency.\n\n' +
+
+    'Possession & Handover: Support for move-ins, tenant transitions, and possession formalities for newly purchased or recently vacated homes.\n\n' +
+
+    'One dependable point of contact. Professional reporting. Reliable execution.',
+  icon: Home,
+  gradient: 'from-[#c53030] to-[#7a0b0b]',
+  image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
+  images: [
+    'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
+    'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
+    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80',
+  ],
+
+  duration: 'Ongoing',
+},
+
+{
+  id: 'elderly-care',
+  title: 'Elder Care',
+  shortDescription:
+    'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination.',
+  fullDescription:
+    'Elder Care\n\n' +
+
+    'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination. Tipping Bridge Elder Care brings structured assistance across Health & Fitness, Filing & Forms, Technology & Troubleshooting, Home Security & Maintenance, and Memories & Milestones, so support continues even whilst you are miles away. \n\n' +
+
+    'Health & Fitness: Our healthcare team is trained to handle emergency situations, and can arrange tele-consultations, home doctor visits, sample home collections for lab tests, nurse/medical attendant services, post-surgical support, medicine delivery, medical equipment rentals, physiotherapy, medical-record maintenance, and ambulance/hospitalisation assistance. \n\n' +
+
+    'Filing & Forms: Support for income tax return filing, banking assistance, legal documentation help, and Aadhaar/Voter ID and senior citizen card assistance. \n\n' +
+
+    'Technology & Troubleshooting: Zoom/Google Hangouts support, social media setup, popular apps (Zomato/Uber/Netflix), hardware repair support, and personalised tutorials to bridge the digital gap. \n\n' +
+
+    'Home Security & Maintenance: Plumber/electrician/carpenter support, whitewash, appliance repairs, pest control, annual maintenance contracts, CCTV/video doorbell installation, and police verification of domestic staff, with supervision where needed. \n\n' +
+
+    'Memories & Milestones: Birthdays, anniversaries and festivals, gifts, décor, food, florist and pooja services, because emotional wellbeing matters too.',
+  icon: HeartPulse,
+  gradient: 'from-[#e53e3e] to-[#b91c1c]',
+  image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
+  images: [
+    'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
+    'https://images.unsplash.com/photo-1576091160550-112173f31c77?w=1200&q=80',
+    'https://images.unsplash.com/photo-1492635592522-04a01f0d6e6a?w=1200&q=80',
+  ],
+
+  duration: 'Ongoing',
+  packages: [
+    {
+      name: 'Soul',
+      services: {
+        'Dedicated Personal Manager': 'Assistant Manager',
+        'Visits by the Care Manager for a personal update': 'Monthly',
+        'Vital Check-ups to be done by Trained Staff': 'Monthly',
+        'Organizing / collecting samples and health lab visits': 'Twice a Year',
+        'Assistance with Travel Services': 'Monthly',
+        'Assistance to home repair and Maintenance': 'Twice a Year',
+        'Health and Basic updates to Next of Kin / Guardian': 'Monthly',
+        'Assistance in all Tipping Bridge Services': 'Monthly',
+        'Inventory listing & ordering groceries / consumables for home': '✖',
+        'Organizing Annual Health Check-ups': '✖',
+        'Maintenance of health records on online storage accessible to Kin / Guardian': '✖',
+        'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✖',
+        'Social Engagement & Wellness Camps for Mental Health': '✖',
+        'Technology Support & Troubleshooting': '✖',
+        'Complimentary Runner Service': '✖',
+        'Home Delivery of Medicines': '✖',
+        'Organizing Pill Box': '✖',
+        'Tele-Consulting with Empanelled Physicians / Specialists': '✖',
+        'Assisting Visits to Doctors or Hospitals': '✖',
+        'Technological Support & Tutorials on Apps & Social Media': '✖',
+        'Assistance for Bank / Pension Office Visits': '✖',
+        'Police Verification of Housemaids / Drivers': '✖',
+        'Assistance in Car Repairs & Maintenance': '✖',
+        'Assistance in Utility Bill Payments & Dispute Resolution': '✖',
+        'Deep Cleaning of Homes for Proper Hygiene': '✖',
       },
-      {
-        name: 'Grandeur',
-        services: {
-          'Dedicated Personal Manager': 'Care Manager',
-          'Visits by the Care Manager for a personal update': 'Bi-Monthly',
-          'Vital Check-ups to be done by Trained Staff': 'Bi-Monthly',
-          'Organizing / collecting samples and health lab visits': 'Quarterly',
-          'Assistance with Travel Services': 'Bi-Monthly',
-          'Assistance to home repair and Maintenance': 'Monthly',
-          'Health and Basic updates to Next of Kin / Guardian': 'Weekly',
-          'Assistance in all Tipping Bridge Services': 'Bi-Monthly',
-          'Inventory listing & ordering groceries / consumables for home': 'Bi-Monthly',
-          'Organizing Annual Health Check-ups': 'Yearly',
-          'Maintenance of health records on online storage accessible to Kin / Guardian': '✖',
-          'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✔',
-          'Social Engagement & Wellness Camps for Mental Health': '✔',
-          'Technology Support & Troubleshooting': '✖',
-          'Complimentary Runner Service': '✔',
-          'Home Delivery of Medicines': '✔',
-          'Organizing Pill Box': '✖',
-          'Tele-Consulting with Empanelled Physicians / Specialists': '✖',
-          'Assisting Visits to Doctors or Hospitals': '✖',
-          'Technological Support & Tutorials on Apps & Social Media': '✖',
-          'Assistance for Bank / Pension Office Visits': '✖',
-          'Police Verification of Housemaids / Drivers': '✖',
-          'Assistance in Car Repairs & Maintenance': '✖',
-          'Assistance in Utility Bill Payments & Dispute Resolution': '✖',
-          'Deep Cleaning of Homes for Proper Hygiene': '✖',
-        },
+    },
+    {
+      name: 'Grandeur',
+      services: {
+        'Dedicated Personal Manager': 'Care Manager',
+        'Visits by the Care Manager for a personal update': 'Bi-Monthly',
+        'Vital Check-ups to be done by Trained Staff': 'Bi-Monthly',
+        'Organizing / collecting samples and health lab visits': 'Quarterly',
+        'Assistance with Travel Services': 'Bi-Monthly',
+        'Assistance to home repair and Maintenance': 'Monthly',
+        'Health and Basic updates to Next of Kin / Guardian': 'Weekly',
+        'Assistance in all Tipping Bridge Services': 'Bi-Monthly',
+        'Inventory listing & ordering groceries / consumables for home': 'Bi-Monthly',
+        'Organizing Annual Health Check-ups': 'Yearly',
+        'Maintenance of health records on online storage accessible to Kin / Guardian': '✖',
+        'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✔',
+        'Social Engagement & Wellness Camps for Mental Health': '✔',
+        'Technology Support & Troubleshooting': '✖',
+        'Complimentary Runner Service': '✔',
+        'Home Delivery of Medicines': '✔',
+        'Organizing Pill Box': '✖',
+        'Tele-Consulting with Empanelled Physicians / Specialists': '✖',
+        'Assisting Visits to Doctors or Hospitals': '✖',
+        'Technological Support & Tutorials on Apps & Social Media': '✖',
+        'Assistance for Bank / Pension Office Visits': '✖',
+        'Police Verification of Housemaids / Drivers': '✖',
+        'Assistance in Car Repairs & Maintenance': '✖',
+        'Assistance in Utility Bill Payments & Dispute Resolution': '✖',
+        'Deep Cleaning of Homes for Proper Hygiene': '✖',
       },
-      {
-        name: 'Maharaja',
-        services: {
-          'Dedicated Personal Manager': 'Care Manager',
-          'Visits by the Care Manager for a personal update': 'Weekly',
-          'Vital Check-ups to be done by Trained Staff': 'Every Week',
-          'Organizing / collecting samples and health lab visits': 'Monthly',
-          'Assistance with Travel Services': 'Every time whenever required',
-          'Assistance to home repair and Maintenance': 'Whenever required even multiple times',
-          'Health and Basic updates to Next of Kin / Guardian': 'Bi-Weekly',
-          'Assistance in all Tipping Bridge Services': 'Weekly',
-          'Inventory listing & ordering groceries / consumables for home': 'Weekly',
-          'Organizing Annual Health Check-ups': 'Once a Quarter',
-          'Maintenance of health records on online storage accessible to Kin / Guardian': '✔',
-          'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✔',
-          'Social Engagement & Wellness Camps for Mental Health': '✔',
-          'Technology Support & Troubleshooting': 'Monthly',
-          'Complimentary Runner Service': '✔',
-          'Home Delivery of Medicines': '✔',
-          'Organizing Pill Box': 'Monthly',
-          'Tele-Consulting with Empanelled Physicians / Specialists': 'Monthly / Whenever Required',
-          'Assisting Visits to Doctors or Hospitals': 'Whenever required even multiple times',
-          'Technological Support & Tutorials on Apps & Social Media': 'Monthly',
-          'Assistance for Bank / Pension Office Visits': 'Monthly',
-          'Police Verification of Housemaids / Drivers': '✔',
-          'Assistance in Car Repairs & Maintenance': 'Quarterly / Half-Yearly / Yearly',
-          'Assistance in Utility Bill Payments & Dispute Resolution': '✔',
-          'Deep Cleaning of Homes for Proper Hygiene': 'Half-Yearly',
-        },
+    },
+    {
+      name: 'Maharaja',
+      services: {
+        'Dedicated Personal Manager': 'Care Manager',
+        'Visits by the Care Manager for a personal update': 'Weekly',
+        'Vital Check-ups to be done by Trained Staff': 'Every Week',
+        'Organizing / collecting samples and health lab visits': 'Monthly',
+        'Assistance with Travel Services': 'Every time whenever required',
+        'Assistance to home repair and Maintenance': 'Whenever required even multiple times',
+        'Health and Basic updates to Next of Kin / Guardian': 'Bi-Weekly',
+        'Assistance in all Tipping Bridge Services': 'Weekly',
+        'Inventory listing & ordering groceries / consumables for home': 'Weekly',
+        'Organizing Annual Health Check-ups': 'Once a Quarter',
+        'Maintenance of health records on online storage accessible to Kin / Guardian': '✔',
+        'Medical Emergency Assistance (Ambulance & Hospitalisation Support)': '✔',
+        'Social Engagement & Wellness Camps for Mental Health': '✔',
+        'Technology Support & Troubleshooting': 'Monthly',
+        'Complimentary Runner Service': '✔',
+        'Home Delivery of Medicines': '✔',
+        'Organizing Pill Box': 'Monthly',
+        'Tele-Consulting with Empanelled Physicians / Specialists': 'Monthly / Whenever Required',
+        'Assisting Visits to Doctors or Hospitals': 'Whenever required even multiple times',
+        'Technological Support & Tutorials on Apps & Social Media': 'Monthly',
+        'Assistance for Bank / Pension Office Visits': 'Monthly',
+        'Police Verification of Housemaids / Drivers': '✔',
+        'Assistance in Car Repairs & Maintenance': 'Quarterly / Half-Yearly / Yearly',
+        'Assistance in Utility Bill Payments & Dispute Resolution': '✔',
+        'Deep Cleaning of Homes for Proper Hygiene': 'Half-Yearly',
       },
-    ],
-  },
+    },
+  ],
+},
+
+{
+  id: 'long-short-stay',
+  title: 'Long and Short Stay Service Apartments',
+  shortDescription:
+    'Returning to India for a family reunion, executive travel, a friends’ get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays.',
+  fullDescription:
+    'Long and Short Stay Service Apartments\n\n' +
+
+    'Returning to India for a family reunion, executive travel, a friends\' get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays.\n\n' +
+
+    'If you feel homesick when you travel or you\'re back in India seasonally, our apartment homes are built to feel like a second home, neatly furnished so you\'re not burdened with carrying essentials. From food to furniture and other amenities, our carefully selected properties help you start each day fresh, focused, and settled.\n\n' +
+
+    'Expect spacious rooms, basic Wi-Fi support, laundry and fitness rooms, and additional kitchen items, close to grocery, shopping, entertainment, and pharmacies, so you get hotel-like convenience without sacrificing home-like comfort.\n\n' +
+
+    'Choose flexible move-in and move-out dates, with simple monthly pricing, special rates/discounts for longer stays, and a single monthly payment. Book with confidence: properties are reviewed by our trusted guest community, and you receive 24/7 support during your stay.\n\n' +
+
+    'Need to work while you\'re here? Find work-friendly spaces with high-speed Wi-Fi and dedicated working areas, ideal for staffing, displacement, and relocation.',
+  icon: BedDouble,
+  gradient: 'from-[#7a0b0b] to-[#0b1f33]',
+  image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
+  images: [
+    'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
+    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80',
+  ],
+
+  duration: 'Flexible',
+},
+
+
   {
     id: 'investments-insurance',
-    title: 'Investments and Insurance',
-    shortDescription: 'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
-    fullDescription: 'Make informed financial decisions with our expert investment and insurance advisory services. We help NRIs build secure portfolios, choose the right insurance policies, and navigate India\'s financial landscape with confidence. Our services are tailored to your risk profile and long-term goals.',
+    title: 'Investments & Insurance',
+    shortDescription:
+      'Manage India-side financial matters with clarity, even when you live overseas.',
+    fullDescription:
+      'Investments & Insurance \n\n' +
+
+      'Manage India-side financial matters with clarity, even when you live overseas. Tipping Bridge supports NRIs through Investment & Wealth Management across Insurance, Mutual Funds and Real Estate, helping you plan and execute from anywhere.\n\n' +
+
+      'Insurance: Support for Life/Term, Motor/Auto, Health and Home insurance. Insurance solicitation in India is governed by IRDA. Our Insurance Specialist provides competitive rates for term plans and motor insurance specially negotiated for NRI clients. Motor cover includes comprehensive car insurance, third-party liability and personal accident cover. For health insurance, we guide you to a tailor-made plan based on your requirements and pass on benefits from negotiated rates. For home insurance, we guide you to policies that are cost competitive on premium pricing and strong on consumer benefits.\n\n' +
+
+      'Mutual Funds & Investing: Unbiased recommendations focused on long-term wealth creation, with execution support across Direct Mutual Funds, Stocks, ETFs, Bonds and Savings. Our wealth advisory helps create a robust plan aligned to your risk-return needs, stay disciplined during volatile markets, and diversify across assets.\n\n' +
+
+      'Real Estate: Guidance for NRI clients with best/transparent/unbiased deals, and support on formalities and negotiations to acquire your chosen property.',
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=80',
@@ -219,48 +247,26 @@ const services: Service[] = [
       'https://images.unsplash.com/photo-1633356122544-f134ef2944f0?w=1200&q=80',
       'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1200&q=80',
     ],
-    features: [
-      'Portfolio Planning & Management',
-      'Investment Advisory Services',
-      'Insurance Policy Selection',
-      'Risk Assessment & Analysis',
-      'Tax-Efficient Investment Strategies',
-      'Regular Portfolio Reviews',
-      'NRI-Specific Financial Planning',
-      'Compliance & Documentation Support',
-    ],
+
     duration: 'Ongoing',
   },
-  {
-    id: 'doctor-hospital-assistance',
-    title: 'Doctor & Hospital Assistance',
-    shortDescription: 'Priority appointments, hospital coordination, discharge support, and second opinions handled end-to-end.',
-    fullDescription: 'Ensure your family receives the best medical care in India with our comprehensive healthcare assistance. We coordinate priority doctor appointments, manage hospital admissions, facilitate second opinions, and provide complete support throughout the medical journey.',
-    icon: Stethoscope,
-    gradient: 'from-[#d33b3b] to-[#7a0b0b]',
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
-      'https://images.unsplash.com/photo-1576091160388-112836e42a98?w=1200&q=80',
-      'https://images.unsplash.com/photo-1631217314831-c6227db76b6e?w=1200&q=80',
-    ],
-    features: [
-      'Priority Doctor Appointments',
-      'Hospital Admission Coordination',
-      'Medical Record Management',
-      'Second Opinion Consultations',
-      'Discharge & Follow-up Support',
-      'Pharmacy & Prescription Services',
-      'Health Insurance Claim Processing',
-      'Emergency Medical Response',
-    ],
-    duration: 'As needed',
-  },
+
   {
     id: 'government-documentation',
-    title: 'Government Documentation',
-    shortDescription: 'Fast-track processing for IDs, certificates, attestations, and compliance paperwork across departments.',
-    fullDescription: 'Navigate India\'s complex documentation requirements with ease. Our expert team handles all government paperwork, certificates, and documentation, ensuring accuracy and compliance. From birth certificates to property deeds, we manage it all with fast-track processing.',
+    title: 'Legal & Documentation',
+    shortDescription:
+      'When you’re overseas, even routine paperwork in India can become time-consuming and stressful.',
+    fullDescription:
+      'When you’re overseas, even routine paperwork in India can become time-consuming and stressful. With just a phone call, Tipping Bridge can connect you to a dedicated team of legal experts to help address your family’s tax and legal documentation needs in India, so work moves forward in your absence.\n\n' +
+      'We support documentation and facilitation across:\n' +
+      '• Certificates: birth certificate, marriage certificate, death certificate, and changes/non-availability of birth certificate.\n' +
+      '• Education & references: degree certificate, marksheet/transcription, syllabus copy, and reference letters.\n' +
+      '• Identity & filings: PAN card application/submission, document procurement, and filing of IT returns.\n' +
+      '• Tax & compliance support: attending to IT notice / tax authority visits, and financial taxation and legal advice.\n' +
+      '• Claims, loans & legal guidance: life/general insurance and mediclaim claim follow-ups, loan syndicate follow-up, and arranging lawyers’ opinions and legal matter expert advice.\n' +
+      '• Court-related formalities: legalisation, notarisation and attestation of documents, including court visits.\n' +
+      '• Hidden Wealth Facilitation.\n\n' +
+      'A single professional point of coordination, built for NRIs who want reliable execution in India without repeated follow-ups.',
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
@@ -269,23 +275,54 @@ const services: Service[] = [
       'https://images.unsplash.com/photo-1507842217343-583f20270319?w=1200&q=80',
       'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80',
     ],
-    features: [
-      'Birth, Marriage & Death Certificates',
-      'Passport & Visa Documentation',
-      'Property Deeds & Title Documents',
-      'Educational Certificates & Transcripts',
-      'Power of Attorney Documents',
-      'Legal Notarization Services',
-      'Government Form Filing',
-      'Document Translation & Apostille',
-    ],
+
     duration: '7-30 days',
   },
+
+  {
+    id: 'doctor-hospital-assistance',
+    title: 'Assistance Services with Doctor & Hospitalisation',
+    shortDescription:
+      'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent.',
+    fullDescription:
+      'Assistance Services with Doctor & Hospitalisation \n\n' +
+
+      'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent. \n\n' +
+
+      'Tipping Bridge supports NRIs with end-to-end assistance for doctor appointments and hospitalisation so your family receives timely care, at home and at the hospital, with clear coordination. \n\n' +
+
+      'We organise tele-consultations with qualified and experienced doctors and can ensure you are on the same call with your parents and the doctor/specialist, so decisions are informed and connected. \n\n' +
+
+      'We also coordinate home visits by doctors, sample home collection for lab tests, and post-surgical support through nurses and medical attendants. \n\n' +
+
+      'When ongoing support is required, we can help with home delivery of medicines, rental of medical equipment, medical supplies, physiotherapy coordination, and maintenance of medical records. \n\n' +
+
+      'For nutrition and lifestyle, support can include a dietician, fitness coaches, and health menu/food delivery aligned to the diet plan. \n\n' +
+
+      'In emergencies, we provide ambulance assistance and emergency support for hospitalisation, along with medicine routine planning and reminder schedules.',
+    icon: Stethoscope,
+    gradient: 'from-[#d33b3b] to-[#7a0b0b]',
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
+      'https://images.unsplash.com/photo-1576091160388-112836e42a98?w=1200&q=80',
+      'https://images.unsplash.com/photo-1631217314831-c6227db76b6e?w=1200&q=80',
+    ],
+
+    duration: 'As needed',
+  },
+
   {
     id: 'events-gathering',
-    title: 'Events & Gathering Services',
-    shortDescription: 'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
-    fullDescription: 'Create memorable moments with our comprehensive event planning services. Whether it\'s a wedding, religious ceremony, birthday celebration, or community gathering, we handle everything from venue selection and decoration to catering and coordination, ensuring your event is perfect.',
+    title: 'Small Events & Gathering Services',
+    shortDescription:
+      'Being overseas shouldn’t mean missing the moments that matter at home.',
+    fullDescription:
+      'Being overseas shouldn’t mean missing the moments that matter at home. Tipping Bridge helps NRIs create and coordinate small celebrations in India so your family can enjoy the occasion, while we take on the organisation and responsibility.\n\n' +
+      'Allow us to help you celebrate every special occasion and milestone in style, without having to manage the details from abroad.\n\n' +
+      'From birthdays and anniversaries to festivals, or a simple Havan/Pooja, we plan the celebration and coordinate the key elements, including decoration, personalised gifts and experiences, and food, so what remains are beautiful memories to cherish.\n\n' +
+      'We also support “Memories & Milestones” requests such as florist services, festival décor and essentials, home salon and spa services, personalised family photo shoots, runner services, and movie/theatre tickets.\n\n' +
+      'Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut—arranged with care.',
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
@@ -294,23 +331,16 @@ const services: Service[] = [
       'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&q=80',
       'https://images.unsplash.com/photo-1519225421421-9c63335b43a8?w=1200&q=80',
     ],
-    features: [
-      'Event Planning & Coordination',
-      'Venue Selection & Booking',
-      'Decoration & Theme Design',
-      'Catering Services',
-      'Photography & Videography',
-      'Entertainment Arrangements',
-      'Guest Management & Invitations',
-      'Religious Ceremony Coordination',
-    ],
+
     duration: 'As per event',
   },
 ];
 
+
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showPackages, setShowPackages] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -635,6 +665,7 @@ export default function ServicesPage() {
                             onClick={() => {
                               setSelectedService(service);
                               setCurrentImageIndex(0);
+                              setShowPackages(false);
                             }}
                             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
                             whileHover={{ scale: 1.05 }}
@@ -838,68 +869,109 @@ export default function ServicesPage() {
                     {selectedService.title}
                   </motion.h2>
                   
-                  <motion.p
-                    className="text-xl text-slate-600 mb-10 leading-relaxed"
+                  {/* Enhanced Description Section */}
+                  <motion.div
+                    className="mb-10"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                   >
-                    {selectedService.fullDescription}
-                  </motion.p>
+                    {selectedService.fullDescription.split('\n\n').map((section, index) => {
+                      const isMainDescription = index === 0;
+                      const hasColon = section.includes(':');
 
-                  {/* Features with Stagger Animation */}
-                  <div className="mb-10">
-                    <motion.h3
-                      className="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                      <motion.div
-                        className="h-1 w-16 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: 64 }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
-                      />
-                      What's Included
-                    </motion.h3>
-                    
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {selectedService.features.map((feature, index) => (
-                        <motion.div
-                          key={feature}
-                          className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-white to-[#fef2f2] border border-[#f2dcdc] hover:border-[#c53030] hover:shadow-lg transition-all group/feature"
-                          initial={{ opacity: 0, x: -30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ 
-                            duration: 0.5, 
-                            delay: 0.5 + index * 0.05,
-                            type: "spring",
-                            stiffness: 100
-                          }}
-                          whileHover={{ 
-                            x: 5,
-                            scale: 1.02,
-                            transition: { duration: 0.2 }
-                          }}
-                        >
-                          <motion.div
-                            className="p-2 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-lg shadow-lg"
-                            whileHover={{ rotate: 360, scale: 1.1 }}
-                            transition={{ duration: 0.5 }}
+                      if (isMainDescription) {
+                        return (
+                          <motion.p
+                            key={index}
+                            className="text-xl text-slate-600 leading-relaxed mb-8"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4 + index * 0.1 }}
                           >
-                            <Check className="text-white flex-shrink-0" size={20} />
+                            {section}
+                          </motion.p>
+                        );
+                      }
+
+                      if (hasColon) {
+                        const [heading, ...contentParts] = section.split(':');
+                        const content = contentParts.join(':').trim();
+
+                        return (
+                          <motion.div
+                            key={index}
+                            className="mb-8"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.4 + index * 0.1 }}
+                          >
+                            <h4 className="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-3">
+                              <motion.div
+                                className="h-1 w-8 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
+                                initial={{ width: 0 }}
+                                animate={{ width: 32 }}
+                                transition={{ delay: 0.5 + index * 0.1 }}
+                              />
+                              {heading}
+                            </h4>
+                            <div className="text-lg text-slate-600 leading-relaxed pl-4 border-l-4 border-[#f2dcdc] bg-gradient-to-r from-[#fef9f8]/50 to-transparent p-6 rounded-r-lg">
+                              {content.split(', ').map((item, itemIndex) => (
+                                <motion.span
+                                  key={itemIndex}
+                                  className="inline-block mr-2 mb-2"
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: 0.6 + index * 0.1 + itemIndex * 0.05 }}
+                                >
+                                  <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 rounded-full text-sm font-medium shadow-sm border border-[#f2dcdc]">
+                                    <span className="w-2 h-2 bg-[#c53030] rounded-full"></span>
+                                    {item.trim()}
+                                  </span>
+                                </motion.span>
+                              ))}
+                            </div>
                           </motion.div>
-                          <span className="text-slate-700 font-medium group-hover/feature:text-[#c53030] transition-colors pt-1">
-                            {feature}
-                          </span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
+                        );
+                      }
+
+                      // Fallback for sections without colon
+                      return (
+                        <motion.p
+                          key={index}
+                          className="text-lg text-slate-600 leading-relaxed mb-6"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.4 + index * 0.1 }}
+                        >
+                          {section}
+                        </motion.p>
+                      );
+                    })}
+                  </motion.div>
+
+                  {/* Our Packages Button */}
+                  {selectedService.packages && selectedService.packages.length > 0 && !showPackages && (
+                    <motion.div
+                      className="mb-10 text-center"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                    >
+                      <motion.button
+                        onClick={() => setShowPackages(true)}
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span>Our Packages</span>
+                        <ArrowRight size={18} />
+                      </motion.button>
+                    </motion.div>
+                  )}
 
                   {/* Packages Section */}
-                  {selectedService.packages && (
+                  {selectedService.packages && selectedService.packages.length > 0 && showPackages && (
                     <motion.div
                       className="mb-10"
                       initial={{ opacity: 0, y: 30 }}
