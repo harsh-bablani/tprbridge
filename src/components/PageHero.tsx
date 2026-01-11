@@ -42,7 +42,14 @@ export default function PageHero({ title, children }: PageHeroProps) {
   }, [imageSet.length, currentImageIndex]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#fef5f5] to-[#f3f6fb]">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#fef9f8] to-[#f0f5fb]">
+      {/* Premium background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white/20 z-5 pointer-events-none" />
+
+      {/* Luxury gradient orbs */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#c53030]/8 to-transparent rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#0b1f33]/5 to-transparent rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none" />
+
       {/* Background Image Carousel */}
       <div className="absolute inset-0 z-0">
         {imageSet.map((image, index) => (
@@ -56,20 +63,21 @@ export default function PageHero({ title, children }: PageHeroProps) {
             <motion.img
               src={image}
               alt="Hero slide"
+              loading="lazy"
               className="absolute inset-0 h-full w-full object-cover bg-white"
               initial={{ scale: 1.05 }}
               animate={{ scale: index === currentImageIndex ? 1 : 1.05 }}
               transition={{ duration: 8, ease: 'easeOut' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/70 to-white/85"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/30 to-white/40 sm:from-white/50 sm:via-white/40 sm:to-white/50"></div>
           </motion.div>
         ))}
       </div>
 
       {/* Soft accents */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 -left-24 h-60 w-60 rounded-full bg-[#fde4e4]/60 blur-2xl" />
-        <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-[#dbe9ff]/60 blur-2xl" />
+        <div className="absolute -top-24 -left-24 h-60 w-60 rounded-full bg-[#fde4e4]/70 blur-3xl" />
+        <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-[#dbe9ff]/70 blur-3xl" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/90 to-transparent" />
       </div>
 

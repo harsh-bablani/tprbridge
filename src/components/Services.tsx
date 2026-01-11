@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Home,
@@ -13,6 +13,7 @@ import {
 
 const services = [
   {
+    id: 'property-management',
     title: 'Property Management for NRIs',
     description:
       'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
@@ -21,6 +22,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
   },
   {
+    id: 'long-short-stay',
     title: 'Long and Short Stay Service Apartments',
     description:
       'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
@@ -29,7 +31,8 @@ const services = [
     image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
   },
   {
-    title: 'Elder Care',
+    id: 'elderly-care',
+    title: 'Eldery Care',
     description:
       'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
     icon: HeartPulse,
@@ -37,6 +40,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=800&q=80',
   },
   {
+    id: 'investments-insurance',
     title: 'Investments & Insurance',
     description:
       'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
@@ -45,6 +49,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&q=80',
   },
   {
+    id: 'government-documentation',
     title: 'Legal & Documentation',
     description:
       'Fast-track processing for certificates, legal paperwork, and compliance documentation with expert coordination.',
@@ -53,6 +58,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',
   },
   {
+    id: 'doctor-hospital-assistance',
     title: 'Assistance Services with Doctor & Hospitalisation',
     description:
       'Priority medical appointments, hospital coordination, and healthcare support handled end-to-end.',
@@ -61,6 +67,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80',
   },
   {
+    id: 'events-gathering',
     title: 'Small Events & Gathering Services',
     description:
       'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
@@ -71,6 +78,7 @@ const services = [
 ];
 
 export default function Services() {
+  const navigate = useNavigate();
   return (
     <section className="relative py-24 sm:py-40 bg-gradient-to-b from-white/50 via-[#fef9f8]/80 to-[#f0f5fb]/70 overflow-hidden px-4 sm:px-6">
       
@@ -161,7 +169,8 @@ export default function Services() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -15, transition: { duration: 0.3 } }}
-                className="group relative h-full"
+                onClick={() => navigate(`/services?service=${service.id}`)}
+                className="group relative h-full cursor-pointer"
               >
                 <div className="relative h-full rounded-3xl p-[2px] bg-gradient-to-br from-[#c53030]/40 via-[#7a0b0b]/30 to-[#0b1f33]/25 transition-all duration-500 group-hover:shadow-[0_40px_80px_-15px_rgba(197,48,48,0.6)] group-hover:p-[3px]">
 

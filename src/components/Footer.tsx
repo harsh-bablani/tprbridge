@@ -1,9 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
 
 function Footer() {
+  const navigate = useNavigate()
   const currentYear = new Date().getFullYear()
+
+  const serviceLinks = [
+    { label: 'Property Management', id: 'property-management' },
+    { label: 'Long and Short Stay', id: 'long-short-stay' },
+    { label: 'Elderly Care', id: 'elderly-care' },
+    { label: 'Investments and Insurance', id: 'investments-insurance' },
+    { label: 'Doctor & Hospital Assistance', id: 'doctor-hospital-assistance' },
+    { label: 'Government Documentation', id: 'government-documentation' },
+    { label: 'Events & Gathering Services', id: 'events-gathering' },
+  ]
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100088852623320', label: 'Facebook' },
@@ -167,25 +178,17 @@ function Footer() {
               Services
             </h4>
             <ul className="space-y-4">
-              {[
-                'Property Management',
-                'Long and Short Stay',
-                'Elderly Care',
-                'Investments and Insurance',
-                'Doctor & Hospital Assistance',
-                'Government Documentation',
-                'Events & Gathering Services',
-              ].map((service, index) => (
+              {serviceLinks.map((service, index) => (
                 <motion.li
-                  key={service}
+                  key={service.id}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
                 >
-                  <Link
-                    to="/services"
-                    className="text-white/80 hover:text-white transition-all duration-300 flex items-center gap-3 group text-lg font-medium"
+                  <button
+                    onClick={() => navigate(`/services?service=${service.id}`)}
+                    className="text-white/80 hover:text-white transition-all duration-300 flex items-center gap-3 group text-lg font-medium cursor-pointer w-full text-left"
                   >
                     <motion.span
                       className="w-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] group-hover:w-6 transition-all duration-300 rounded-full"
@@ -194,9 +197,9 @@ function Footer() {
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {service}
+                      {service.label}
                     </motion.span>
-                  </Link>
+                  </button>
                 </motion.li>
               ))}
             </ul>

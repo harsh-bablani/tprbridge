@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -74,11 +75,11 @@ const services: Service[] = [
 
 {
   id: 'elderly-care',
-  title: 'Elder Care',
+  title: 'Eldery Care',
   shortDescription:
     'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination.',
   fullDescription:
-    'Elder Care\n\n' +
+    'Eldery Care\n\n' +
 
     'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination. Tipping Bridge Elder Care brings structured assistance across Health & Fitness, Filing & Forms, Technology & Troubleshooting, Home Security & Maintenance, and Memories & Milestones, so support continues even whilst you are miles away. \n\n' +
 
@@ -338,6 +339,7 @@ const services: Service[] = [
 
 
 export default function ServicesPage() {
+  const [searchParams] = useSearchParams();
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showPackages, setShowPackages] = useState(false);
@@ -361,6 +363,18 @@ export default function ServicesPage() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    const serviceId = searchParams.get('service');
+    if (serviceId && mounted) {
+      const service = services.find(s => s.id === serviceId);
+      if (service) {
+        setSelectedService(service);
+        setCurrentImageIndex(0);
+        setShowPackages(false);
+      }
+    }
+  }, [searchParams, mounted]);
 
   const handleOpenModal = () => {
     setFormError(null);
