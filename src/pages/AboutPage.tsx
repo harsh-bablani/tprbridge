@@ -16,7 +16,10 @@ import {
   Handshake,
   Star,
   ArrowRight,
+  Mail,
+  Linkedin,
 } from 'lucide-react';
+import FounderImg from '../assets/images/founder.jpeg';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
@@ -131,6 +134,8 @@ export default function AboutPage() {
       <Navigation />
       <PageHero title="About Us" />
 
+      
+
       {/* Company Story Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
@@ -179,6 +184,60 @@ export default function AboutPage() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+      {/* Founder / Director Section - Vishal Matta */}
+      <section className="py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg border border-[#f2dcdc] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+            <div className="flex flex-col items-center gap-4 w-full md:w-auto">
+              <div className="w-44 h-44 md:w-56 md:h-56 flex-shrink-0 rounded-xl overflow-hidden border-2 border-[#f6dada] bg-gray-100">
+                <img
+                  src={FounderImg}
+                  alt="Vishal Matta - Founder & Managing Director"
+                  className="w-full h-full object-cover object-center"
+                  style={{ objectPosition: 'center 12%' }}
+                  onError={(e) => {
+                    const img = e.currentTarget as HTMLImageElement;
+                    img.style.display = 'none';
+                    const fallback = img.nextElementSibling as HTMLElement | null;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden w-full h-full bg-gray-200 items-center justify-center text-xl font-bold text-slate-600" style={{display: 'none'}}>VM</div>
+              </div>
+
+              <div className="flex items-center gap-3 mt-2">
+                <a href="mailto:vishal.matta@tippingbridge.com" title="Email" className="p-2 rounded-full bg-[#fde4e4] hover:bg-[#fbd5d5] transition">
+                  <Mail size={18} className="text-[#c53030]" />
+                </a>
+                <a href="https://www.linkedin.com/in/vishalmatta/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="p-2 rounded-full bg-[#e6f0fb] hover:bg-[#d9e9ff] transition">
+                  <Linkedin size={18} className="text-[#0b1f33]" />
+                </a>
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0b1f33] mb-2">Vishal Matta</h3>
+              <div className="text-sm text-slate-600 font-medium mb-4">Founder & Managing Director – TippingBridge</div>
+
+              <p className="text-base text-slate-700 leading-relaxed mb-4">
+                For millions of Indians living abroad, distance is not just geographical, it is emotional. Homes, parents, investments, and memories remain in India, often carrying silent worries. Vishal Matta founded TippingBridge to take that weight off their hearts.
+              </p>
+
+              <p className="text-base text-slate-700 leading-relaxed mb-4">
+                With a clear understanding of the challenges NRIs face managing property from another country, ensuring parents are cared for, handling compliance, or simply needing someone trustworthy on the ground, Vishal envisioned a service that feels less like outsourcing and more like family support with professional discipline.
+              </p>
+
+              <p className="text-base text-slate-700 leading-relaxed mb-4">
+                Vishal’s journey is shaped by one belief: trust cannot be automated; it must be earned every day. Under his leadership, TippingBridge delivers personalised property management, tenancy oversight, elder assistance, documentation support, and concierge services each designed to provide peace of mind, not just execution.
+              </p>
+
+              <p className="text-base text-slate-700 leading-relaxed mb-0">
+                What sets Vishal apart is his human-first approach. He understands that behind every property lies a lifetime of effort, behind every parent lies a lifetime of love, and behind every investment lies a dream for the next generation. TippingBridge operates with empathy, transparency, and accountability ensuring NRIs feel connected, informed, and respected, even from thousands of miles away.
+              </p>
+            </div>
           </div>
         </div>
       </section>
