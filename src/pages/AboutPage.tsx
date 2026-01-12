@@ -179,7 +179,7 @@ export default function AboutPage() {
                   <Award className="text-[#c53030] mb-4" size={40} />
                   <h3 className="text-2xl font-bold text-[#0b1f33] mb-3">Our Mission</h3>
                   <p className="text-slate-600 leading-relaxed">
-                    To make the life of NRIs easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
+                    To make the life of NRI's easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
                   </p>
                 </div>
               </div>
