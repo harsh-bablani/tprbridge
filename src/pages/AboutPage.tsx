@@ -19,7 +19,7 @@ import {
   Mail,
   Linkedin,
 } from 'lucide-react';
-import FounderImg from '../assets/images/founder.jpeg';
+import FounderImg from '../assets/images/Founder.jpeg';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
