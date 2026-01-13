@@ -39,8 +39,8 @@ function Hero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#fef9f8] to-[#f0f5fb]">
-      {/* Premium background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white/20 z-5 pointer-events-none" />
+      {/* Premium background overlay (reduced on mobile to show background) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/8 to-white/16 sm:via-white/10 sm:to-white/20 z-5 pointer-events-none" />
       
       {/* Luxury gradient orbs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#c53030]/8 to-transparent rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
@@ -65,7 +65,7 @@ function Hero() {
               animate={{ scale: index === currentImageIndex ? 1 : 1.05 }}
               transition={{ duration: 8, ease: 'easeOut' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/30 to-white/40 sm:from-white/50 sm:via-white/40 sm:to-white/50"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/20 to-white/30 sm:from-white/50 sm:via-white/40 sm:to-white/50"></div>
           </motion.div>
         ))}
       </div>
@@ -155,21 +155,10 @@ function Hero() {
           >
             <Link
               to="/about"
-              className="group relative inline-flex items-center justify-center px-10 py-4 sm:py-5 bg-transparent backdrop-blur-xl border-2 border-[#c53030]/80 text-[#c53030] rounded-full font-bold text-base sm:text-lg shadow-2xl hover:shadow-[0_20px_40px_-12px_rgba(197,48,48,0.4)] transition-all duration-500 hover:border-[#c53030] overflow-hidden"
+              className="relative inline-flex items-center justify-center px-6 py-3 text-[#c53030] font-bold text-base sm:text-lg rounded-full border-2 border-[#c53030]/20 hover:border-[#c53030] transition-colors"
+              aria-label="Discover Us"
             >
-              {/* Animated gradient background on hover */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] opacity-0 group-hover:opacity-100"
-                transition={{ duration: 0.4 }}
-              />
-              
-              {/* Shimmer effect */}
-              <motion.div
-                className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                transition={{ duration: 0.8 }}
-              />
-              
-              <span className="relative z-10 flex items-center gap-3 group-hover:text-white transition-colors duration-300">
+              <span className="flex items-center gap-3">
                 <span>Discover Us</span>
                 <motion.svg
                   xmlns="http://www.w3.org/2000/svg"

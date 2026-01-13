@@ -22,6 +22,14 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
+import PMImg from '../assets/images/PM.png';
+import ECImg from '../assets/images/EC.png';
+import LSImg from '../assets/images/LS.png';
+import LDImg from '../assets/images/LD.png';
+import SEGImg from '../assets/images/SEG.png';
+import IIImg from '../assets/images/II.png';
+import ASImg from '../assets/images/AS.png';
+
 interface Service {
   id: string;
   title: string;
@@ -63,12 +71,8 @@ const services: Service[] = [
     'One dependable point of contact. Professional reporting. Reliable execution.',
   icon: Home,
   gradient: 'from-[#c53030] to-[#7a0b0b]',
-  image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
-  images: [
-    'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
-    'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
-    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80',
-  ],
+  image: PMImg,
+  images: [PMImg, PMImg, PMImg],
 
   duration: 'Ongoing',
 },
@@ -94,12 +98,8 @@ const services: Service[] = [
     'Memories & Milestones: Birthdays, anniversaries and festivals, gifts, décor, food, florist and pooja services, because emotional wellbeing matters too.',
   icon: HeartPulse,
   gradient: 'from-[#e53e3e] to-[#b91c1c]',
-  image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
-  images: [
-    'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=1200&q=80',
-    'https://images.unsplash.com/photo-1576091160550-112173f31c77?w=1200&q=80',
-    'https://images.unsplash.com/photo-1492635592522-04a01f0d6e6a?w=1200&q=80',
-  ],
+  image: ECImg,
+  images: [ECImg, ECImg, ECImg],
 
   duration: 'Ongoing',
   packages: [
@@ -215,11 +215,8 @@ const services: Service[] = [
     'Need to work while you\'re here? Find work-friendly spaces with high-speed Wi-Fi and dedicated working areas, ideal for staffing, displacement, and relocation.',
   icon: BedDouble,
   gradient: 'from-[#7a0b0b] to-[#0b1f33]',
-  image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
-  images: [
-    'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80',
-    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80',
-  ],
+  image: LSImg,
+  images: [LSImg, LSImg],
 
   duration: 'Flexible',
 },
@@ -242,12 +239,8 @@ const services: Service[] = [
       'Real Estate: Guidance for NRI clients with best/transparent/unbiased deals, and support on formalities and negotiations to acquire your chosen property.',
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=80',
-      'https://images.unsplash.com/photo-1633356122544-f134ef2944f0?w=1200&q=80',
-      'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1200&q=80',
-    ],
+      image: IIImg,
+      images: [IIImg, IIImg, IIImg],
 
     duration: 'Ongoing',
   },
@@ -270,12 +263,8 @@ const services: Service[] = [
       'A single professional point of coordination, built for NRIs who want reliable execution in India without repeated follow-ups.',
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
-      'https://images.unsplash.com/photo-1507842217343-583f20270319?w=1200&q=80',
-      'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80',
-    ],
+    image: LDImg,
+    images: [LDImg, LDImg, LDImg],
 
     duration: '7-30 days',
   },
@@ -303,12 +292,8 @@ const services: Service[] = [
       'In emergencies, we provide ambulance assistance and emergency support for hospitalisation, along with medicine routine planning and reminder schedules.',
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80',
-      'https://images.unsplash.com/photo-1576091160388-112836e42a98?w=1200&q=80',
-      'https://images.unsplash.com/photo-1631217314831-c6227db76b6e?w=1200&q=80',
-    ],
+    image: ASImg,
+    images: [ASImg, ASImg, ASImg],
 
     duration: 'As needed',
   },
@@ -326,12 +311,8 @@ const services: Service[] = [
       'Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut arranged with care.',
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
-      'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&q=80',
-      'https://images.unsplash.com/photo-1519225421421-9c63335b43a8?w=1200&q=80',
-    ],
+    image: SEGImg,
+    images: [SEGImg, SEGImg, SEGImg],
 
     duration: 'As per event',
   },

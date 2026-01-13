@@ -9,7 +9,17 @@ import {
   FileText,
   PartyPopper,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import PMImg from '../assets/images/PM.png';
+import ECImg from '../assets/images/EC.png';
+import LSImg from '../assets/images/LS.png';
+import LDImg from '../assets/images/LD.png';
+import SEGImg from '../assets/images/seg.png';
+import IIImg from '../assets/images/II.png';
+import ASImg from '../assets/images/AS.png';
 
 const services = [
   {
@@ -19,7 +29,7 @@ const services = [
       'Complete property oversight, maintenance, and tenant coordination to keep your assets protected and profitable.',
     icon: Home,
     gradient: 'from-[#c53030] to-[#7a0b0b]',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+    image: PMImg,
   },
   {
     id: 'long-short-stay',
@@ -28,7 +38,7 @@ const services = [
       'Curated homes and serviced apartments for every duration, with housekeeping, security, and concierge support.',
     icon: BedDouble,
     gradient: 'from-[#7a0b0b] to-[#0b1f33]',
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
+    image: LSImg,
   },
   {
     id: 'elderly-care',
@@ -37,7 +47,7 @@ const services = [
       'Personalised care plans, home assistance, and wellness monitoring to ensure your loved ones feel supported.',
     icon: HeartPulse,
     gradient: 'from-[#e53e3e] to-[#b91c1c]',
-    image: 'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?w=800&q=80',
+    image: ECImg,
   },
   {
     id: 'investments-insurance',
@@ -46,7 +56,7 @@ const services = [
       'Guided portfolio planning, safe investments, and insurance advisory tailored for NRI risk profiles.',
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&q=80',
+    image: IIImg,
   },
   {
     id: 'government-documentation',
@@ -55,7 +65,7 @@ const services = [
       'Fast-track processing for certificates, legal paperwork, and compliance documentation with expert coordination.',
     icon: FileText,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',
+    image: LDImg,
   },
   {
     id: 'doctor-hospital-assistance',
@@ -64,7 +74,7 @@ const services = [
       'Priority medical appointments, hospital coordination, and healthcare support handled end-to-end.',
     icon: Stethoscope,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80',
+    image: ASImg,
   },
   {
     id: 'events-gathering',
@@ -73,12 +83,32 @@ const services = [
       'Intimate celebrations, religious ceremonies, and community meetups planned with venues, décor, and catering.',
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80',
+    image: SEGImg,
   },
 ];
 
 export default function Services() {
   const navigate = useNavigate();
+  const [itemsPerView, setItemsPerView] = useState(3);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 640) setItemsPerView(1);
+      else if (window.innerWidth < 1024) setItemsPerView(2);
+      else setItemsPerView(3);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  useEffect(() => {
+    // reset current slide when itemsPerView changes
+    setCurrentSlide(0);
+  }, [itemsPerView]);
+
+  const maxIndex = Math.max(0, Math.ceil(services.length / itemsPerView) - 1);
   return (
     <section className="relative py-24 sm:py-40 bg-gradient-to-b from-white/50 via-[#fef9f8]/80 to-[#f0f5fb]/70 overflow-hidden px-4 sm:px-6">
       
@@ -158,105 +188,75 @@ export default function Services() {
           </motion.p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
-          {services.map((service, index) => {
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -15, transition: { duration: 0.3 } }}
-                onClick={() => navigate(`/services?service=${service.id}`)}
-                className="group relative h-full cursor-pointer"
-              >
-                <div className="relative h-full rounded-3xl p-[2px] bg-gradient-to-br from-[#c53030]/40 via-[#7a0b0b]/30 to-[#0b1f33]/25 transition-all duration-500 group-hover:shadow-[0_40px_80px_-15px_rgba(197,48,48,0.6)] group-hover:p-[3px]">
+        {/* Services Slider */}
+        <div className="relative mb-12">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {services.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                  onClick={() => navigate(`/services?service=${service.id}`)}
+                  className="group relative cursor-pointer px-3"
+                  style={{ flex: `0 0 ${100 / itemsPerView}%` }}
+                >
+                  <div className="relative h-full rounded-3xl transition-all duration-500 group-hover:shadow-[0_40px_80px_-15px_rgba(197,48,48,0.06)]">
 
-                  {/* Premium animated border glow */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
-                    animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    style={{ backgroundSize: "200% 200%" }}
-                  />
-
-                  <div className="relative h-full bg-gradient-to-br from-white/97 to-white/93 backdrop-blur-xl rounded-[calc(1.5rem-2px)] overflow-hidden shadow-2xl group-hover:shadow-[0_50px_100px_-20px_rgba(197,48,48,0.5)] transition-all duration-500 border border-gradient-to-br from-white/70 to-white/50">
-
-                    {/* Premium Shimmer Effect */}
                     <motion.div
-                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent z-20"
-                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                      className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
+                      animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      style={{ backgroundSize: "200% 200%" }}
                     />
 
-                    {/* Image Background */}
-                    <div className="relative h-56 overflow-hidden">
-                      <motion.img
-                        src={service.image}
-                        alt={service.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.2 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                      />
-
-                      <motion.div
-                        className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
-                        initial={{ opacity: 0.75 }}
-                        whileHover={{ opacity: 0.85 }}
-                        transition={{ duration: 0.3 }}
-                      />
-
-                      {/* Decorative Corners */}
-                      <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl" />
-                      <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-8 relative">
-
-                      <motion.div
-                        className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 blur-3xl -z-10`}
-                        transition={{ duration: 0.5 }}
-                      />
-
-                      <motion.h3
-                        className="text-2xl font-extrabold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-4 relative"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                      >
-                        {service.title}
+                    <div className="bg-white rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-[0_50px_100px_-20px_rgba(197,48,48,0.12)] transition-all duration-500 h-[28rem] flex flex-col">
+                      <div className="relative h-48 md:h-56 overflow-hidden">
+                        <motion.img
+                          src={service.image}
+                          alt={service.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover"
+                          whileHover={{ scale: 1.07 }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                        />
 
                         <motion.div
-                          className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#c53030] to-transparent"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: "100%" }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                          className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
+                          initial={{ opacity: 0.7 }}
+                          whileHover={{ opacity: 0.8 }}
+                          transition={{ duration: 0.3 }}
                         />
-                      </motion.h3>
+                      </div>
 
-                      <motion.p
-                        className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg font-medium"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                      >
-                        {service.description}
-                      </motion.p>
-
-                      {/* Learn More removed 👇 (EMPTY SPOT LEFT CLEAN) */}
-
+                      <div className="p-6 relative flex-1 overflow-hidden">
+                        <h3 className="text-xl font-extrabold text-[#0b1f33] group-hover:text-[#c53030] transition-colors mb-2">{service.title}</h3>
+                        <p className="text-slate-600 leading-relaxed mb-4 text-sm max-h-[8.5rem] overflow-hidden">{service.description}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Slider Controls */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-3 z-20">
+            <button onClick={() => setCurrentSlide((s) => Math.max(0, s - 1))} className="p-2 bg-white/80 rounded-full shadow">
+              <ChevronLeft />
+            </button>
+          </div>
+          <div className="absolute top-1/2 -translate-y-1/2 right-3 z-20">
+            <button onClick={() => setCurrentSlide((s) => Math.min(maxIndex, s + 1))} className="p-2 bg-white/80 rounded-full shadow">
+              <ChevronRight />
+            </button>
+          </div>
         </div>
 
         {/* CTA Button */}
