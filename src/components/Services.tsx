@@ -17,7 +17,7 @@ import PMImg from '../assets/images/PM.png';
 import ECImg from '../assets/images/EC.png';
 import LSImg from '../assets/images/LS.png';
 import LDImg from '../assets/images/LD.png';
-import SEGImg from '../assets/images/seg.png';
+import SEGImg from '../assets/images/SEG.png';
 import IIImg from '../assets/images/II.png';
 import ASImg from '../assets/images/AS.png';
 
