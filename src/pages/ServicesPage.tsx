@@ -483,18 +483,55 @@ export default function ServicesPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative"
               >
-                <div className="absolute left-5 top-1/2 -translate-y-1/2">
-                  <Search className="text-[#c53030]" size={26} />
+                <div className="absolute left-5 top-1/2 -translate-y-1/2 z-10">
+                  <Search className={`transition-colors ${searchQuery ? 'text-[#c53030]' : 'text-[#9aa4b5]'}`} size={26} />
                 </div>
                 <motion.input
                   type="text"
                   placeholder="Search services..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-14 pr-6 py-5 rounded-2xl bg-white/90 backdrop-blur-md border-2 border-[#f2dcdc] text-[#0b1f33] placeholder-[#9aa4b5] focus:outline-none focus:ring-4 focus:ring-[#f87171]/30 focus:border-[#c53030] transition-all shadow-lg hover:shadow-xl"
+                  className={`w-full pl-14 ${searchQuery ? 'pr-14' : 'pr-6'} py-5 rounded-2xl bg-white/90 backdrop-blur-md border-2 transition-all shadow-lg hover:shadow-xl ${
+                    searchQuery 
+                      ? 'border-[#c53030] bg-white shadow-xl shadow-[#c53030]/20' 
+                      : 'border-[#f2dcdc] focus:border-[#c53030]'
+                  } text-[#0b1f33] placeholder-[#9aa4b5] focus:outline-none focus:ring-4 focus:ring-[#f87171]/30`}
                   whileFocus={{ scale: 1.02 }}
                 />
+                {searchQuery && (
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0 }}
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-[#fef2f2] text-[#9aa4b5] hover:text-[#c53030] transition-colors z-10"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    aria-label="Clear search"
+                  >
+                    <X size={20} />
+                  </motion.button>
+                )}
+                {searchQuery && (() => {
+                  const count = services.filter((service) => {
+                    const matchesSearch =
+                      service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      service.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
+                    const matchesCategory = !selectedCategory || service.id === selectedCategory;
+                    return matchesSearch && matchesCategory;
+                  }).length;
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="absolute -bottom-8 left-1/2 -translate-x-1/2 mt-2 px-4 py-1.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white text-sm font-semibold rounded-full shadow-lg whitespace-nowrap"
+                    >
+                      {count} {count === 1 ? 'result' : 'results'} found
+                    </motion.div>
+                  );
+                })()}
               </motion.div>
             </div>
 
@@ -680,11 +717,39 @@ export default function ServicesPage() {
 
           {filteredServices.length === 0 && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
               className="text-center py-20"
             >
-              <p className="text-xl text-slate-600">No services found matching your search.</p>
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fef2f2] to-[#fdeaea] rounded-full mb-6"
+              >
+                <Search className="text-[#c53030]" size={40} strokeWidth={1.5} />
+              </motion.div>
+              <h3 className="text-2xl font-bold text-[#0b1f33] mb-3">No services found</h3>
+              <p className="text-lg text-slate-600 mb-4">
+                {searchQuery 
+                  ? `We couldn't find any services matching "${searchQuery}"`
+                  : 'No services match your selected filters'
+                }
+              </p>
+              {(searchQuery || selectedCategory) && (
+                <motion.button
+                  onClick={() => {
+                    setSearchQuery('');
+                    setSelectedCategory(null);
+                  }}
+                  className="px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Clear filters
+                </motion.button>
+              )}
             </motion.div>
           )}
         </div>
