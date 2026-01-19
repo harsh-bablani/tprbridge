@@ -72,7 +72,7 @@ const services: Service[] = [
   icon: Home,
   gradient: 'from-[#c53030] to-[#7a0b0b]',
   image: PMImg,
-  images: [PMImg, PMImg, PMImg],
+  images: ['/P1.jpeg', '/P2.jpeg', '/P3.jpeg'],
 
   duration: 'Ongoing',
 },
@@ -99,7 +99,7 @@ const services: Service[] = [
   icon: HeartPulse,
   gradient: 'from-[#e53e3e] to-[#b91c1c]',
   image: ECImg,
-  images: [ECImg, ECImg, ECImg],
+  images: ['/E1.jpeg', '/E2.jpeg', '/E3.jpeg'],
 
   duration: 'Ongoing',
   packages: [
@@ -216,7 +216,7 @@ const services: Service[] = [
   icon: BedDouble,
   gradient: 'from-[#7a0b0b] to-[#0b1f33]',
   image: LSImg,
-  images: [LSImg, LSImg],
+  images: ['/L1.jpeg', '/L2.jpeg', '/L3.jpeg'],
 
   duration: 'Flexible',
 },
@@ -240,7 +240,7 @@ const services: Service[] = [
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
       image: IIImg,
-      images: [IIImg, IIImg, IIImg],
+    images: ['/I1.jpeg', '/I2.jpeg', '/I3.jpeg'],
 
     duration: 'Ongoing',
   },
@@ -264,7 +264,7 @@ const services: Service[] = [
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: LDImg,
-    images: [LDImg, LDImg, LDImg],
+    images: ['/LD1.jpeg', '/LD2.jpeg', '/LD3.jpeg'],
 
     duration: '7-30 days',
   },
@@ -293,7 +293,7 @@ const services: Service[] = [
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: ASImg,
-    images: [ASImg, ASImg, ASImg],
+    images: ['/AS1.jpeg', '/AS2.jpeg', '/AS3.jpeg'],
 
     duration: 'As needed',
   },
@@ -312,7 +312,7 @@ const services: Service[] = [
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: SEGImg,
-    images: [SEGImg, SEGImg, SEGImg],
+    images: ['/SEG1.jpeg', '/SEG2.jpeg', '/SEG3.jpeg'],
 
     duration: 'As per event',
   },
@@ -648,13 +648,6 @@ export default function ServicesPage() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                           />
 
-                          <motion.div
-                            className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
-                            initial={{ opacity: 0.75 }}
-                            whileHover={{ opacity: 0.85 }}
-                            transition={{ duration: 0.3 }}
-                          />
-
                           {/* Decorative Corners */}
                           <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl" />
                           <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl" />
@@ -826,12 +819,7 @@ export default function ServicesPage() {
                     />
                   </AnimatePresence>
 
-                  {/* Dark Overlay Gradient */}
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${selectedService.gradient}`}
-                    animate={{ opacity: [0.6, 0.75, 0.6] }}
-                    transition={{ duration: 5, repeat: Infinity }}
-                  />
+
 
                   {/* Navigation Buttons */}
                   <motion.button
