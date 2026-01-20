@@ -216,7 +216,8 @@ const services: Service[] = [
   icon: BedDouble,
   gradient: 'from-[#7a0b0b] to-[#0b1f33]',
   image: LSImg,
-  images: ['/L1.jpeg', '/L2.jpeg', '/L3.jpeg'],
+  // Map to existing apartment/stay images in the public folder
+  images: ['/IN1.jpeg', '/IN2.jpeg', '/IN3.jpeg'],
 
   duration: 'Flexible',
 },
@@ -264,7 +265,8 @@ const services: Service[] = [
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: LDImg,
-    images: ['/LD1.jpeg', '/LD2.jpeg', '/LD3.jpeg'],
+    // Map to existing documentation-related images in the public folder
+    images: ['/D1.jpeg', '/D2.jpeg', '/D3.jpeg'],
 
     duration: '7-30 days',
   },
@@ -293,7 +295,8 @@ const services: Service[] = [
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: ASImg,
-    images: ['/AS1.jpeg', '/AS2.jpeg', '/AS3.jpeg'],
+    // Map to existing healthcare-related images in the public folder
+    images: ['/PE1.jpeg', '/PE2.jpeg', '/PE3.jpeg'],
 
     duration: 'As needed',
   },
@@ -312,7 +315,8 @@ const services: Service[] = [
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: SEGImg,
-    images: ['/SEG1.jpeg', '/SEG2.jpeg', '/SEG3.jpeg'],
+    // Map to existing celebration/event style images in the public folder
+    images: ['/S1.jpeg', '/S2.jpeg', '/S1.jpeg'],
 
     duration: 'As per event',
   },

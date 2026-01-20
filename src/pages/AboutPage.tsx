@@ -492,8 +492,12 @@ export default function AboutPage() {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         style={{ originX: 0 }}
                       />
-                      <h3 className="text-xl font-bold text-[#0b1f33] mb-3 mt-3 group-hover:text-[#c53030] transition-colors">{service.title}</h3>
-                      <p className="text-slate-600 leading-relaxed text-base">{service.description}</p>
+                      <h3 className="text-xl font-bold text-[#111827] mb-3 mt-3 group-hover:text-[#111827] transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-base leading-relaxed text-[#111827]">
+                        {service.description}
+                      </p>
                     </div>
                   </div>
                 </div>

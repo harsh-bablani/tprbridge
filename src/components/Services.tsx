@@ -90,6 +90,7 @@ const services = [
 export default function Services() {
   const navigate = useNavigate();
   const [itemsPerView, setItemsPerView] = useState(3);
+  // This represents the index of the first visible card, not the "page"
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -108,7 +109,9 @@ export default function Services() {
     setCurrentSlide(0);
   }, [itemsPerView]);
 
-  const maxIndex = Math.max(0, Math.ceil(services.length / itemsPerView) - 1);
+  // Maximum starting index so that we never scroll past the last visible group
+  const maxIndex = Math.max(0, services.length - itemsPerView);
+  const slideWidth = 100 / itemsPerView;
   return (
     <section className="relative py-24 sm:py-40 bg-gradient-to-b from-white/50 via-[#fef9f8]/80 to-[#f0f5fb]/70 overflow-hidden px-4 sm:px-6">
       
@@ -193,7 +196,8 @@ export default function Services() {
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              // Move the strip by one card-width per step so the carousel always advances smoothly
+              style={{ transform: `translateX(-${currentSlide * slideWidth}%)` }}
             >
               {services.map((service, index) => (
                 <motion.div
@@ -209,14 +213,15 @@ export default function Services() {
                 >
                   <div className="relative h-full rounded-3xl transition-all duration-500 group-hover:shadow-[0_40px_80px_-15px_rgba(197,48,48,0.06)]">
 
+                    {/* Soft glow border behind the card instead of covering the content */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#c53030] opacity-0 group-hover:opacity-100 rounded-3xl"
+                      className="absolute inset-0 -z-10 pointer-events-none bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#c53030] opacity-0 group-hover:opacity-60 rounded-3xl"
                       animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                       style={{ backgroundSize: "200% 200%" }}
                     />
 
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-[0_50px_100px_-20px_rgba(197,48,48,0.12)] transition-all duration-500 h-[28rem] flex flex-col">
+                    <div className="relative z-10 bg-white rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-[0_50px_100px_-20px_rgba(197,48,48,0.12)] transition-all duration-500 h-[28rem] flex flex-col">
                       <div className="relative h-48 md:h-56 overflow-hidden">
                         <motion.img
                           src={service.image}
@@ -228,9 +233,10 @@ export default function Services() {
                         />
 
                         <motion.div
-                          className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}
-                          initial={{ opacity: 0.7 }}
-                          whileHover={{ opacity: 0.8 }}
+                          // Softer image overlay so the photograph remains clearly visible
+                          className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/35 via-transparent to-transparent"
+                          initial={{ opacity: 0.0 }}
+                          whileHover={{ opacity: 0.4 }}
                           transition={{ duration: 0.3 }}
                         />
                       </div>

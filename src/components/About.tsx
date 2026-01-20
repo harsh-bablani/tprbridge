@@ -174,7 +174,7 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Values Cards */}
+          {/* Right Content - Vision / Mission / Values Cards */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -182,7 +182,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-white/95 via-[#fef5f5] to-[#f3f6fb] backdrop-blur-xl border-2 border-[#f6dada] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-14 shadow-2xl overflow-hidden">
+            <div className="relative bg-gradient-to-br from-white/95 via-[#fef5f5] to-[#f3f6fb] backdrop-blur-xl border-2 border-[#f6dada] rounded-2xl sm:rounded-3xl px-6 py-7 sm:px-8 sm:py-9 md:px-10 md:py-11 lg:px-14 lg:py-12 shadow-2xl overflow-hidden">
               {/* Optimized background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#c53030]/3 via-[#7a0b0b]/3 to-[#0b1f33]/3 opacity-30" />
               
@@ -197,7 +197,7 @@ export default function About() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.3 + index * 0.1, type: "spring", stiffness: 100 }}
                       whileHover={{ scale: 1.02, x: 5, transition: { duration: 0.3 } }}
-                      className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl hover:bg-white/50 transition-all duration-300 group"
+                      className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 md:gap-6 px-5 py-6 sm:px-6 sm:py-7 md:px-7 md:py-8 rounded-xl sm:rounded-2xl hover:bg-white/55 transition-all duration-300 group"
                     >
                       <motion.div
                         className="relative p-3 sm:p-4 md:p-5 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] rounded-xl sm:rounded-2xl shadow-xl flex-shrink-0 group-hover:shadow-2xl transition-all self-start sm:self-auto"
@@ -208,10 +208,12 @@ export default function About() {
                         <Icon size={28} className="sm:w-8 sm:h-8 md:w-9 md:h-9 text-white" strokeWidth={2} />
                       </motion.div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-xl sm:text-2xl font-extrabold text-[#0b1f33] mb-2 sm:mb-3 md:mb-4 group-hover:text-[#c53030] transition-colors">
+                        <h3 className="text-xl sm:text-2xl font-extrabold text-[#0b1f33] mb-2 sm:mb-3 md:mb-4 group-hover:text-[#0b1f33] transition-colors">
                           {value.title}
                         </h3>
-                        <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed font-medium">{value.description}</p>
+                        <p className="text-sm sm:text-base md:text-lg text-[#111827] leading-relaxed font-medium">
+                          {value.description}
+                        </p>
                       </div>
                     </motion.div>
                   )
