@@ -1,4 +1,5 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // import emailjs from '@emailjs/browser'; // Commented out for demo
 import Navigation from '../components/Navigation';
@@ -31,6 +32,20 @@ export default function ContactPage() {
   // Google Sheets Configuration
   // Get this URL from your Google Apps Script Web App deployment
   const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
+
+  // Handle hash scrolling
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash === '#contact-form') {
+      // Small delay to ensure the page is fully rendered
+      setTimeout(() => {
+        const element = document.getElementById('contact-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 200);
+    }
+  }, [location.hash]);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -264,7 +279,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-6">
+      <section id="contact-form" className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left Side - Form */}

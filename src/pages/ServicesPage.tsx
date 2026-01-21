@@ -1051,7 +1051,7 @@ export default function ServicesPage() {
                     transition={{ duration: 0.6, delay: 0.8 }}
                   >
                     <motion.a
-                      href="/contact"
+                      href="/contact#contact-form"
                       className="flex-1 relative overflow-hidden group/cta"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
