@@ -811,7 +811,7 @@ export default function ServicesPage() {
             <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${selectedService.gradient} opacity-20 blur-2xl -z-10`} />
               <div className="relative">
                 {/* Image Slider */}
-                <div className="relative h-80 overflow-hidden bg-gradient-to-br from-[#0b1f33] to-[#c53030]">
+                <div className="relative h-96 overflow-hidden bg-gradient-to-br from-[#0b1f33] to-[#c53030]">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImageIndex}
@@ -931,7 +931,7 @@ export default function ServicesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                   >
-                    <div className="text-lg text-slate-600 leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
+                    <div className="bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg p-4 text-lg leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
                       {selectedService.fullDescription}
                     </div>
                   </motion.div>
@@ -1054,7 +1054,7 @@ export default function ServicesPage() {
                     transition={{ duration: 0.6, delay: 0.8 }}
                   >
                     <motion.a
-                      href="/contact"
+                      href="/contact#contact-form"
                       className="flex-1 relative overflow-hidden group/cta"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
