@@ -176,6 +176,7 @@ export default function ContactPage() {
     'Doctor & Hospital Assistance',
     'Government Documentation',
     'Events & Gathering Services',
+    'Others',
   ];
 
   return (
