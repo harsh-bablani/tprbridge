@@ -217,7 +217,8 @@ const services: Service[] = [
   gradient: 'from-[#7a0b0b] to-[#0b1f33]',
   image: LSImg,
   // Map to existing apartment/stay images in the public folder
-  images: ['/IN1.jpeg', '/IN2.jpeg', '/IN3.jpeg'],
+  images: ['/S1.jpeg', '/S2.jpeg', '/S1.jpeg'],
+  //images: ['/IN1.jpeg', '/IN2.jpeg', '/IN3.jpeg'],
 
   duration: 'Flexible',
 },
@@ -265,8 +266,8 @@ const services: Service[] = [
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: LDImg,
-    // Map to existing documentation-related images in the public folder
-    images: ['/D1.jpeg', '/D2.jpeg', '/D3.jpeg'],
+    // Legal & Documentation service images - using appropriate documentation/legal imagery
+    images: ['/1.png', '/2.png', '/3.png'],
 
     duration: '7-30 days',
   },
@@ -296,7 +297,8 @@ const services: Service[] = [
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: ASImg,
     // Map to existing healthcare-related images in the public folder
-    images: ['/PE1.jpeg', '/PE2.jpeg', '/PE3.jpeg'],
+    //
+    images: ['/D1.jpeg', '/D2.jpeg', '/D3.jpeg'],
 
     duration: 'As needed',
   },
@@ -316,7 +318,8 @@ const services: Service[] = [
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: SEGImg,
     // Map to existing celebration/event style images in the public folder
-    images: ['/S1.jpeg', '/S2.jpeg', '/S1.jpeg'],
+    
+    images: ['/PE1.jpeg', '/PE2.jpeg', '/PE3.jpeg'],
 
     duration: 'As per event',
   },
