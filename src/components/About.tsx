@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Award, Globe, Users, Heart, CheckCircle } from 'lucide-react';
+import { Target, Award, Globe, Users, Heart, CheckCircle} from 'lucide-react';
 import Counter from './Counter';
 import grpImage from '../assets/images/grp.jpeg';
 
@@ -9,6 +9,8 @@ export default function About() {
     { value: '50+', label: 'Team Members', icon: Users },
     { value: '1060+', label: 'Customers Served', icon: Globe },
     { value: '95%', label: 'Customer Satisfaction Index', icon: Heart },
+    { value: '7+', label: 'Years of Experience', icon: Award },
+
   ];
 
   const values = [
@@ -257,7 +259,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 border-t-2 border-b-2 border-[#f2dcdc] py-8 sm:py-12"
+          className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 border-t-2 border-b-2 border-[#f2dcdc] py-8 sm:py-12"
         >
           {stats.map((stat, index) => {
             const Icon = stat.icon

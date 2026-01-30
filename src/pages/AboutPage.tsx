@@ -18,8 +18,9 @@ import {
   ArrowRight,
   Mail,
   Linkedin,
+  Calendar,
 } from 'lucide-react';
-import FounderImg from '../assets/images/Founder.jpeg';
+import FounderImg from '../assets/images/Founder.jpg';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
@@ -28,6 +29,7 @@ export default function AboutPage() {
     { value: '50+', label: 'Team Members', icon: Users },
     { value: '1060+', label: 'Customers Served', icon: Globe },
     { value: '95%', label: 'Customer Satisfaction Index', icon: Heart },
+    { value: '7+', label: 'Years of Experience', icon: Calendar },
   ];
 
   const values = [
@@ -250,7 +252,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
           >
             {stats.map((stat) => {
               const Icon = stat.icon;
@@ -550,4 +552,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

@@ -69,20 +69,19 @@ function Footer() {
             transition={{ duration: 0.6 }}
           >
             <motion.div
-              className="flex items-center gap-3 mb-6"
+              className="inline-block mb-6"
               whileHover={{ scale: 1.05 }}
             >
-              <motion.img
-                src="/tpbridge-logo.png"
-                alt="Tipping Bridge"
-                className="h-12 w-12 object-contain filter brightness-0 invert"
-                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                animate={{ y: [0, -2, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <h3 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-white to-[#fcd6d6] bg-clip-text text-transparent">
-                Tipping Bridge
-              </h3>
+              <div className="bg-white/90 p-3 rounded-2xl shadow-lg shadow-white/5 backdrop-blur-sm">
+                <motion.img
+                  src="/tpbridge-logo.png"
+                  alt="Tipping Bridge"
+                  className="h-20 w-auto object-contain"
+                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </div>
             </motion.div>
             <p className="text-white/80 leading-relaxed mb-8 text-lg">
               Your trusted partner for NRI services in India. Connecting families across continents with expert care and seamless service.

@@ -81,7 +81,7 @@ const services: Service[] = [
   id: 'elderly-care',
   title: 'Eldery Care',
   shortDescription:
-    'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination.',
+    'When you live overseas, caring for ageing parents in India takes more than calls. It takes dependable, on-ground coordination, trusted professionals, timely support, and compassionate care that ensures their safety, dignity, comfort, and your complete peace of mind.',
   fullDescription:
     'Eldery Care\n\n' +
 
@@ -200,7 +200,7 @@ const services: Service[] = [
   id: 'long-short-stay',
   title: 'Long and Short Stay Service Apartments',
   shortDescription:
-    'Returning to India for a family reunion, executive travel, a friends’ get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays.',
+    'Returning to India for a family reunion, executive travel, a friends’ get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, or longer extended stays.',
   fullDescription:
     'Long and Short Stay Service Apartments\n\n' +
 
@@ -227,7 +227,7 @@ const services: Service[] = [
     id: 'investments-insurance',
     title: 'Investments & Insurance',
     shortDescription:
-      'Manage India-side financial matters with clarity, even when you live overseas.',
+      'Manage India-side financial matters with clarity, even when you live overseas. Our expert guidance, transparent processes, and trusted partners help NRIs protect assets, grow wealth, and make confident financial decisions from anywhere in the world.',
     fullDescription:
       'Investments & Insurance \n\n' +
 
@@ -250,7 +250,7 @@ const services: Service[] = [
     id: 'government-documentation',
     title: 'Legal & Documentation',
     shortDescription:
-      'When you’re overseas, even routine paperwork in India can become time-consuming and stressful.',
+      'When you’re overseas, even routine paperwork in India can become time-consuming and stressful. Our expert support ensures accurate filings and dependable execution, so NRIs stay compliant without constant coordination.',
     fullDescription:
       'When you’re overseas, even routine paperwork in India can become time-consuming and stressful. With just a phone call, Tipping Bridge can connect you to a dedicated team of legal experts to help address your family’s tax and legal documentation needs in India, so work moves forward in your absence.\n\n' +
       'We support documentation and facilitation across:\n' +
@@ -275,7 +275,7 @@ const services: Service[] = [
     id: 'doctor-hospital-assistance',
     title: 'Assistance Services with Doctor & Hospitalisation',
     shortDescription:
-      'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent.',
+      'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent, requiring timely support, trusted professionals, and clear on-ground coordination.',
     fullDescription:
       'Assistance Services with Doctor & Hospitalisation \n\n' +
 
@@ -305,7 +305,7 @@ const services: Service[] = [
     id: 'events-gathering',
     title: 'Small Events & Gathering Services',
     shortDescription:
-      'Being overseas shouldn’t mean missing the moments that matter at home.',
+      'Being overseas shouldn’t mean missing the moments that matter at home. We help NRIs plan and manage celebrations, milestones, and meaningful gatherings in India through trusted coordination, thoughtful execution, and seamless on-ground support.',
     fullDescription:
       'Being overseas shouldn’t mean missing the moments that matter at home. Tipping Bridge helps NRIs create and coordinate small celebrations in India so your family can enjoy the occasion, while we take on the organisation and responsibility.\n\n' +
       'Allow us to help you celebrate every special occasion and milestone in style, without having to manage the details from abroad.\n\n' +
@@ -461,7 +461,7 @@ export default function ServicesPage() {
           className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-white/98 to-white/95 text-[#0b1f33] rounded-full font-bold text-lg shadow-2xl hover:shadow-[0_20px_40px_rgba(197,48,48,0.2)] border-2 border-gradient-to-r from-[#f2dcdc] to-white/30 hover:border-[#c53030] hover:text-[#c53030] transition-all duration-300 backdrop-blur-sm"
         >
           <Download size={20} className="text-[#c53030] group-hover:animate-pulse" />
-          <span>Know Us Better</span>
+          <span>Know More</span>
         </motion.button>
       </PageHero>
 
@@ -1127,7 +1127,7 @@ export default function ServicesPage() {
               </button>
               <div className="mb-8 text-center">
                 <h3 className="text-3xl font-bold text-[#0b1f33] mb-3">
-                  Know Us Better
+                  Know More
                 </h3>
                 <p className="text-slate-600">
                   Share your details below. You&apos;ll receive the brochure instantly and our team will reach out shortly.
