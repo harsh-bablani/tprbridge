@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
+import PopupContactForm from './PopupContactForm'
 
 function Footer() {
   const navigate = useNavigate()
@@ -24,6 +25,7 @@ function Footer() {
 
   return (
     <footer className="relative bg-gradient-to-br from-[#0a1628] via-[#162232] to-[#0a1628] text-white overflow-hidden">
+      <PopupContactForm />
       {/* Premium Luxury Decorative elements */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -305,26 +307,24 @@ function Footer() {
               &copy; {currentYear} Tipping Bridge. All rights reserved.
             </motion.p>
             <div className="flex gap-8 text-base">
-              <motion.a
-                href="#"
+              <Link
+                to="/privacy-policy"
                 className="text-white/60 hover:text-white transition-all duration-300 font-medium relative group"
-                whileHover={{ scale: 1.05 }}
               >
                 Privacy Policy
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
                 />
-              </motion.a>
-              <motion.a
-                href="#"
+              </Link>
+              <Link
+                to="/privacy-policy"
                 className="text-white/60 hover:text-white transition-all duration-300 font-medium relative group"
-                whileHover={{ scale: 1.05 }}
               >
                 Terms of Service
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
                 />
-              </motion.a>
+              </Link>
             </div>
           </div>
         </motion.div>
