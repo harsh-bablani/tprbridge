@@ -18,8 +18,6 @@ import {
   Search,
   Download,
   CheckCircle,
-  ChevronLeft,
-  ChevronRight,
 } from 'lucide-react';
 
 import PMImg from '../assets/images/PM.png';
@@ -40,7 +38,6 @@ interface Service {
   image: string;
   images: string[];
   features?: string[];
-  duration: string;
   packages?: {
     name: string;
     services: Record<string, string>;
@@ -54,7 +51,6 @@ const services: Service[] = [
   shortDescription:
     'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.',
   fullDescription:
-    'Property Management for NRIs\n\n' +
 
     'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.\n\n' +
 
@@ -73,8 +69,6 @@ const services: Service[] = [
   gradient: 'from-[#c53030] to-[#7a0b0b]',
   image: PMImg,
   images: ['/P1.jpeg', '/P2.jpeg', '/P3.jpeg'],
-
-  duration: 'Ongoing',
 },
 
 {
@@ -83,7 +77,6 @@ const services: Service[] = [
   shortDescription:
     'When you live overseas, caring for ageing parents in India takes more than calls. It takes dependable, on-ground coordination, trusted professionals, timely support, and compassionate care that ensures their safety, dignity, comfort, and your complete peace of mind.',
   fullDescription:
-    'Eldery Care\n\n' +
 
     'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination. Tipping Bridge Elder Care brings structured assistance across Health & Fitness, Filing & Forms, Technology & Troubleshooting, Home Security & Maintenance, and Memories & Milestones, so support continues even whilst you are miles away. \n\n' +
 
@@ -101,7 +94,6 @@ const services: Service[] = [
   image: ECImg,
   images: ['/E1.jpeg', '/E2.jpeg', '/E3.jpeg'],
 
-  duration: 'Ongoing',
   packages: [
     {
       name: 'Soul',
@@ -202,7 +194,6 @@ const services: Service[] = [
   shortDescription:
     'Returning to India for a family reunion, executive travel, a friends’ get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, or longer extended stays.',
   fullDescription:
-    'Long and Short Stay Service Apartments\n\n' +
 
     'Returning to India for a family reunion, executive travel, a friends\' get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays.\n\n' +
 
@@ -220,7 +211,6 @@ const services: Service[] = [
   images: ['/S1.jpeg', '/S2.jpeg', '/S1.jpeg'],
   //images: ['/IN1.jpeg', '/IN2.jpeg', '/IN3.jpeg'],
 
-  duration: 'Flexible',
 },
 
 
@@ -230,7 +220,6 @@ const services: Service[] = [
     shortDescription:
       'Manage India-side financial matters with clarity, even when you live overseas. Our expert guidance, transparent processes, and trusted partners help NRIs protect assets, grow wealth, and make confident financial decisions from anywhere in the world.',
     fullDescription:
-      'Investments & Insurance \n\n' +
 
       'Manage India-side financial matters with clarity, even when you live overseas. Tipping Bridge supports NRIs through Investment & Wealth Management across Insurance, Mutual Funds and Real Estate, helping you plan and execute from anywhere.\n\n' +
 
@@ -244,7 +233,6 @@ const services: Service[] = [
       image: IIImg,
     images: ['/I1.jpeg', '/I2.jpeg', '/I3.jpeg'],
 
-    duration: 'Ongoing',
   },
 
   {
@@ -254,22 +242,23 @@ const services: Service[] = [
       'When you’re overseas, even routine paperwork in India can become time-consuming and stressful. Our expert support ensures accurate filings and dependable execution, so NRIs stay compliant without constant coordination.',
     fullDescription:
       'When you’re overseas, even routine paperwork in India can become time-consuming and stressful. With just a phone call, Tipping Bridge can connect you to a dedicated team of legal experts to help address your family’s tax and legal documentation needs in India, so work moves forward in your absence.\n\n' +
-      'We support documentation and facilitation across:\n' +
-      '• Certificates: birth certificate, marriage certificate, death certificate, and changes/non-availability of birth certificate.\n' +
-      '• Education & references: degree certificate, marksheet/transcription, syllabus copy, and reference letters.\n' +
-      '• Identity & filings: PAN card application/submission, document procurement, and filing of IT returns.\n' +
-      '• Tax & compliance support: attending to IT notice / tax authority visits, and financial taxation and legal advice.\n' +
-      '• Claims, loans & legal guidance: life/general insurance and mediclaim claim follow-ups, loan syndicate follow-up, and arranging lawyers’ opinions and legal matter expert advice.\n' +
-      '• Court-related formalities: legalisation, notarisation and attestation of documents, including court visits.\n' +
+
+      'We support documentation and facilitation across:\n\n' +
+
+      '• Certificates: birth certificate, marriage certificate, death certificate, and changes/non-availability of birth certificate.\n\n' +
+      '• Education & references: degree certificate, marksheet/transcription, syllabus copy, and reference letters.\n\n' +
+      '• Identity & filings: PAN card application/submission, document procurement, and filing of IT returns.\n\n' +
+      '• Tax & compliance support: attending to IT notice / tax authority visits, and financial taxation and legal advice.\n\n' +
+      '• Claims, loans & legal guidance: life/general insurance and mediclaim claim follow-ups, loan syndicate follow-up, and arranging lawyers’ opinions and legal matter expert advice.\n\n' +
+      '• Court-related formalities: legalisation, notarisation and attestation of documents, including court visits.\n\n' +
       '• Hidden Wealth Facilitation.\n\n' +
       'A single professional point of coordination, built for NRIs who want reliable execution in India without repeated follow-ups.',
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: LDImg,
     // Legal & Documentation service images - using appropriate documentation/legal imagery
-    images: ['/1.png', '/2.png', '/3.png'],
+    images: ['/I3.jpeg'],
 
-    duration: '7-30 days',
   },
 
   {
@@ -278,7 +267,6 @@ const services: Service[] = [
     shortDescription:
       'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent, requiring timely support, trusted professionals, and clear on-ground coordination.',
     fullDescription:
-      'Assistance Services with Doctor & Hospitalisation \n\n' +
 
       'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent. \n\n' +
 
@@ -300,7 +288,6 @@ const services: Service[] = [
     //
     images: ['/D1.jpeg', '/D2.jpeg', '/D3.jpeg'],
 
-    duration: 'As needed',
   },
 
   {
@@ -321,7 +308,6 @@ const services: Service[] = [
     
     images: ['/PE1.jpeg', '/PE2.jpeg', '/PE3.jpeg'],
 
-    duration: 'As per event',
   },
 ];
 
@@ -329,7 +315,6 @@ const services: Service[] = [
 export default function ServicesPage() {
   const [searchParams] = useSearchParams();
   const [selectedService, setSelectedService] = useState<Service | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showPackages, setShowPackages] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -358,7 +343,6 @@ export default function ServicesPage() {
       const service = services.find(s => s.id === serviceId);
       if (service) {
         setSelectedService(service);
-        setCurrentImageIndex(0);
         setShowPackages(false);
       }
     }
@@ -696,7 +680,6 @@ export default function ServicesPage() {
                           <motion.button
                             onClick={() => {
                               setSelectedService(service);
-                              setCurrentImageIndex(0);
                               setShowPackages(false);
                             }}
                             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
@@ -791,311 +774,129 @@ export default function ServicesPage() {
                   bottom: 0,
                 }}
               />
-              {/* Modal Content */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: 50 }}
-                transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white/98 to-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_50px_100px_-15px_rgba(0,0,0,0.3)] border border-gradient-to-br from-white/70 to-white/50"
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  maxWidth: '80rem',
-                  maxHeight: '90vh',
-                  margin: '0 auto',
-                }}
+                className="relative w-full max-w-6xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row"
               >
-            {/* Premium Border Glow */}
-            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${selectedService.gradient} opacity-20 blur-2xl -z-10`} />
-              <div className="relative">
-                {/* Image Slider */}
-                <div className="relative h-96 overflow-hidden bg-gradient-to-br from-[#0b1f33] to-[#c53030]">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentImageIndex}
-                      src={selectedService.images[currentImageIndex]}
-                      alt={`${selectedService.title} - Image ${currentImageIndex + 1}`}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                      initial={{ opacity: 0, scale: 1.1 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  </AnimatePresence>
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedService(null)}
+                  className="absolute top-4 right-4 z-50 p-2 bg-white/80 backdrop-blur-md hover:bg-[#c53030] hover:text-white text-slate-800 rounded-full transition-all shadow-lg border border-slate-100"
+                >
+                  <X size={24} />
+                </button>
 
-
-
-                  {/* Navigation Buttons */}
-                  <motion.button
-                    onClick={() => {
-                      setCurrentImageIndex((prev) => (prev === 0 ? selectedService.images.length - 1 : prev - 1));
-                    }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 hover:scale-110 transition-all border border-white/30 shadow-xl"
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <ChevronLeft size={28} />
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => {
-                      setCurrentImageIndex((prev) => (prev === selectedService.images.length - 1 ? 0 : prev + 1));
-                    }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 hover:scale-110 transition-all border border-white/30 shadow-xl"
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <ChevronRight size={28} />
-                  </motion.button>
-
-                  {/* Image Counter and Dots */}
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10">
-                    {/* Dot Indicators */}
-                    <div className="flex gap-3">
-                      {selectedService.images.map((_, index) => (
-                        <motion.button
-                          key={index}
-                          onClick={() => setCurrentImageIndex(index)}
-                          className={`rounded-full transition-all ${
-                            index === currentImageIndex
-                              ? 'bg-white shadow-lg'
-                              : 'bg-white/40 hover:bg-white/60'
-                          }`}
-                          animate={{
-                            width: index === currentImageIndex ? 32 : 12,
-                            height: 12,
-                          }}
-                          whileHover={{ scale: 1.2 }}
-                          whileTap={{ scale: 0.9 }}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Image Counter */}
-                    <motion.div
-                      className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/30 text-white text-sm font-semibold"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {currentImageIndex + 1} / {selectedService.images.length}
-                    </motion.div>
-                  </div>
-
-                  {/* Close Button */}
-                  <motion.button
-                    onClick={() => setSelectedService(null)}
-                    className="absolute top-6 right-6 p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-all border border-white/30"
-                    whileHover={{ scale: 1.1, rotate: 90 }}
-                    whileTap={{ scale: 0.9 }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <X size={24} />
-                  </motion.button>
-
-                  {/* Decorative Corners */}
-                  <motion.div
-                    className="absolute top-6 left-6 w-16 h-16 border-t-2 border-l-2 border-white/40 rounded-tl-3xl pointer-events-none"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4 }}
+                {/* Left Side - Image (Desktop) / Top (Mobile) */}
+                <div className="w-full md:w-2/5 h-64 md:h-auto relative flex-shrink-0 bg-slate-100">
+                  <img
+                    src={selectedService.images[0]}
+                    alt={selectedService.title}
+                    className="w-full h-full object-cover"
                   />
-                  <motion.div
-                    className="absolute bottom-6 right-6 w-16 h-16 border-b-2 border-r-2 border-white/40 rounded-br-3xl pointer-events-none"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f33]/60 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-[#0b1f33]/10" />
                 </div>
 
-                {/* Content */}
-                <div className="p-10">
-                  <motion.h2
-                    className="text-5xl font-bold text-slate-800 mb-6 bg-gradient-to-r from-[#0b1f33] to-[#c53030] bg-clip-text text-transparent"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    {selectedService.title}
-                  </motion.h2>
-                  
-                  {/* Enhanced Description Section */}
-                  <motion.div
-                    className="mb-10"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                  >
-                    <div className="bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-lg p-4 text-lg leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
-                      {selectedService.fullDescription}
-                    </div>
-                  </motion.div>
-
-                  {/* Our Packages Button */}
-                  {selectedService.packages && selectedService.packages.length > 0 && !showPackages && (
+                {/* Right Side - Content */}
+                <div className="w-full md:w-3/5 overflow-y-auto bg-white">
+                  <div className="p-8 md:p-12">
                     <motion.div
-                      className="mb-10 text-center"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.5 }}
+                      transition={{ delay: 0.2 }}
                     >
-                      <motion.button
-                        onClick={() => setShowPackages(true)}
-                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
+                      <h2 className="text-3xl md:text-4xl font-bold text-[#0b1f33] mb-6 leading-tight">
+                        {selectedService.title}
+                      </h2>
+                      
+                      <div className="h-1 w-20 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full mb-8" />
+
+                      <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+                        {selectedService.fullDescription.split('\n\n').map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </motion.div>
+
+                    {/* Packages Section */}
+                    {selectedService.packages && selectedService.packages.length > 0 && (
+                      <div className="mt-10">
+                        {!showPackages ? (
+                          <button
+                            onClick={() => setShowPackages(true)}
+                            className="inline-flex items-center gap-2 text-[#c53030] font-bold text-lg hover:gap-3 transition-all group"
+                          >
+                            <span>View Care Packages</span>
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                          </button>
+                        ) : (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            transition={{ duration: 0.5 }}
+                            className="overflow-hidden"
+                          >
+                            <h3 className="text-2xl font-bold text-[#0b1f33] mb-6">Available Packages</h3>
+                            <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                              <table className="w-full border-collapse bg-white text-left text-sm">
+                                <thead>
+                                  <tr className="bg-[#0b1f33] text-white">
+                                    <th className="px-4 py-3 font-semibold">Services</th>
+                                    {selectedService.packages.map((pkg) => (
+                                      <th key={pkg.name} className="px-4 py-3 font-semibold text-center border-l border-white/10">
+                                        {pkg.name}
+                                      </th>
+                                    ))}
+                                  </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                  {Object.keys(selectedService.packages[0].services).map((serviceName) => (
+                                    <tr key={serviceName} className="hover:bg-slate-50/50 transition-colors">
+                                      <td className="px-4 py-3 text-slate-700 font-medium">{serviceName}</td>
+                                      {selectedService.packages!.map((pkg) => (
+                                        <td key={pkg.name} className="px-4 py-3 text-center text-slate-600 border-l border-slate-100">
+                                          {pkg.services[serviceName] === '✔' ? (
+                                            <CheckCircle className="inline-block text-green-500" size={18} />
+                                          ) : pkg.services[serviceName] === '✖' ? (
+                                            <span className="text-slate-300">—</span>
+                                          ) : (
+                                            <span className="text-xs font-medium">{pkg.services[serviceName]}</span>
+                                          )}
+                                        </td>
+                                      ))}
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </motion.div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Actions */}
+                    <div className="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4">
+                      <a
+                        href="/contact#contact-form"
+                        className="flex-1 inline-flex justify-center items-center gap-2 px-8 py-4 bg-[#0b1f33] text-white rounded-xl font-bold text-lg hover:bg-[#1a2e44] transition-all shadow-lg hover:shadow-xl"
                       >
-                        <span>Our Packages</span>
-                        <ArrowRight size={18} />
-                      </motion.button>
-                    </motion.div>
-                  )}
-
-                  {/* Packages Section */}
-                  {selectedService.packages && selectedService.packages.length > 0 && showPackages && (
-                    <motion.div
-                      className="mb-10"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.6 }}
-                    >
-                      <h3 className="text-3xl font-bold text-slate-800 mb-8 flex items-center gap-3">
-                        <motion.div
-                          className="h-1 w-16 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: 64 }}
-                          transition={{ duration: 0.6, delay: 0.7 }}
-                        />
-                        Care Packages
-                      </h3>
-
-                      <div className="overflow-x-auto rounded-2xl shadow-xl border border-[#f2dcdc]">
-                        <table className="w-full border-collapse bg-white">
-                          <thead>
-                            <tr className="bg-gradient-to-r from-[#c53030] to-[#7a0b0b]">
-                              <th className="px-6 py-4 text-left font-bold text-white text-lg">Services Offered</th>
-                              {selectedService.packages.map((pkg, index) => (
-                                <motion.th
-                                  key={pkg.name}
-                                  className="px-6 py-4 text-center font-bold text-white text-lg"
-                                  initial={{ opacity: 0, y: -20 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                                >
-                                  {pkg.name}
-                                </motion.th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {Object.keys(selectedService.packages[0].services).map((serviceName, rowIndex) => (
-                              <motion.tr
-                                key={serviceName}
-                                className="hover:bg-gradient-to-r hover:from-[#fef2f2] hover:to-white transition-all border-b border-[#f2dcdc]"
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ 
-                                  duration: 0.4, 
-                                  delay: 0.9 + rowIndex * 0.03 
-                                }}
-                              >
-                                <td className="px-6 py-4 font-semibold text-slate-700">
-                                  {serviceName}
-                                </td>
-                                {selectedService.packages!.map((pkg, colIndex) => (
-                                  <motion.td
-                                    key={pkg.name}
-                                    className="px-6 py-4 text-center text-slate-600 font-medium"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ 
-                                      duration: 0.3, 
-                                      delay: 1 + rowIndex * 0.03 + colIndex * 0.05 
-                                    }}
-                                  >
-                                    {pkg.services[serviceName] === '✔' ? (
-                                      <motion.span
-                                        className="inline-block text-2xl text-green-600"
-                                        initial={{ scale: 0 }}
-                                        animate={{ scale: 1 }}
-                                        transition={{ 
-                                          type: "spring",
-                                          stiffness: 200,
-                                          delay: 1.1 + rowIndex * 0.03 + colIndex * 0.05
-                                        }}
-                                      >
-                                        ✓
-                                      </motion.span>
-                                    ) : pkg.services[serviceName] === '✖' ? (
-                                      <span className="text-xl text-slate-400">—</span>
-                                    ) : (
-                                      <span>{pkg.services[serviceName]}</span>
-                                    )}
-                                  </motion.td>
-                                ))}
-                              </motion.tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {/* CTA */}
-                  <motion.div
-                    className="flex gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                  >
-                    <motion.a
-                      href="/contact#contact-form"
-                      className="flex-1 relative overflow-hidden group/cta"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-xl"
-                        whileHover={{
-                          boxShadow: "0 15px 40px rgba(197, 48, 48, 0.5)"
-                        }}
-                      />
-                      <motion.div
-                        className="absolute inset-0 -translate-x-full group-hover/cta:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                        transition={{ duration: 0.8 }}
-                      />
-                      <div className="relative flex items-center justify-center gap-3 px-8 py-5 text-white font-bold text-lg rounded-xl">
-                        <motion.span
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          Get Started
-                        </motion.span>
-                        <ArrowRight size={22} className="group-hover/cta:translate-x-1 transition-transform" />
-                      </div>
-                    </motion.a>
-                    <motion.button
-                      onClick={() => setSelectedService(null)}
-                      className="px-8 py-5 border-2 border-[#f2dcdc] text-[#0b1f33] rounded-xl font-semibold hover:bg-[#fdf5f5] hover:border-[#c53030] transition-all"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Close
-                    </motion.button>
-                  </motion.div>
+                        <span>Get Started</span>
+                        <ArrowRight size={20} />
+                      </a>
+                      <button
+                        onClick={() => setSelectedService(null)}
+                        className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-xl font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
         )}
       </AnimatePresence>,
       document.body
