@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import PageHero from '../components/PageHero';
 import Counter from '../components/Counter';
 import {
-  Target,
   Award,
   Globe,
   Users,
@@ -19,8 +17,10 @@ import {
   Mail,
   Linkedin,
   Calendar,
+  Quote,
 } from 'lucide-react';
 import FounderImg from '../assets/images/Founder.jpg';
+import AboutVideo from '../assets/images/About.mp4';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
@@ -38,42 +38,42 @@ export default function AboutPage() {
       title: 'Integrity',
       description:
         'We maintain a high standard of integrity and professionalism by doing the right thing. Our core values are the guiding beacons for all that we do and provide us the benchmark for assessing our performance.',
-      color: 'from-[#c53030] to-[#7a0b0b]',
+      color: 'bg-[#fff5f5] text-[#c53030]',
     },
     {
       icon: Heart,
       title: 'Courtesy',
       description:
         'We treat everybody with respect, courtesy, and compassion. We understand that behind every service request is a family, and we treat your needs with the same care and attention we would give our own.',
-      color: 'from-[#e63946] to-[#c53030]',
+      color: 'bg-[#fff0f0] text-[#e63946]',
     },
     {
       icon: Zap,
       title: 'Dynamism',
       description:
         "We respond positively to the ever-changing socio-politico-economic environment and realign strategies to meet new challenges. Time is precious when you're managing things from afar, and we deliver prompt, efficient solutions.",
-      color: 'from-[#7a0b0b] to-[#0b1f33]',
+      color: 'bg-[#f0f4f8] text-[#0b1f33]',
     },
     {
       icon: Handshake,
       title: 'Partnership',
       description:
         "We don't just provide services—we become your trusted partner in India, working alongside you to achieve your goals and protect your interests.",
-      color: 'from-[#0b1f33] to-[#102c44]',
+      color: 'bg-[#eef2ff] text-[#102c44]',
     },
     {
       icon: TrendingUp,
       title: 'Innovation',
       description:
         'We continuously evolve our services and leverage technology to provide better, faster, and more accessible solutions for NRI families worldwide.',
-      color: 'from-[#d33b3b] to-[#7a0b0b]',
+      color: 'bg-[#fff1f2] text-[#d33b3b]',
     },
     {
       icon: Star,
       title: 'Excellence',
       description:
         'We continuously strive for excellence in whatever we do and seek to create benchmarks for others. We ensure the highest standards of service quality, professionalism, and customer satisfaction.',
-      color: 'from-[#102c44] to-[#0b1f33]',
+      color: 'bg-[#f8fafc] text-[#0b1f33]',
     },
   ];
 
@@ -132,69 +132,134 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-white font-sans selection:bg-[#c53030] selection:text-white">
       <Navigation />
-      <PageHero title="About Us" />
-
       
+      {/* Cinematic Video Hero Section */}
+      <div className="relative h-screen w-full overflow-hidden">
+        <div className="absolute inset-0 bg-black">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-60"
+          >
+            <source src={AboutVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f33] via-transparent to-transparent opacity-90" />
+        </div>
+        
+        <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6 max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <h5 className="text-[#c53030] font-bold tracking-[0.2em] uppercase mb-6 text-sm md:text-base">
+              Excellence Without Borders
+            </h5>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-tight tracking-tight">
+              Bridging Your World <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c53030] via-[#ff8f8f] to-[#c53030]">
+                With Home
+              </span>
+            </h1>
+            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+              The premier concierge service for Non-Resident Indians, delivering peace of mind through professional integrity and personalized care.
+            </p>
+          </motion.div>
+        </div>
+        
+      </div>
 
-      {/* Company Story Section */}
-      <section className="py-20 px-6">
+      {/* Our Story - Luxurious Layout */}
+      <section className="py-32 px-6 bg-white relative">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0b1f33] mb-6">
-                Our Story
+              <div className="absolute -top-10 -left-10 text-[#f8f9fa] text-[12rem] font-bold leading-none select-none -z-10">
+                01
+              </div>
+              <h2 className="text-4xl md:text-6xl font-bold text-[#0b1f33] mb-8 leading-tight">
+                Our <span className="text-[#c53030]">Story</span>
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+              <p className="text-xl text-slate-600 leading-relaxed mb-8 font-light">
                 Tipping Bridge is an organization specially formed to serve Non-Resident Indians (NRIs) who are currently living abroad and have direct or indirect liabilities and interests in India. We understand that being an NRI comes with unique challenges—managing property, caring for family, handling documentation, and staying connected to India while living abroad can be overwhelming.
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+              <p className="text-xl text-slate-600 leading-relaxed mb-8 font-light">
                 Our mission is to make the life of NRIs easier by providing professional services for all their small and big needs in India. We aim to make your holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                As your one-point solution for all NRI needs in India, we serve families across the world—whether you're in the USA, Canada, UK, Australia, Singapore, Dubai, or anywhere else. Tipping Bridge is ready to help you stay connected to India with confidence, ease, and peace of mind.
-              </p>
+              
+              <div className="flex gap-12 mt-12 border-t border-slate-100 pt-12">
+                <div>
+                  <div className="text-4xl font-bold text-[#0b1f33] mb-2">Global</div>
+                  <div className="text-slate-500 uppercase tracking-wider text-sm">Reach</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-[#0b1f33] mb-2">Local</div>
+                  <div className="text-slate-500 uppercase tracking-wider text-sm">Expertise</div>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-gradient-to-br from-[#fdeaea] via-[#f7f1f1] to-[#e9effa] border-2 border-[#f6dada] rounded-3xl p-8 md:p-12 shadow-2xl"
+              className="relative"
             >
-              <div className="space-y-6">
-                <div>
-                  <Target className="text-[#c53030] mb-4" size={40} />
-                  <h3 className="text-2xl font-bold text-[#0b1f33] mb-3">Our Vision</h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Tipping Bridge aspires to be the most trusted and respected professional services firm valued by NRIs for delivering excellence and becoming a one-point solution for all their needs in India.
-                  </p>
-                </div>
-                <div className="border-t border-[#f6dada] pt-6">
-                  <Award className="text-[#c53030] mb-4" size={40} />
-                  <h3 className="text-2xl font-bold text-[#0b1f33] mb-3">Our Mission</h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    To make the life of NRI's easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
-                  </p>
-                </div>
+              <div className="absolute inset-0 bg-[#c53030] rounded-[3rem] rotate-3 opacity-5"></div>
+              <div className="bg-slate-50 p-12 rounded-[3rem] relative z-10 border border-slate-100 shadow-2xl">
+                <Quote className="text-[#c53030] w-16 h-16 mb-8 opacity-20" />
+                <h3 className="text-2xl font-bold text-[#0b1f33] mb-6">Our Vision</h3>
+                <p className="text-lg text-slate-600 leading-relaxed mb-10">
+                  "Tipping Bridge aspires to be the most trusted and respected professional services firm valued by NRIs for delivering excellence and becoming a one-point solution for all their needs in India."
+                </p>
+                <h3 className="text-2xl font-bold text-[#0b1f33] mb-6">Our Mission</h3>
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  "To make the life of NRI's easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays."
+                </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-      {/* Founder / Director Section - Vishal Matta */}
-      <section className="py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg border border-[#f2dcdc] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-            <div className="flex flex-col items-center gap-4 w-full md:w-auto">
-              <div className="w-44 h-44 md:w-56 md:h-56 flex-shrink-0 rounded-xl overflow-hidden border-2 border-[#f6dada] bg-gray-100">
+
+      {/* Founder / Director Section - Premium Dark Theme */}
+      <section className="py-32 px-6 bg-[#0b1f33] relative overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#c53030] rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white rounded-full mix-blend-overlay filter blur-[100px] opacity-5 pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">About the <span className="text-[#c53030]">Founder</span></h2>
+            <div className="h-1 w-24 bg-[#c53030] mx-auto rounded-full" />
+          </motion.div>
+
+          <div className="flex flex-col lg:flex-row items-start gap-16">
+            <motion.div 
+              className="w-full lg:w-1/3 flex flex-col items-center"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border-2 border-white/10">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#c53030] shadow-2xl">
                 <img
                   src={FounderImg}
                   alt="Vishal Matta - Founder & Managing Director"
@@ -207,45 +272,49 @@ export default function AboutPage() {
                     if (fallback) fallback.style.display = 'flex';
                   }}
                 />
-                <div className="hidden w-full h-full bg-gray-200 items-center justify-center text-xl font-bold text-slate-600" style={{display: 'none'}}>VM</div>
+                  <div className="hidden w-full h-full bg-gray-800 items-center justify-center text-xl font-bold text-white" style={{display: 'none'}}>VM</div>
+                </div>
               </div>
 
-              <div className="flex items-center gap-3 mt-2">
-                <a href="mailto:vishal.matta@tippingbridge.com" title="Email" className="p-2 rounded-full bg-[#fde4e4] hover:bg-[#fbd5d5] transition">
-                  <Mail size={18} className="text-[#c53030]" />
+              <div className="flex items-center gap-4 mt-8">
+                <a href="mailto:vishal.matta@tippingbridge.com" title="Email" className="p-4 rounded-full bg-white/5 hover:bg-[#c53030] transition-all duration-300 border border-white/10 group">
+                  <Mail size={20} className="text-white group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="https://www.linkedin.com/in/vishalmatta/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="p-2 rounded-full bg-[#e6f0fb] hover:bg-[#d9e9ff] transition">
-                  <Linkedin size={18} className="text-[#0b1f33]" />
+                <a href="https://www.linkedin.com/in/vishalmatta/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="p-4 rounded-full bg-white/5 hover:bg-[#0077b5] transition-all duration-300 border border-white/10 group">
+                  <Linkedin size={20} className="text-white group-hover:scale-110 transition-transform" />
                 </a>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex-1">
-              <h3 className="text-2xl md:text-3xl font-bold text-[#0b1f33] mb-2">Vishal Matta</h3>
-              <div className="text-sm text-slate-600 font-medium mb-4">Founder & Managing Director – TippingBridge</div>
+            <motion.div 
+              className="flex-1 text-white/90"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h3 className="text-4xl font-bold text-white mb-2">Vishal Matta</h3>
+              <div className="text-lg text-[#c53030] font-medium mb-8 tracking-wide uppercase">Founder & Managing Director</div>
 
-              <p className="text-base text-slate-700 leading-relaxed mb-4">
+              <p className="text-lg leading-relaxed mb-6 font-light">
                 For millions of Indians living abroad, distance is not just geographical, it is emotional. Homes, parents, investments, and memories remain in India, often carrying silent worries. Vishal Matta founded TippingBridge to take that weight off their hearts.
               </p>
-
-              <p className="text-base text-slate-700 leading-relaxed mb-4">
+              <p className="text-lg leading-relaxed mb-6 font-light">
                 With a clear understanding of the challenges NRIs face managing property from another country, ensuring parents are cared for, handling compliance, or simply needing someone trustworthy on the ground, Vishal envisioned a service that feels less like outsourcing and more like family support with professional discipline.
               </p>
-
-              <p className="text-base text-slate-700 leading-relaxed mb-4">
+              <p className="text-lg leading-relaxed mb-6 font-light">
                 Vishal’s journey is shaped by one belief: trust cannot be automated; it must be earned every day. Under his leadership, TippingBridge delivers personalised property management, tenancy oversight, elder assistance, documentation support, and concierge services each designed to provide peace of mind, not just execution.
               </p>
-
-              <p className="text-base text-slate-700 leading-relaxed mb-0">
+              <p className="text-lg leading-relaxed font-light border-l-4 border-[#c53030] pl-6 italic text-white">
                 What sets Vishal apart is his human-first approach. He understands that behind every property lies a lifetime of effort, behind every parent lies a lifetime of love, and behind every investment lies a dream for the next generation. TippingBridge operates with empathy, transparency, and accountability ensuring NRIs feel connected, informed, and respected, even from thousands of miles away.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-white to-[#fef2f2]">
+      <section className="py-24 px-6 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -266,17 +335,17 @@ export default function AboutPage() {
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   className="text-center"
                 >
-                  <div className="flex justify-center mb-3">
-                    <div className="p-3 bg-[#fde4e4] rounded-full">
-                      <Icon size={24} className="text-[#c53030]" />
+                  <div className="flex justify-center mb-6">
+                    <div className="p-4 bg-slate-50 rounded-2xl shadow-sm">
+                      <Icon size={32} className="text-[#c53030]" strokeWidth={1.5} />
                     </div>
                   </div>
                   <Counter
                     value={stat.value}
                     duration={2000}
-                    className="text-5xl font-bold text-[#c53030] mb-2"
+                    className="text-5xl md:text-6xl font-bold text-[#0b1f33] mb-3 tracking-tight"
                   />
-                  <div className="text-sm text-slate-600 font-semibold">{stat.label}</div>
+                  <div className="text-sm md:text-base text-slate-500 font-medium uppercase tracking-wider">{stat.label}</div>
                 </motion.div>
               );
             })}
@@ -285,7 +354,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 px-6">
+      <section className="py-32 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -298,10 +367,10 @@ export default function AboutPage() {
               <div className="h-1 w-16 bg-[#f87171] mx-auto"></div>
             </div>
             <h2 className="text-5xl md:text-6xl font-bold text-[#0b1f33] mb-6 tracking-tight">
-              Our Core <span className="text-[#c53030]">Values</span>
+              Core <span className="text-[#c53030]">Values</span>
             </h2>
-            <p className="text-xl text-[#34445a] max-w-3xl mx-auto">
-              The principles that guide everything we do and every relationship we build.
+            <p className="text-xl text-[#34445a] max-w-3xl mx-auto font-light">
+              The guiding beacons for all that we do, providing the benchmark for our excellence.
             </p>
           </motion.div>
 
@@ -337,17 +406,17 @@ export default function AboutPage() {
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
                     transition: { duration: 0.3 }
                   }}
-                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#f2dcdc]"
+                  className="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100"
                 >
                   <motion.div
-                    className={`inline-flex p-4 bg-gradient-to-br ${value.color} rounded-xl mb-4`}
+                    className={`inline-flex p-4 ${value.color} rounded-2xl mb-6`}
                     whileHover={{ rotate: 5, scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Icon size={28} className="text-white" />
+                    <Icon size={32} />
                   </motion.div>
-                  <h3 className="text-xl font-bold text-[#0b1f33] mb-3">{value.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{value.description}</p>
+                  <h3 className="text-2xl font-bold text-[#0b1f33] mb-4">{value.title}</h3>
+                  <p className="text-slate-600 leading-relaxed text-lg font-light">{value.description}</p>
                 </motion.div>
               );
             })}
@@ -356,7 +425,7 @@ export default function AboutPage() {
       </section>
 
       {/* What Makes Us Unique Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-[#fef2f2] to-[#f3f6fb]">
+      <section className="py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -372,7 +441,7 @@ export default function AboutPage() {
               What Makes Us <span className="text-[#c53030]">Unique</span>
             </h2>
             <p className="text-xl text-[#34445a] max-w-3xl mx-auto">
-              Discover the qualities that set Tipping Bridge apart in serving NRI families worldwide.
+              Unparalleled dedication to serving NRI families worldwide.
             </p>
           </motion.div>
 
@@ -406,15 +475,15 @@ export default function AboutPage() {
                   boxShadow: '0 20px 40px -12px rgba(0, 0, 0, 0.15)',
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-[#f2dcdc]"
+                className="bg-slate-50 rounded-3xl p-10 border border-slate-100"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-[#fde4e4] rounded-xl flex-shrink-0">
-                    <CheckCircle className="text-[#c53030]" size={28} />
+                  <div className="p-3 bg-white rounded-xl flex-shrink-0 shadow-sm text-[#c53030]">
+                    <CheckCircle size={32} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-[#0b1f33] mb-3">{item.title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                    <h3 className="text-2xl font-bold text-[#0b1f33] mb-4">{item.title}</h3>
+                    <p className="text-lg text-slate-600 leading-relaxed font-light">{item.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -424,7 +493,7 @@ export default function AboutPage() {
       </section>
 
       {/* Services Overview Section */}
-      <section className="py-20 px-6">
+      <section className="py-32 px-6 bg-[#f8f9fa]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -439,7 +508,7 @@ export default function AboutPage() {
             <h2 className="text-5xl md:text-6xl font-bold text-[#0b1f33] mb-6 tracking-tight">
               Our <span className="text-[#c53030]">Services</span>
             </h2>
-            <p className="text-xl text-[#34445a] max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-[#34445a] max-w-3xl mx-auto mb-12 font-light">
               Comprehensive solutions designed to meet all your needs in India, all in one place.
             </p>
             <Link
@@ -483,9 +552,9 @@ export default function AboutPage() {
                 }}
                 className="group relative h-full"
               >
-                <div className="relative h-full rounded-2xl p-[1px] bg-gradient-to-br from-[#c53030]/30 via-[#7a0b0b]/20 to-[#0b1f33]/20 transition-all duration-500 group-hover:shadow-[0_30px_60px_-12px_rgba(197,48,48,0.4)] group-hover:p-[2px]">
-                  <div className="relative h-full bg-gradient-to-br from-white/98 to-white/95 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-500 border border-white/70">
-                    <div className="p-8 relative">
+                <div className="relative h-full rounded-3xl p-[1px] bg-white transition-all duration-500 group-hover:shadow-2xl">
+                  <div className="relative h-full bg-white rounded-3xl overflow-hidden p-8 border border-slate-200 group-hover:border-[#c53030]/30 transition-colors">
+                    <div className="relative">
                       <motion.div
                         className="h-1 w-12 bg-gradient-to-r from-[#c53030] to-[#7a0b0b]"
                         initial={{ scaleX: 0 }}
@@ -497,7 +566,7 @@ export default function AboutPage() {
                       <h3 className="text-xl font-bold text-[#111827] mb-3 mt-3 group-hover:text-[#111827] transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-base leading-relaxed text-[#111827]">
+                      <p className="text-base leading-relaxed text-slate-600">
                         {service.description}
                       </p>
                     </div>
@@ -510,10 +579,10 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-[#c53030] to-[#7a0b0b] relative overflow-hidden">
+      <section className="py-32 px-6 bg-[#0b1f33] relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#c53030] rounded-full mix-blend-screen filter blur-[150px] opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-900 rounded-full mix-blend-screen filter blur-[150px] opacity-20"></div>
         </div>
 
         <motion.div
@@ -523,24 +592,24 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-center relative z-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
             Ready to Experience the Tipping Bridge Difference?
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-2xl text-slate-300 mb-12 max-w-2xl mx-auto font-light">
             Join thousands of satisfied NRI families who trust us to handle their needs in India.
             Let's start a conversation about how we can help you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#c53030] rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center px-10 py-5 bg-[#c53030] text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-[#c53030]/50 transition-all duration-300 hover:scale-105"
             >
               <span>Get in Touch</span>
               <ArrowRight className="ml-2" size={20} />
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+              className="inline-flex items-center justify-center px-10 py-5 bg-transparent border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300"
             >
               <span>View Services</span>
             </Link>
