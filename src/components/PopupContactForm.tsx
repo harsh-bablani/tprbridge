@@ -39,11 +39,11 @@ export default function PopupContactForm() {
     // Track visit start time to handle navigation between pages
     const visitStart = sessionStorage.getItem('visitStart');
     const now = Date.now();
-    let delay = 20000; // 20 seconds default
+    let delay = 60000; // 20 seconds default
 
     if (visitStart) {
       const elapsed = now - parseInt(visitStart, 10);
-      delay = Math.max(0, 20000 - elapsed);
+      delay = Math.max(0, 60000 - elapsed);
     } else {
       sessionStorage.setItem('visitStart', now.toString());
     }

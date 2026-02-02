@@ -133,7 +133,9 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-[#c53030] selection:text-white">
-      <Navigation />
+      <div style={{ backgroundColor: 'white' }}>
+        <Navigation />
+      </div>
       
       {/* Cinematic Video Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
@@ -156,17 +158,14 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h5 className="text-[#c53030] font-bold tracking-[0.2em] uppercase mb-6 text-sm md:text-base">
-              Excellence Without Borders
-            </h5>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-tight tracking-tight">
-              Bridging Your World <br />
+              Your NRI Needs <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c53030] via-[#ff8f8f] to-[#c53030]">
-                With Home
+                Solved
               </span>
             </h1>
-            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
-              The premier concierge service for Non-Resident Indians, delivering peace of mind through professional integrity and personalized care.
+            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto font-semibold leading-relaxed font-poppins tracking-wide">
+                The premier concierge service for Non-Resident Indians, delivering peace of mind through professional integrity and personalized care.
             </p>
           </motion.div>
         </div>

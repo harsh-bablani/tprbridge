@@ -121,7 +121,7 @@ function Hero() {
               }}
               className="bg-gradient-to-r from-[#c53030] via-[#e63946] to-[#0b1f33] bg-clip-text text-transparent"
             >
-              One Point Solution for all NRI needs in INDIA
+              One Solution for all NRI need
             </motion.span>
             
             {/* Decorative underline */}

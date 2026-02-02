@@ -25,9 +25,9 @@ export default function Navigation() {
 
   const isActive = (path: string) => location.pathname === path;
 
-  const navBackgroundClass = isScrolled
-    ? 'bg-gradient-to-r from-white/95 to-[#fefbfb]/95 backdrop-blur-2xl shadow-[0_8px_32px_rgba(197,48,48,0.12)] border-b border-gradient-to-r from-[#c53030]/10 to-[#7a0b0b]/10'
-    : 'bg-transparent';
+  const isAbout = location.pathname === '/about';
+  const shouldHaveBg = isScrolled || isAbout;
+  const navBackgroundClass = shouldHaveBg ? 'bg-white/95 shadow-sm backdrop-blur-md' : 'bg-transparent';
 
   return (
     <motion.nav
@@ -36,7 +36,7 @@ export default function Navigation() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBackgroundClass}`}
       style={
-        isScrolled
+        shouldHaveBg
           ? undefined
           : { backgroundColor: 'transparent', boxShadow: 'none', backdropFilter: 'none' }
       }
