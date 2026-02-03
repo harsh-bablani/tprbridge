@@ -2,6 +2,8 @@ import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Mail, Phone, Download, X, CheckCircle } from 'lucide-react';
+import LadyPoster from '../assets/images/Lady.png';
+const LadyVideo = new URL('../assets/images/Lady.mp4', import.meta.url).href;
 
 // const brochurePath = '/TIPPING BRIDGE BUSINESS BROCHURE.pdf'; // Commented out for demo
 
@@ -141,71 +143,107 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-          {[
-            {
-              icon: Mail,
-              title: 'Email Us',
-              content: 'info@tippingbridge.com',
-              link: 'mailto:info@tippingbridge.com',
-              gradient: 'from-[#c53030] to-[#7a0b0b]',
-            },
-            {
-              icon: Phone,
-              title: 'Call Us',
-              content: '+91 73036 67600',
-              link: 'tel:+917303667600',
-              gradient: 'from-[#7a0b0b] to-[#0b1f33]',
-            },
-          ].map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <motion.a
-                key={item.title}
-                href={item.link}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15, type: "spring", stiffness: 100 }}
-                whileHover={{ y: -15, scale: 1.05 }}
-                className="group relative block p-10 bg-gradient-to-br from-white/97 to-white/93 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-[0_40px_80px_-15px_rgba(197,48,48,0.5)] transition-all duration-500 border-2 border-gradient-to-r from-[#f2dcdc] to-white/30 hover:border-[#c53030] overflow-hidden"
-              >
-                {/* Animated gradient border */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-100 rounded-3xl -z-10`}
-                  transition={{ duration: 0.4 }}
-                />
-                
-                {/* Optimized shimmer effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out" />
-                
-                <motion.div
-                  className={`inline-flex p-5 bg-gradient-to-br ${item.gradient} rounded-2xl mb-6 shadow-xl relative z-10`}
-                  whileHover={{ scale: 1.1, rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Icon size={36} className="text-white" strokeWidth={2} />
-                  <motion.div
-                    className="absolute inset-0 bg-white/20 rounded-2xl blur-xl"
-                    animate={{
-                      opacity: [0.3, 0.6, 0.3],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </motion.div>
-                <h3 className="text-2xl font-extrabold text-[#0b1f33] mb-3 group-hover:text-white transition-colors relative z-10">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600 group-hover:text-white/90 transition-colors text-lg font-medium relative z-10">
-                  {item.content}
-                </p>
-              </motion.a>
-            );
-          })}
+        <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-6xl mx-auto items-center">
+          <div>
+            <div className="grid grid-cols-1 gap-6">
+              {[
+                {
+                  icon: Mail,
+                  title: 'Email Us',
+                  content: 'info@tippingbridge.com',
+                  link: 'mailto:info@tippingbridge.com',
+                  gradient: 'from-[#c53030] to-[#7a0b0b]',
+                },
+                {
+                  icon: Phone,
+                  title: 'Call Us',
+                  content: '+91 73036 67600',
+                  link: 'tel:+917303667600',
+                  gradient: 'from-[#7a0b0b] to-[#0b1f33]',
+                },
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.a
+                    key={item.title}
+                    href={item.link}
+                    initial={{ opacity: 0, y: 26, scale: 0.98 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: index * 0.06, type: "spring", stiffness: 100 }}
+                    whileHover={{ y: -4, scale: 1.01 }}
+                    className="group relative block p-6 bg-gradient-to-br from-white/97 to-white/93 backdrop-blur-xl rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border-2 border-gradient-to-r from-[#f2dcdc] to-white/30 hover:border-[#c53030] overflow-hidden"
+                  >
+                    {/* Animated gradient border */}
+                    <motion.div
+                      className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-80 rounded-2xl -z-10`}
+                      transition={{ duration: 0.3 }}
+                    />
+                    
+                    {/* Optimized shimmer effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/16 to-transparent transition-transform duration-600 ease-out" />
+                    
+                    <motion.div
+                      className={`inline-flex p-4 bg-gradient-to-br ${item.gradient} rounded-xl mb-4 shadow relative z-10`}
+                      whileHover={{ scale: 1.05, rotate: 12 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <Icon size={28} className="text-white" strokeWidth={2} />
+                      <motion.div
+                        className="absolute inset-0 bg-white/18 rounded-xl blur-xl"
+                        animate={{
+                          opacity: [0.25, 0.5, 0.25],
+                        }}
+                        transition={{
+                          duration: 2.2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    </motion.div>
+                    <h3 className="text-xl font-semibold text-[#0b1f33] mb-2 group-hover:text-white transition-colors relative z-10">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 group-hover:text-white/90 transition-colors text-base font-medium relative z-10">
+                      {item.content}
+                    </p>
+                  </motion.a>
+                );
+              })}
+            </div>
+
+            {/* On small screens, keep CTA centered under cards */}
+            <div className="mt-6 text-center sm:text-left">
+              {/* existing CTA stays below (unchanged) */}
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center justify-center"
+          >
+            <div className="rounded-3xl w-full max-w-md transform transition-all duration-500 hover:scale-[1.01]">
+              <div className="p-1 rounded-3xl bg-gradient-to-br from-[#fde6e6] via-[#fff9f7] to-[#eaf0ff] shadow-2xl">
+                <div className="p-1 rounded-2xl bg-white border border-[#f5d6c6] shadow-inner">
+                  <div className="rounded-xl overflow-hidden aspect-square">
+                    <video
+                      src={LadyVideo}
+                      poster={LadyPoster}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      aria-label="Video of a company team member"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         <motion.div
