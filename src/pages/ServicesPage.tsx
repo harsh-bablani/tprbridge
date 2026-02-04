@@ -27,6 +27,13 @@ import LDImg from '../assets/images/LD.png';
 import SEGImg from '../assets/images/SEG.png';
 import IIImg from '../assets/images/II.png';
 import ASImg from '../assets/images/AS.png';
+import InsuranceImg from '../assets/images/Insurance.png';
+import ElderImg from '../assets/images/Elder.png';
+import DoctorImg from '../assets/images/Doctor.png';
+import PropertyImg from '../assets/images/Property.png';
+import LegaldocImg from '../assets/images/Legaldoc.png';
+import PartyyImg from '../assets/images/Partyy.png';
+import LongstayImg from '../assets/images/Longstay.png';
 
 interface Service {
   id: string;
@@ -37,6 +44,9 @@ interface Service {
   gradient: string;
   image: string;
   images: string[];
+  contentSections: string[];
+  imagePosition: number;
+  serviceImage: string;
   features?: string[];
   packages?: {
     name: string;
@@ -65,6 +75,17 @@ const services: Service[] = [
     '• Possession & Handover: Support for move-ins, tenant transitions, and possession formalities for newly purchased or recently vacated homes.\n\n' +
 
     'One dependable point of contact. Professional reporting. Reliable execution.',
+  contentSections: [
+    'Your India home should be an asset, not a source of constant follow-ups. Tipping Bridge manages your property end-to-end with discreet on-ground execution, clear approvals, and timely updates, so you stay in control from anywhere.',
+    '• Tenant & Tenancy: Listing and marketing, enquiries and viewings, tenant onboarding, and ongoing tenancy coordination.',
+    '• Rent & Deposit: Rent collection support, deposit tracking, and clear visibility of paid, due, and pending amounts.',
+    '• Keys & Access: Secure key custody and strictly authorised access for inspections, maintenance, and handovers.',
+    '• Maintenance & Repairs: Preventive upkeep and repairs coordinated with trusted vendors, with documented scope and cost transparency.',
+    '• Possession & Handover: Support for move-ins, tenant transitions, and possession formalities for newly purchased or recently vacated homes.',
+    'One dependable point of contact. Professional reporting. Reliable execution.'
+  ],
+  imagePosition: 1,
+  serviceImage: PropertyImg,
   icon: Home,
   gradient: 'from-[#c53030] to-[#7a0b0b]',
   image: PMImg,
@@ -89,6 +110,16 @@ const services: Service[] = [
     '• Home Security & Maintenance: Plumber/electrician/carpenter support, whitewash, appliance repairs, pest control, annual maintenance contracts, CCTV/video doorbell installation, and police verification of domestic staff, with supervision where needed. \n\n' +
 
     '• Memories & Milestones: Birthdays, anniversaries and festivals, gifts, décor, food, florist and pooja services, because emotional wellbeing matters too.',
+  contentSections: [
+    'When you live overseas, supporting ageing parents in India takes more than calls, it takes dependable, on-ground coordination. Tipping Bridge Elder Care brings structured assistance across Health & Fitness, Filing & Forms, Technology & Troubleshooting, Home Security & Maintenance, and Memories & Milestones, so support continues even whilst you are miles away.',
+    '• Health & Fitness: Our healthcare team is trained to handle emergency situations, and can arrange tele-consultations, home doctor visits, sample home collections for lab tests, nurse/medical attendant services, post-surgical support, medicine delivery, medical equipment rentals, physiotherapy, medical-record maintenance, and ambulance/hospitalisation assistance.',
+    '• Filing & Forms: Support for income tax return filing, banking assistance, legal documentation help, and Aadhaar/Voter ID and senior citizen card assistance.',
+    '• Technology & Troubleshooting: Zoom/Google Hangouts support, social media setup, popular apps (Zomato/Uber/Netflix), hardware repair support, and personalised tutorials to bridge the digital gap.',
+    '• Home Security & Maintenance: Plumber/electrician/carpenter support, whitewash, appliance repairs, pest control, annual maintenance contracts, CCTV/video doorbell installation, and police verification of domestic staff, with supervision where needed.',
+    '• Memories & Milestones: Birthdays, anniversaries and festivals, gifts, décor, food, florist and pooja services, because emotional wellbeing matters too.'
+  ],
+  imagePosition: 1,
+  serviceImage: ElderImg,
   icon: HeartPulse,
   gradient: 'from-[#e53e3e] to-[#b91c1c]',
   image: ECImg,
@@ -204,6 +235,15 @@ const services: Service[] = [
     '• Choose flexible move-in and move-out dates, with simple monthly pricing, special rates/discounts for longer stays, and a single monthly payment. Book with confidence: properties are reviewed by our trusted guest community, and you receive 24/7 support during your stay.\n\n' +
 
     '• Need to work while you\'re here? Find work-friendly spaces with high-speed Wi-Fi and dedicated working areas, ideal for staffing, displacement, and relocation.',
+  contentSections: [
+    'Returning to India for a family reunion, executive travel, a friends\' get-together, or a longer relocation? Tipping Bridge provides luxurious serviced apartments for NRIs across key Indian cities, designed for a few days, a few weeks, or longer extended stays.',
+    '• If you feel homesick when you travel or you\'re back in India seasonally, our apartment homes are built to feel like a second home, neatly furnished so you\'re not burdened with carrying essentials. From food to furniture and other amenities, our carefully selected properties help you start each day fresh, focused, and settled.',
+    '• Expect spacious rooms, basic Wi-Fi support, laundry and fitness rooms, and additional kitchen items, close to grocery, shopping, entertainment, and pharmacies, so you get hotel-like convenience without sacrificing home-like comfort.',
+    '• Choose flexible move-in and move-out dates, with simple monthly pricing, special rates/discounts for longer stays, and a single monthly payment. Book with confidence: properties are reviewed by our trusted guest community, and you receive 24/7 support during your stay.',
+    '• Need to work while you\'re here? Find work-friendly spaces with high-speed Wi-Fi and dedicated working areas, ideal for staffing, displacement, and relocation.'
+  ],
+  imagePosition: 1,
+  serviceImage: LongstayImg,
   icon: BedDouble,
   gradient: 'from-[#7a0b0b] to-[#0b1f33]',
   image: LSImg,
@@ -228,6 +268,14 @@ const services: Service[] = [
       '• Mutual Funds & Investing: Unbiased recommendations focused on long-term wealth creation, with execution support across Direct Mutual Funds, Stocks, ETFs, Bonds and Savings. Our wealth advisory helps create a robust plan aligned to your risk-return needs, stay disciplined during volatile markets, and diversify across assets.\n\n' +
 
       '• Real Estate: Guidance for NRI clients with best/transparent/unbiased deals, and support on formalities and negotiations to acquire your chosen property.',
+    contentSections: [
+      'Manage India-side financial matters with clarity, even when you live overseas. Tipping Bridge supports NRIs through Investment & Wealth Management across Insurance, Mutual Funds and Real Estate, helping you plan and execute from anywhere.',
+      '• Insurance: Support for Life/Term, Motor/Auto, Health and Home insurance. Insurance solicitation in India is governed by IRDA. Our Insurance Specialist provides competitive rates for term plans and motor insurance specially negotiated for NRI clients. Motor cover includes comprehensive car insurance, third-party liability and personal accident cover. For health insurance, we guide you to a tailor-made plan based on your requirements and pass on benefits from negotiated rates. For home insurance, we guide you to policies that are cost competitive on premium pricing and strong on consumer benefits.',
+      '• Mutual Funds & Investing: Unbiased recommendations focused on long-term wealth creation, with execution support across Direct Mutual Funds, Stocks, ETFs, Bonds and Savings. Our wealth advisory helps create a robust plan aligned to your risk-return needs, stay disciplined during volatile markets, and diversify across assets.',
+      '• Real Estate: Guidance for NRI clients with best/transparent/unbiased deals, and support on formalities and negotiations to acquire your chosen property.'
+    ],
+    imagePosition: 1,
+    serviceImage: InsuranceImg,
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
       image: IIImg,
@@ -246,13 +294,34 @@ const services: Service[] = [
       'We support documentation and facilitation across:\n\n' +
 
       '• Certificates: birth certificate, marriage certificate, death certificate, and changes/non-availability of birth certificate.\n\n' +
+
       '• Education & references: degree certificate, marksheet/transcription, syllabus copy, and reference letters.\n\n' +
+
       '• Identity & filings: PAN card application/submission, document procurement, and filing of IT returns.\n\n' +
+
       '• Tax & compliance support: attending to IT notice / tax authority visits, and financial taxation and legal advice.\n\n' +
+
       '• Claims, loans & legal guidance: life/general insurance and mediclaim claim follow-ups, loan syndicate follow-up, and arranging lawyers’ opinions and legal matter expert advice.\n\n' +
+
       '• Court-related formalities: legalisation, notarisation and attestation of documents, including court visits.\n\n' +
+
       '• Hidden Wealth Facilitation.\n\n' +
+
       'A single professional point of coordination, built for NRIs who want reliable execution in India without repeated follow-ups.',
+    contentSections: [
+      'When you’re overseas, even routine paperwork in India can become time-consuming and stressful. With just a phone call, Tipping Bridge can connect you to a dedicated team of legal experts to help address your family’s tax and legal documentation needs in India, so work moves forward in your absence.',
+      'We support documentation and facilitation across:',
+      '• Certificates: birth certificate, marriage certificate, death certificate, and changes/non-availability of birth certificate.',
+      '• Education & references: degree certificate, marksheet/transcription, syllabus copy, and reference letters.',
+      '• Identity & filings: PAN card application/submission, document procurement, and filing of IT returns.',
+      '• Tax & compliance support: attending to IT notice / tax authority visits, and financial taxation and legal advice.',
+      '• Claims, loans & legal guidance: life/general insurance and mediclaim claim follow-ups, loan syndicate follow-up, and arranging lawyers’ opinions and legal matter expert advice.',
+      '• Court-related formalities: legalisation, notarisation and attestation of documents, including court visits.',
+      '• Hidden Wealth Facilitation.',
+      'A single professional point of coordination, built for NRIs who want reliable execution in India without repeated follow-ups.'
+    ],
+    imagePosition: 1,
+    serviceImage: LegaldocImg,
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: LDImg,
@@ -281,6 +350,17 @@ const services: Service[] = [
       '• For nutrition and lifestyle, support can include a dietician, fitness coaches, and health menu/food delivery aligned to the diet plan. \n\n' +
 
       '• In emergencies, we provide ambulance assistance and emergency support for hospitalisation, along with medicine routine planning and reminder schedules.',
+    contentSections: [
+      'Medical coordination in India can be stressful when you are overseas, especially when a routine check-up becomes urgent.',
+      'Tipping Bridge supports NRIs with end-to-end assistance for doctor appointments and hospitalisation so your family receives timely care, at home and at the hospital, with clear coordination.',
+      '• We organise tele-consultations with qualified and experienced doctors and can ensure you are on the same call with your parents and the doctor/specialist, so decisions are informed and connected.',
+      '• We also coordinate home visits by doctors, sample home collection for lab tests, and post-surgical support through nurses and medical attendants.',
+      '• When ongoing support is required, we can help with home delivery of medicines, rental of medical equipment, medical supplies, physiotherapy coordination, and maintenance of medical records.',
+      '• For nutrition and lifestyle, support can include a dietician, fitness coaches, and health menu/food delivery aligned to the diet plan.',
+      '• In emergencies, we provide ambulance assistance and emergency support for hospitalisation, along with medicine routine planning and reminder schedules.'
+    ],
+    imagePosition: 1,
+    serviceImage: DoctorImg,
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: ASImg,
@@ -297,15 +377,28 @@ const services: Service[] = [
       'Being overseas shouldn’t mean missing the moments that matter at home. We help NRIs plan and manage celebrations, milestones, and meaningful gatherings in India through trusted coordination, thoughtful execution, and seamless on-ground support.',
     fullDescription:
       'Being overseas shouldn’t mean missing the moments that matter at home. Tipping Bridge helps NRIs create and coordinate small celebrations in India so your family can enjoy the occasion, while we take on the organisation and responsibility.\n\n' +
+
       'Allow us to help you celebrate every special occasion and milestone in style, without having to manage the details from abroad.\n\n' +
+
       '• From birthdays and anniversaries to festivals, or a simple Havan/Pooja, we plan the celebration and coordinate the key elements, including decoration, personalised gifts and experiences, and food, so what remains are beautiful memories to cherish.\n\n' +
+
       '• We also support “Memories & Milestones” requests such as florist services, festival décor and essentials, home salon and spa services, personalised family photo shoots, runner services, and movie/theatre tickets.\n\n' +
+
       '• Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut arranged with care.',
+    contentSections: [
+      'Being overseas shouldn’t mean missing the moments that matter at home. Tipping Bridge helps NRIs create and coordinate small celebrations in India so your family can enjoy the occasion, while we take on the organisation and responsibility.',
+      'Allow us to help you celebrate every special occasion and milestone in style, without having to manage the details from abroad.',
+      '• From birthdays and anniversaries to festivals, or a simple Havan/Pooja, we plan the celebration and coordinate the key elements, including decoration, personalised gifts and experiences, and food, so what remains are beautiful memories to cherish.',
+      '• We also support “Memories & Milestones” requests such as florist services, festival décor and essentials, home salon and spa services, personalised family photo shoots, runner services, and movie/theatre tickets.',
+      '• Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut arranged with care.'
+    ],
+    imagePosition: 1,
+    serviceImage: PartyyImg,
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: SEGImg,
     // Map to existing celebration/event style images in the public folder
-    
+
     images: ['/PE1.jpeg', '/PE2.jpeg', '/PE3.jpeg'],
 
   },
@@ -815,8 +908,20 @@ export default function ServicesPage() {
                       <div className="h-1 w-20 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] rounded-full mb-8" />
 
                       <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
-                        {selectedService.fullDescription.split('\n\n').map((paragraph, index) => (
-                          <p key={index}>{paragraph}</p>
+                        {selectedService.contentSections.map((section, index) => (
+                          <div key={index}>
+                            <p>{section}</p>
+                            {index === selectedService.imagePosition - 1 && (
+                              <div className="my-8 flex justify-center">
+                                <img
+                                  src={selectedService.serviceImage}
+                                  alt={`${selectedService.title} illustration`}
+                                  className="max-w-full h-auto rounded-lg shadow-lg"
+                                  style={{ maxWidth: '400px' }}
+                                />
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </div>
                     </motion.div>
