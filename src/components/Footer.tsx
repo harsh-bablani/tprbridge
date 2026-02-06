@@ -316,15 +316,6 @@ function Footer() {
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
                 />
               </Link>
-              <Link
-                to="/privacy-policy"
-                className="text-white/60 hover:text-white transition-all duration-300 font-medium relative group"
-              >
-                Terms of Service
-                <motion.div
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c53030] to-[#7a0b0b] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
-                />
-              </Link>
             </div>
           </div>
         </motion.div>

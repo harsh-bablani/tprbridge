@@ -27,13 +27,6 @@ import LDImg from '../assets/images/LD.png';
 import SEGImg from '../assets/images/SEG.png';
 import IIImg from '../assets/images/II.png';
 import ASImg from '../assets/images/AS.png';
-import InsuranceImg from '../assets/images/Insurance.png';
-import ElderImg from '../assets/images/Elder.png';
-import DoctorImg from '../assets/images/Doctor.png';
-import PropertyImg from '../assets/images/Property.png';
-import LegaldocImg from '../assets/images/Legaldoc.png';
-import PartyyImg from '../assets/images/Partyy.png';
-import LongstayImg from '../assets/images/Longstay.png';
 
 interface Service {
   id: string;
@@ -47,6 +40,7 @@ interface Service {
   contentSections: string[];
   imagePosition: number;
   serviceImage: string;
+  tagline?: string;
   features?: string[];
   packages?: {
     name: string;
@@ -85,7 +79,8 @@ const services: Service[] = [
     'One dependable point of contact. Professional reporting. Reliable execution.'
   ],
   imagePosition: 1,
-  serviceImage: PropertyImg,
+  serviceImage: '',
+  tagline: 'Managed. Monitored. Simplified.',
   icon: Home,
   gradient: 'from-[#c53030] to-[#7a0b0b]',
   image: PMImg,
@@ -119,7 +114,8 @@ const services: Service[] = [
     '• Memories & Milestones: Birthdays, anniversaries and festivals, gifts, décor, food, florist and pooja services, because emotional wellbeing matters too.'
   ],
   imagePosition: 1,
-  serviceImage: ElderImg,
+  serviceImage: '',
+  tagline: 'Cared. Coordinated. Continued.',
   icon: HeartPulse,
   gradient: 'from-[#e53e3e] to-[#b91c1c]',
   image: ECImg,
@@ -243,7 +239,8 @@ const services: Service[] = [
     '• Need to work while you\'re here? Find work-friendly spaces with high-speed Wi-Fi and dedicated working areas, ideal for staffing, displacement, and relocation.'
   ],
   imagePosition: 1,
-  serviceImage: LongstayImg,
+  serviceImage: '',
+  tagline: 'Comfort. Convenience. Care.',
   icon: BedDouble,
   gradient: 'from-[#7a0b0b] to-[#0b1f33]',
   image: LSImg,
@@ -275,11 +272,12 @@ const services: Service[] = [
       '• Real Estate: Guidance for NRI clients with best/transparent/unbiased deals, and support on formalities and negotiations to acquire your chosen property.'
     ],
     imagePosition: 1,
-    serviceImage: InsuranceImg,
+    serviceImage: '',
+    tagline: 'Planned. Protected. Grown.',
     icon: PiggyBank,
     gradient: 'from-[#0b1f33] to-[#102c44]',
       image: IIImg,
-    images: ['/I1.jpeg', '/I2.jpeg', '/I3.jpeg'],
+    images: ['/I1.jpg', '/I2.jpeg', '/I3.jpeg'],
 
   },
 
@@ -321,7 +319,8 @@ const services: Service[] = [
       'A single professional point of coordination, built for NRIs who want reliable execution in India without repeated follow-ups.'
     ],
     imagePosition: 1,
-    serviceImage: LegaldocImg,
+    serviceImage: '',
+    tagline: 'Handled. Verified. Completed.',
     icon: FileText,
     gradient: 'from-[#0b1f33] to-[#1d3557]',
     image: LDImg,
@@ -360,7 +359,8 @@ const services: Service[] = [
       '• In emergencies, we provide ambulance assistance and emergency support for hospitalisation, along with medicine routine planning and reminder schedules.'
     ],
     imagePosition: 1,
-    serviceImage: DoctorImg,
+    serviceImage: '',
+    tagline: 'Coordinated. Supported. Timely.',
     icon: Stethoscope,
     gradient: 'from-[#d33b3b] to-[#7a0b0b]',
     image: ASImg,
@@ -393,7 +393,8 @@ const services: Service[] = [
       '• Even without a fixed occasion, we can help turn an ordinary day into a special one with doorstep surprises, such as a manicure or pedicure, a massage or facial, or even a haircut arranged with care.'
     ],
     imagePosition: 1,
-    serviceImage: PartyyImg,
+    serviceImage: '',
+    tagline: 'Planned. Personal. Memorable.',
     icon: PartyPopper,
     gradient: 'from-[#7a0b0b] to-[#c53030]',
     image: SEGImg,
@@ -891,6 +892,25 @@ export default function ServicesPage() {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f33]/60 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-[#0b1f33]/10" />
+                  
+                  {/* Tagline Overlay */}
+                  {selectedService.tagline && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/50 via-black/20 to-transparent">
+                      <motion.h3
+                        className="text-white font-extrabold text-3xl md:text-4xl lg:text-5xl text-center px-6 leading-tight drop-shadow-lg"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        style={{
+                          textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(197,48,48,0.6)',
+                          letterSpacing: '0.05em',
+                          fontWeight: 900
+                        }}
+                      >
+                        {selectedService.tagline}
+                      </motion.h3>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right Side - Content */}
@@ -911,7 +931,7 @@ export default function ServicesPage() {
                         {selectedService.contentSections.map((section, index) => (
                           <div key={index}>
                             <p>{section}</p>
-                            {index === selectedService.imagePosition - 1 && (
+                            {index === selectedService.imagePosition - 1 && selectedService.serviceImage && (
                               <div className="my-8 flex justify-center">
                                 <img
                                   src={selectedService.serviceImage}
