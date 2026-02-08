@@ -190,7 +190,7 @@ export default function AboutPage() {
                 Our <span className="text-[#c53030]">Story</span>
               </h2>
               <p className="text-xl text-slate-600 leading-relaxed mb-8 font-light">
-                Tipping Bridge is an organization specially formed to serve Non-Resident Indians (NRIs) who are currently living abroad and have direct or indirect liabilities and interests in India. We understand that being an NRI comes with unique challenges—managing property, caring for family, handling documentation, and staying connected to India while living abroad can be overwhelming.
+                Tipping Bridge is an organization specially formed to serve Non-Resident Indians (NRIs) who are currently living abroad and have direct or indirect liabilities and interests in India. We understand that being an NRI comes with unique challenges: managing property, caring for family, handling documentation, and staying connected to India while living abroad can be overwhelming.
               </p>
               <p className="text-xl text-slate-600 leading-relaxed mb-8 font-light">
                 Our mission is to make the life of NRIs easier by providing professional services for all their small and big needs in India. We aim to make your holidays in India actual holidays by eliminating the time wasted running around to get documentation work done, immigration work, and other essential tasks.
@@ -220,11 +220,11 @@ export default function AboutPage() {
                 <Quote className="text-[#c53030] w-16 h-16 mb-8 opacity-20" />
                 <h3 className="text-2xl font-bold text-[#0b1f33] mb-6">Our Vision</h3>
                 <p className="text-lg text-slate-600 leading-relaxed mb-10">
-                  "Tipping Bridge aspires to be the most trusted and respected professional services firm valued by NRIs for delivering excellence and becoming a one-point solution for all their needs in India."
+                  Tipping Bridge aspires to be the most trusted and respected professional services firm valued by NRIs for delivering excellence and becoming a one-point solution for all their needs in India.
                 </p>
                 <h3 className="text-2xl font-bold text-[#0b1f33] mb-6">Our Mission</h3>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  "To make the life of NRI's easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays."
+                  To make the life of NRI's easier by providing professional services for all their small and big needs in India. To make their holidays in India actual holidays.
                 </p>
               </div>
             </motion.div>
