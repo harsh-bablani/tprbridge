@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Mail, Phone, Download, X, CheckCircle } from 'lucide-react';
 import LadyPoster from '../assets/images/Lady.png';
-const LadyVideo = new URL('../assets/images/Lady.mp4', import.meta.url).href;
 
 // const brochurePath = '/TIPPING BRIDGE BUSINESS BROCHURE.pdf'; // Commented out for demo
 
@@ -229,15 +228,10 @@ export default function Contact() {
               <div className="p-1 rounded-3xl bg-gradient-to-br from-[#fde6e6] via-[#fff9f7] to-[#eaf0ff] shadow-2xl">
                 <div className="p-1 rounded-2xl bg-white border border-[#f5d6c6] shadow-inner">
                   <div className="rounded-xl overflow-hidden aspect-square">
-                    <video
-                      src={LadyVideo}
-                      poster={LadyPoster}
+                    <img
+                      src={LadyPoster}
                       className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      aria-label="Video of a company team member"
+                      alt="Image of a company team member"
                     />
                   </div>
                 </div>
